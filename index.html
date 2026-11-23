@@ -821,6 +821,17 @@ label {
       <button type="button" class="mic" id="mic" aria-label="Speak">🎤</button>
       <button type="button" class="go" id="go">Send</button>
     </div>
+    <div id="schemeSpokenBox" class="spoken-box hide"></div>
+    <div class="audio-box" id="schemeAudioBox">
+      <div class="audio-controls">
+        <button type="button" class="rec-btn" id="schemeRecBtn">⏺ <span id="schemeRecTxt">Record Audio</span></button>
+        <button type="button" class="go" id="schemeSendAudioBtn">🎧 <span id="schemeSendAudioTxt">Send Record</span></button>
+        <button type="button" class="quiet-btn" id="schemeQuietBtn" aria-pressed="true">🔇 <span id="schemeQuietTxt">No Disturbance</span></button>
+        <button type="button" class="mini" id="schemeClearAudioBtn">Clear Audio</button>
+      </div>
+      <div id="schemeRecStatus" class="note" style="margin-top:8px;">Speak or record audio (occupation, numbers like 2000 or 3000, or age) and AI will display your words and pick matching schemes.</div>
+      <audio id="schemeAudioPlayer" controls="" class="hide"></audio>
+    </div>
     <p class="note" id="note">AI reads what you say in audio, shows your spoken words, selects matching options, and recommends schemes.</p>
   </section>
 
@@ -831,7 +842,7 @@ label {
   </section>
 </main>
 
-<!-- Farmer Doctor View (All audio options removed) -->
+<!-- Farmer Doctor View -->
 <main id="vf" class="">
   <section class="panel">
     <h2 id="fh">Describe the plant or crop problem</h2>
@@ -852,8 +863,10 @@ label {
 
     <div class="qin">
       <input id="symtxt" type="text" autocomplete="off" placeholder="Type symptoms or plant/crop name…">
+      <button type="button" class="mic" id="symmic" aria-label="Speak">🎤</button>
       <button type="button" class="go" id="symgo">Send</button>
     </div>
+    <div id="doctorSpokenBox" class="spoken-box hide"></div>
 
     <button type="button" class="go" id="analyze" style="margin-top:16px;width:100%">Check plant / crop</button>
     <p class="note" id="fnote">AI guidance for all plants, vegetables, fruits, flowers, indoor/pot plants, herbs, trees, and crops from photo, symptoms, or text.</p>
@@ -884,7 +897,7 @@ label {
   var uploadedPhotoDataUrl = "";
   var lastDiagnosisData = null;
 
-  // Find Schemes audio & voice state (kept intact)
+  // Find Schemes audio & voice state
   var schemeMediaRecorder = null;
   var schemeAudioChunks = [];
   var schemeAudioBlob = null;
@@ -1656,35 +1669,35 @@ label {
     if (!v) return NaN;
 
     var wordMap = [
-      [/\b(half)\b|ಅರ್ಧ|అర|आधा|साढ़े/g, 0.5],
-      [/\b(one|a)\b|ಒಂದು|ఒకటి|ఒక|एक/g, 1],
-      [/\b(two|couple)\b|ಎರಡು|రెండు|दो/g, 2],
-      [/\b(three)\b|ಮೂರು|మూడు|तीन/g, 3],
-      [/\b(four)\b|ನಾಲ್ಕು|నాలుగు|चार/g, 4],
-      [/\b(five)\b|ಐದು|ఐదు|पांच|पाँच/g, 5],
-      [/\b(six)\b|ಆರು|ఆరు|छह/g, 6],
-      [/\b(seven)\b|ಏಳು|ఏడు|सात/g, 7],
-      [/\b(eight)\b|ಎಂಟು|ఎనిమిది|आठ/g, 8],
-      [/\b(nine)\b|ಒಂಬತ್ತು|తొమ్మిది|नौ/g, 9],
-      [/\b(ten)\b|ಹತ್ತು|పది|दस/g, 10],
-      [/\b(fifteen)\b|ಹದಿನೈದು|పదిహేను|पंद्रह/g, 15],
-      [/\b(twenty)\b|ಇಪ್ಪತ್ತು|ఇరవై|बीस/g, 20],
-      [/\b(twenty\s*five)\b|ಇಪ್ಪತ್ತೈದು|ఇరవై\s*ఐదు|पच्चीस/g, 25],
-      [/\b(thirty)\b|ಮೂವತ್ತು|ముప్పై|तीस/g, 30],
-      [/\b(forty)\b|ನಲವತ್ತು|నలభై|चालीस/g, 40],
-      [/\b(fifty)\b|ಐವತ್ತು|యాభై|पचास/g, 50],
-      [/\b(sixty)\b|ಅರವತ್ತು|అరవై|साठ/g, 60],
-      [/\b(seventy)\b|ಎಪ್ಪತ್ತು|డెబ్బై|सत्तर/g, 70],
-      [/\b(eighty)\b|ಎಂಬತ್ತು|ఎనభై|अस्सी/g, 80],
-      [/\b(ninety)\b|ತೊಂಬತ್ತು|తొంభై|नब्बे/g, 90],
-      [/\b(hundred)\b|ನೂರು|వంద|सौ/g, 100]
+      [/ (half) |ಅರ್ಧ|అర|आधा|साढ़े/g, 0.5],
+      [/ (one|a) |ಒಂದು|ఒకటి|ఒక|एक/g, 1],
+      [/ (two|couple) |ಎರಡು|రెండు|दो/g, 2],
+      [/ (three) |ಮೂರು|మూడు|तीन/g, 3],
+      [/ (four) |ನಾಲ್ಕು|నాలుగు|चार/g, 4],
+      [/ (five) |ಐದು|ఐదు|पांच|पाँच/g, 5],
+      [/ (six) |ಆರು|ఆరు|छह/g, 6],
+      [/ (seven) |ಏಳು|ఏడు|सात/g, 7],
+      [/ (eight) |ಎಂಟು|ఎనిమిది|आठ/g, 8],
+      [/ (nine) |ಒಂಬತ್ತು|తొమ్మిది|नौ/g, 9],
+      [/ (ten) |ಹತ್ತು|పది|दस/g, 10],
+      [/ (fifteen) |ಹದಿನೈದು|పదిహేను|पंद्रह/g, 15],
+      [/ (twenty) |ಇಪ್ಪತ್ತು|ఇరవై|बीस/g, 20],
+      [/ (twenty\s*five) |ಇಪ್ಪತ್ತೈದು|ఇరవై\s*ఐదు|पच्चीस/g, 25],
+      [/ (thirty) |ಮೂವತ್ತು|ముప్పై|तीस/g, 30],
+      [/ (forty) |ನಲವತ್ತು|నలభై|चालीस/g, 40],
+      [/ (fifty) |ಐವತ್ತು|యాభై|पचास/g, 50],
+      [/ (sixty) |ಅರವತ್ತು|అరవై|साठ/g, 60],
+      [/ (seventy) |ಎಪ್ಪತ್ತು|డెబ్బై|सत्तर/g, 70],
+      [/ (eighty) |ಎಂಬತ್ತು|ఎనభై|अस्सी/g, 80],
+      [/ (ninety) |ತೊಂಬತ್ತು|తొంభై|नब्बे/g, 90],
+      [/ (hundred) |ನೂರು|వంద|सौ/g, 100]
     ];
 
     var hasCrore = /crore|ಕೋಟಿ|కోటి|కోట్లు|करोड़/i.test(v);
     var hasLakh = /lakh|lac|ಲಕ್ಷ|లక్ష|लाख/i.test(v);
-    var hasThousand = /thousand|k\b|ಸಾವಿರ|వేల|వేలు|हजार|हज़ार/i.test(v);
+    var hasThousand = /thousand|k |ಸಾವಿರ|వేల|వేలు|हजार|हज़ार/i.test(v);
 
-    var cleanedForMoney = v.replace(/\b\d{1,3}\s*(year|years|yr|yrs|old|ವರ್ಷ|ವಯಸ್ಸು|ఏళ్ల|సంవత్సరాల|వయస్సు|साल|वर्ष|उम्र)\b/gi, " ");
+    var cleanedForMoney = v.replace(/ \d{1,3}\s*(year|years|yr|yrs|old|ವರ್ಷ|ವಯಸ್ಸು|ఏళ్ల|సంవత్సరాల|వయస్సు|साल|वर्ष|उम्र) /gi, " ");
     var numMatch = cleanedForMoney.match(/(\d+(?:\.\d+)?)/);
     var baseNum = numMatch ? parseFloat(numMatch[1]) : NaN;
 
@@ -1708,11 +1721,11 @@ label {
     var v = (rawText || "").toLowerCase().trim();
     var out = {};
 
-    if (/\b(student|stud|college|school|scholar|vidyarthi|pupil|learner)\b|ವಿದ್ಯಾರ್ಥಿ|ಓದು|విద్యార్థి|చదువు|छात्र|विद्यार्थी|पढ़ाई/i.test(v)) out.occ = "student";
-    else if (/\b(farmer|kisan|rythu|raitha|agricult|crop|paddy|cotton)\b|ರೈತ|ಬೆಳೆ|ರೈತು|పంట|వ్యవసాయ|किसान|खेती|फसल/i.test(v)) out.occ = "farmer";
-    else if (/\b(woman|women|girl|daughter|mother|lady|family|mahile|mahila)\b|ಮಹಿಳೆ|ಕುಟುಂಬ|ಮಗಳು|మహిళ|కుటుంబ|ఆడపిల్ల|महिला|परिवार|बेटी/i.test(v)) out.occ = "woman";
-    else if (/\b(business|shop|trade|enterprise|loan|mudra|vyapara|merchant)\b|ವ್ಯಾಪಾರ|ಅಂಗಡಿ|ಉದ್ಯಮ|వ్యాపార|అంగడి|व्यवसाय|व्यापार|दुकान/i.test(v)) out.occ = "biz";
-    else if (/\b(other|itara|anya)\b|ಇತರೆ|ఇతర|अन्य/i.test(v)) out.occ = "other";
+    if (/ (student|stud|college|school|scholar|vidyarthi|pupil|learner) |ವಿದ್ಯಾರ್ಥಿ|ಓದು|విద్యార్థి|చదువు|छात्र|विद्यार्थी|पढ़ाई/i.test(v)) out.occ = "student";
+    else if (/ (farmer|kisan|rythu|raitha|agricult|crop|paddy|cotton) |ರೈತ|ಬೆಳೆ|ರೈತು|పంట|వ్యవసాయ|किसान|खेती|फसल/i.test(v)) out.occ = "farmer";
+    else if (/ (woman|women|girl|daughter|mother|lady|family|mahile|mahila) |ಮಹಿಳೆ|ಕುಟುಂಬ|ಮಗಳು|మహిళ|కుటుంబ|ఆడపిల్ల|महिला|परिवार|बेटी/i.test(v)) out.occ = "woman";
+    else if (/ (business|shop|trade|enterprise|loan|mudra|vyapara|merchant) |ವ್ಯಾಪಾರ|ಅಂಗಡಿ|ಉದ್ಯಮ|వ్యాపార|అంగడి|व्यवसाय|व्यापार|दुकान/i.test(v)) out.occ = "biz";
+    else if (/ (other|itara|anya) |ಇತರೆ|ఇతర|अन्य/i.test(v)) out.occ = "other";
 
     var amount = parseAmountInRupees(v);
     if (!isNaN(amount)) {
@@ -1724,8 +1737,8 @@ label {
       out.inc = "high";
     }
 
-    var ageMatch = v.match(/\b(\d{1,3})\s*(year|years|yr|yrs|old|ವರ್ಷ|ವಯಸ್ಸು|ఏళ్ల|సంవత్సరాల|వయస్సు|साल|वर्ष|उम्र)\b/i) ||
-                   v.match(/\b(age|ವಯಸ್ಸು|వయస్సు|उम्र)\s*(?:is|:|-)?\s*(\d{1,3})\b/i);
+    var ageMatch = v.match(/ (\d{1,3})\s*(year|years|yr|yrs|old|ವರ್ಷ|ವಯಸ್ಸು|ఏళ్ల|సంవత్సరాల|వయస్సు|साल|वर्ष|उम्र) /i) ||
+                   v.match(/ (age|ವಯಸ್ಸು|వయస్సు|उम्र)\s*(?:is|:|-)?\s*(\d{1,3}) /i);
     if (ageMatch) {
       var parsedAge = parseInt(ageMatch[1] && !isNaN(parseInt(ageMatch[1], 10)) ? ageMatch[1] : ageMatch[2], 10);
       if (!isNaN(parsedAge) && parsedAge > 0 && parsedAge < 120) {
@@ -1783,11 +1796,21 @@ label {
     });
   }
 
+  function cleanTextForCrop(raw) {
+    var s = (raw || "").trim();
+    if (!s) return "";
+    var explicitMatch = s.match(/ ([a-zA-Zऀ-ॿಀ-೿ఀ-౿]+(?:\s+[a-zA-Zऀ-ॿಀ-೿ఀ-౿]+){0,2})\s+(?:crop|plant|tree|herb|flower|vegetable|fruit|field|garden) /i);
+    if (explicitMatch && explicitMatch[1]) {
+      return explicitMatch[1].trim();
+    }
+    return "";
+  }
+
   function extractCustomSymptomsFromText(rawText) {
     var clean = (rawText || "").trim();
     if (!clean) return [];
 
-    var chunks = clean.split(/,|;|\band\b|\bwith\b|\bplus\b|\bಮತ್ತು\b|\bಹಾಗೂ\b|\bమరియు\b|\bऔर\b|\bव\b/i);
+    var chunks = clean.split(/,|;| and | with | plus | ಮತ್ತು | ಹಾಗೂ | మరియు | और | व /i);
     var found = [];
 
     var stopWords = /^(i|my|the|a|an|in|on|at|for|of|to|is|are|has|have|see|saw|hear|heard|crop|plant|leaf|leaves|problem|issue|disease|paddy|rice|cotton|chilli|chili|groundnut|maize|corn|tomato|sugarcane|banana|brinjal|okra|potato|onion|mango|papaya|guava|rose|marigold|hibiscus|jasmine|money\s*plant|tulsi|neem|coconut)$/i;
@@ -1795,7 +1818,7 @@ label {
     chunks.forEach(function (part) {
       var p = part
         .replace(/^(my|our|the|this|that)\s+(crop|plant|field|tree|pot)?\s*(has|have|is|are|shows|showing|getting)?\s*/i, "")
-        .replace(/\b(crop|plant|field|tree)\b/gi, "")
+        .replace(/ (crop|plant|field|tree) /gi, "")
         .trim();
       if (!p || p.length < 3 || p.length > 70) return;
       if (stopWords.test(p)) return;
@@ -2411,29 +2434,29 @@ label {
     }
 
     var plantPatterns = {
-      Paddy: /\b(paddy|rice|bhatta|nellu|dhan|chawal)\b|ಭತ್ತ|వరి|धान/i,
-      Cotton: /\b(cotton|hatti|paruthi|kapas|rui)\b|ಹತ್ತಿ|పత్తి|कपास/i,
-      Chilli: /\b(chilli|chili|chillies|menasu|menasinakayi|mirchi|mirapakaya|mirch)\b|ಮೆಣಸಿನ|మిర్చి|मिर्च/i,
-      Groundnut: /\b(groundnut|peanut|shenga|kadalekay|verusenaga|moongphali|mungfali)\b|ಶೇಂಗಾ|వేరుశనగ|मूंगफली/i,
-      Maize: /\b(maize|corn|mekkejola|mokkajonna|makka|bhutta)\b|ಮೆಕ್ಕೆಜೋಳ|మొక్కజొన్న|मक्का/i,
-      Tomato: /\b(tomato|tamata|tamatar)\b|ಟೊಮೇಟೊ|టమాటా|टमाटर/i,
-      Sugarcane: /\b(sugarcane|sugar\s*cane|kabbu|cheruku|ganna)\b|ಕಬ್ಬು|చెరకు|गन्ना/i,
-      Banana: /\b(banana|bale|vazhai|arati|kela)\b|ಬಾಳೆ|అరటి|केला/i,
-      Brinjal: /\b(brinjal|eggplant|aubergine|badane|badanekayi|vankaya|baingan|bhata)\b|ಬದನೆ|వంకాయ|बैंगन/i,
-      Okra: /\b(okra|lady\s*finger|ladies\s*finger|bende|bendekayi|bendakaya|bhindi)\b|ಬೆಂಡೆ|బెండ|भिंडी/i,
-      Potato: /\b(potato|aalugadde|alugadde|bangaladumpa|aloo)\b|ಆಲೂ|బంగాళా|आलू/i,
-      Onion: /\b(onion|eerulli|ulligadda|pyaaz|pyaz)\b|ಈರುಳ್ಳಿ|ఉల్లి|प्याज/i,
-      Mango: /\b(mango|mavu|mavinakayi|mamidi|aam)\b|ಮಾವು|మామిడి|आम/i,
-      Papaya: /\b(papaya|parangi|boppayi|papita)\b|ಪರಂಗಿ|ಪಪ್ಪಾಯಿ|బొప్పాయి|पपीता/i,
-      Guava: /\b(guava|sebe|perale|jama|amrud|amrood)\b|ಸೀಬೆ|ಪೇರಳೆ|జామ|अमरूद/i,
-      Rose: /\b(rose|gulabi|gulab)\b|ಗುಲಾಬಿ|గులాబీ|गुलाब/i,
-      Marigold: /\b(marigold|chendu|chendu\s*hoovu|banti|genda)\b|ಚೆಂಡು|బంతి|गेंदा/i,
-      Hibiscus: /\b(hibiscus|shoeblack|shoe\s*flower|dasavala|daswala|mandara|gudhal|gurhal)\b|ದಾಸವಾಳ|మందార|गुड़हल/i,
-      Jasmine: /\b(jasmine|mallige|malle|chameli)\b|ಮಲ್ಲಿಗೆ|మల్లె|चमेली/i,
-      MoneyPlant: /\b(money\s*plant|moneyplant|pothos|indoor\s*plant|pot\s*plant|indoor|pot)\b|ಮನಿ|ಒಳಾಂಗಣ|మనీ|ఇండోర్|मनी|इनडोर/i,
-      Tulsi: /\b(tulsi|tulasi|basil|holy\s*basil)\b|ತುಳಸಿ|తులసి|तुलसी/i,
-      Neem: /\b(neem|bevu|bevinamara|vepa|nim)\b|ಬೇವು|వేప|नीम/i,
-      Coconut: /\b(coconut|tengu|tenginakayi|kobbari|nariyal|narial)\b|ತೆಂಗು|కొబ్బరి|नारियल/i
+      Paddy: / (paddy|rice|bhatta|nellu|dhan|chawal) |ಭತ್ತ|వరి|धान/i,
+      Cotton: / (cotton|hatti|paruthi|kapas|rui) |ಹತ್ತಿ|పత్తి|कपास/i,
+      Chilli: / (chilli|chili|chillies|menasu|menasinakayi|mirchi|mirapakaya|mirch) |ಮೆಣಸಿನ|మిర్చి|मिर्च/i,
+      Groundnut: / (groundnut|peanut|shenga|kadalekay|verusenaga|moongphali|mungfali) |ಶೇಂಗಾ|వేరుశనగ|मूंगफली/i,
+      Maize: / (maize|corn|mekkejola|mokkajonna|makka|bhutta) |ಮೆಕ್ಕೆಜೋಳ|మొక్కజొన్న|मक्का/i,
+      Tomato: / (tomato|tamata|tamatar) |ಟೊಮೇಟೊ|టమాటా|टమాటర్/i,
+      Sugarcane: / (sugarcane|sugar\s*cane|kabbu|cheruku|ganna) |ಕಬ್ಬು|చెరకు|गन्ना/i,
+      Banana: / (banana|bale|vazhai|arati|kela) |ಬಾಳೆ|అరటి|केला/i,
+      Brinjal: / (brinjal|eggplant|aubergine|badane|badanekayi|vankaya|baingan|bhata) |ಬದನೆ|వంకాయ|बैंगन/i,
+      Okra: / (okra|lady\s*finger|ladies\s*finger|bende|bendekayi|bendakaya|bhindi) |ಬೆಂಡೆ|బెండ|भिंडी/i,
+      Potato: / (potato|aalugadde|alugadde|bangaladumpa|aloo) |ಆಲೂ|బంగాళా|आलू/i,
+      Onion: / (onion|eerulli|ulligadda|pyaaz|pyaz) |ಈರುಳ್ಳಿ|ఉల్లి|प्याज/i,
+      Mango: / (mango|mavu|mavinakayi|mamidi|aam) |ಮಾವು|మామిడి|आम/i,
+      Papaya: / (papaya|parangi|boppayi|papita) |ಪರಂಗಿ|ಪಪ್ಪಾಯಿ|బొప్పాయి|पपीता/i,
+      Guava: / (guava|sebe|perale|jama|amrud|amrood) |ಸೀಬೆ|ಪೇರಳೆ|జామ|अमरूद/i,
+      Rose: / (rose|gulabi|gulab) |ಗುಲಾಬಿ|గులాబీ|गुलाब/i,
+      Marigold: / (marigold|chendu|chendu\s*hoovu|banti|genda) |ಚೆಂಡು|బంతి|गेंदा/i,
+      Hibiscus: / (hibiscus|shoeblack|shoe\s*flower|dasavala|daswala|mandara|gudhal|gurhal) |ದಾಸವಾಳ|మందార|गुड़हल/i,
+      Jasmine: / (jasmine|mallige|malle|chameli) |ಮಲ್ಲಿಗೆ|మల్లె|चमेली/i,
+      MoneyPlant: / (money\s*plant|moneyplant|pothos|indoor\s*plant|pot\s*plant|indoor|pot) |ಮನಿ|ಒಳಾಂಗಣ|మనీ|ఇండోర్|मनी|इनडोर/i,
+      Tulsi: / (tulsi|tulasi|basil|holy\s*basil) |ತುಳಸಿ|తులసి|तुलसी/i,
+      Neem: / (neem|bevu|bevinamara|vepa|nim) |ಬೇವು|వేప|नीम/i,
+      Coconut: / (coconut|tengu|tenginakayi|kobbari|nariyal|narial) |ತೆಂಗು|కొబ్బరి|नारियल/i
     };
 
     var foundKey = "";
@@ -2446,7 +2469,7 @@ label {
 
     var customSpecMatch = cleanTextForCrop(text);
     if (customSpecMatch) {
-      var safeVal = customSpecMatch.replace(/[^a-zA-Z0-9\u0900-\u097F\u0C80-\u0CFF\u0C00-\u0C7F\s]/g, "").trim();
+      var safeVal = customSpecMatch.replace(/[^a-zA-Z0-9ऀ-ॿಀ-೿ఀ-౿\s]/g, "").trim();
       if (safeVal) {
         customCropEntry = {
           v: safeVal,
@@ -2460,7 +2483,493 @@ label {
     return "";
   }
 
-  function cleanTextForCrop(raw) {
-    var s = (raw || "").trim();
-    if (!s) return "";
-    var explicitMatch = s.match(/\b([a-zA-Z\u0900-\u097F\u0C80-\u0CFF\u0C00-\u0C7F]+(?
+  function handleSymptomInput(rawText) {
+    var clean = (rawText || "").trim();
+    if (!clean) return;
+    updateSpokenDisplay("doctorSpokenBox", clean);
+
+    var matchedPlantKey = matchPlantOrCropKey(clean);
+    if (matchedPlantKey) {
+      $("crop").value = matchedPlantKey;
+      updateAutoCropBadge(matchedPlantKey, true);
+    }
+
+    var patterns = {
+      spots: /spot|brown|blast|kale|ಕಲೆ|ಕಂದು|మచ్చ|గోధుమ|धब्बे|धब्बा|भूरे/i,
+      yellow: /yellow|haladi|ಹಳದಿ|పసుపు|पीली|पीला/i,
+      holes: /hole|eaten|worm|caterpillar|snail|slug|beetle|randhra|ರಂಧ್ರ|ಹುಳು|రంధ్ర|పురుగు|छेद|कीट|सुंडी/i,
+      white: /white|powder|mildew|mealy|bili|ಬಿಳಿ|ಬೂದಿ|తెల్ల|బూడిద|सफेद|पाउडर|चूर्ण/i,
+      wilt: /wilt|dry|droop|root|badu|ಬಾಡ|ಸೊರಗು|వాడ|मुरझा|सूख/i
+    };
+    var addedAny = false;
+    Object.keys(patterns).forEach(function (key) {
+      if (patterns[key].test(clean) && selectedSyms.indexOf(key) === -1) {
+        selectedSyms.push(key);
+        addedAny = true;
+      }
+    });
+
+    var newlyExtracted = extractCustomSymptomsFromText(clean);
+    newlyExtracted.forEach(function (cs) {
+      if (customSymptoms.indexOf(cs) === -1) {
+        customSymptoms.push(cs);
+        addedAny = true;
+      }
+    });
+
+    if (addedAny) {
+      renderSymptomChips();
+    }
+    if (matchedPlantKey || addedAny) {
+      var activeCropVal = $("crop").value || "Paddy";
+      var statusParts = [T.cropL[L] + ": " + getCropDisplayLabel(activeCropVal)];
+      if (addedAny) {
+        var labels = selectedSyms.map(function (k) { return C[k].l[L]; }).concat(customSymptoms);
+        statusParts.push(T.selectedSymsLbl[L] + ": " + labels.join(", "));
+      }
+      setCleanStatus(statusParts.join(" • "));
+    }
+  }
+
+  function renderDiagnosisCard(diag) {
+    var overallSev = ["low", "medium", "high"].indexOf(diag.overallSeverity) > -1 ? diag.overallSeverity : "medium";
+    var issues = Array.isArray(diag.issues) && diag.issues.length ? diag.issues : [{
+      title: diag.cropLabel,
+      symptomDetail: (diag.selectedSymptomLabels || []).join(", ") || T.fnote[L],
+      severity: overallSev
+    }];
+
+    var li = function (arr) {
+      return (arr || []).map(function (x) { return "<li>" + x + "</li>"; }).join("");
+    };
+
+    var symptomCardsHtml = issues.map(function (it) {
+      var sv = ["low", "medium", "high"].indexOf(it.severity) > -1 ? it.severity : overallSev;
+      return (
+        '<div class="diag-card">' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">' +
+        '<strong style="color:var(--brand);font-size:1.02rem;">' + escapeHtml(it.title || "") + "</strong>" +
+        '<span class="badge sev-' + sv + '">' + T.sevN[L] + ": " + T.sev[sv][L] + "</span>" +
+        "</div>" +
+        '<div class="docs" style="margin-top:4px;">' + escapeHtml(it.symptomDetail || "") + "</div>" +
+        "</div>"
+      );
+    }).join("");
+
+    var chemArr = Array.isArray(diag.chemicalOptions) ? diag.chemicalOptions : [];
+    var chemHtml = chemArr.length
+      ? "<ul>" +
+        li(chemArr.map(function (x) { return "<b>" + escapeHtml(x) + "</b> – " + escapeHtml(T.price[L]); })) +
+        "</ul>" +
+        '<div class="band"><span>' + escapeHtml(T.band[L]) + "</span>" +
+        '<span style="background:#b3261e;color:#fff">Red</span>' +
+        '<span style="background:#f2c200;color:#1b1b1b">Yellow</span>' +
+        '<span style="background:#1565c0;color:#fff">Blue</span>' +
+        '<span style="background:#25732b;color:#fff">Green</span></div>'
+      : "<p>—</p>";
+
+    var shopsHtml = "";
+    for (var sIdx = 1; sIdx <= 2; sIdx++) {
+      shopsHtml +=
+        '<div class="sc" style="margin-bottom:8px;">' +
+        "<h3>" + escapeHtml(T.shopT[L]) + " #" + sIdx + "</h3>" +
+        '<p class="docs">' + escapeHtml(T.adr[L]) + "</p>" +
+        "</div>";
+    }
+
+    var notePieces = [];
+    if (diag.sourceText) {
+      notePieces.push("<strong>" + escapeHtml(T.spokenLbl[L]) + ":</strong> “" + escapeHtml(diag.sourceText) + "”");
+    }
+    if (diag.summaryNote) {
+      notePieces.push(escapeHtml(diag.summaryNote));
+    }
+    var summaryNoteHtml = notePieces.length
+      ? '<div class="demo" style="background:var(--warn);">' + notePieces.join(" • ") + "</div>"
+      : "";
+
+    var selectedBadgeLine = (diag.selectedSymptomLabels && diag.selectedSymptomLabels.length)
+      ? "<p><strong>" + escapeHtml(T.selectedSymsLbl[L]) + ":</strong> " + diag.selectedSymptomLabels.map(escapeHtml).join(" • ") + "</p>"
+      : "";
+
+    $("out").innerHTML =
+      '<div class="demo">' + escapeHtml(T.fnote[L]) + "</div>" +
+      summaryNoteHtml +
+      '<h3 style="margin:0 0 6px;color:var(--brand);">' + escapeHtml(diag.cropLabel) + "</h3>" +
+      "<p>" + escapeHtml(T.overallSev[L]) + ': <span class="badge sev-' + overallSev + '">' + escapeHtml(T.sev[overallSev][L]) + "</span></p>" +
+      selectedBadgeLine +
+      symptomCardsHtml +
+      '<div class="sec"><h4>' + escapeHtml(T.hToday[L]) + "</h4><ul>" + li(diag.todayActions.map(escapeHtml)) + "</ul></div>" +
+      '<div class="sec"><h4>' + escapeHtml(T.hOrg[L]) + "</h4><ul>" + li(diag.organicOptions.map(escapeHtml)) + "</ul></div>" +
+      '<div class="sec"><h4>' + escapeHtml(T.hChem[L]) + "</h4>" + chemHtml + "</div>" +
+      '<div class="sec"><h4>' + escapeHtml(T.hBuy[L]) + "</h4>" + shopsHtml +
+      '<a class="ghost" style="display:flex;align-items:center;text-decoration:none;margin-top:6px;" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/plant+nursery+and+agro+input+near+me">📍 ' + escapeHtml(T.near[L]) + "</a></div>" +
+      '<div class="safe"><b>' + escapeHtml(T.hSafe[L]) + '</b><p style="margin:6px 0;">' + escapeHtml(T.safe[L]) + '</p><p style="margin:0;font-size:0.9rem;">' + escapeHtml(T.disc[L]) + "</p></div>" +
+      '<div class="row" style="margin-top:12px;"><button type="button" class="listen" id="fl"></button></div>';
+
+    var speakBtn = $("fl");
+    if (speakBtn) {
+      speakBtn.textContent = "🔊 " + T.listen[L];
+      speakBtn.onclick = function () {
+        var outText = $("out") ? $("out").innerText : "";
+        speak(outText.slice(0, 800) + ". " + T.safe[L]);
+      };
+    }
+  }
+
+  function renderEmptyDiagnosis() {
+    if (lastDiagnosisData) {
+      renderDiagnosisCard(lastDiagnosisData);
+      return;
+    }
+    $("out").innerHTML = '<div class="empty">' + escapeHtml(T.fempty[L]) + "</div>";
+  }
+
+  function runDiagnosis() {
+    stopOverlappingPlayback(null);
+
+    var typedPending = $("symtxt").value.trim();
+    if (typedPending) {
+      $("symtxt").value = "";
+      handleSymptomInput(typedPending);
+    }
+
+    var hasExplicitSyms = selectedSyms.length > 0 || customSymptoms.length > 0;
+    var hasPhoto = !!uploadedPhotoDataUrl;
+
+    var cropVal = $("crop").value || "Paddy";
+    var cropLabel = getCropDisplayLabel(cropVal);
+    updateAutoCropBadge(cropVal, !!(typedPending || hasExplicitSyms || hasPhoto));
+
+    if (!hasExplicitSyms && !hasPhoto && !typedPending) {
+      selectedSyms = ["spots"];
+      hasExplicitSyms = true;
+      renderSymptomChips();
+    }
+
+    var symNames = selectedSyms.map(function (k) { return C[k] ? C[k].l[L] : k; }).concat(customSymptoms);
+
+    $("out").innerHTML = '<div class="empty">' + escapeHtml(T.chk[L]) + "</div>";
+
+    var diagSchema = {
+      type: "OBJECT",
+      properties: {
+        detectedCrop: { type: "STRING" },
+        matchedCropValue: { type: "STRING" },
+        detectedSymptomKeys: {
+          type: "ARRAY",
+          items: { type: "STRING", enum: ["spots", "yellow", "holes", "white", "wilt"] }
+        },
+        overallSeverity: { type: "STRING", enum: ["low", "medium", "high"] },
+        summaryNote: { type: "STRING" },
+        issues: {
+          type: "ARRAY",
+          items: {
+            type: "OBJECT",
+            properties: {
+              title: { type: "STRING" },
+              symptomDetail: { type: "STRING" },
+              severity: { type: "STRING", enum: ["low", "medium", "high"] }
+            },
+            required: ["title", "symptomDetail", "severity"]
+          }
+        },
+        todayActions: { type: "ARRAY", items: { type: "STRING" } },
+        organicOptions: { type: "ARRAY", items: { type: "STRING" } },
+        chemicalOptions: { type: "ARRAY", items: { type: "STRING" } }
+      },
+      required: ["overallSeverity", "issues", "todayActions", "organicOptions", "chemicalOptions"]
+    };
+
+    var promptText =
+      "You are Agrimate Farmer Doctor AI for all plants, vegetables, fruits, flowers, indoor/pot plants, herbs, trees, and crops. " +
+      "Respond STRICTLY in " + LANG_NAMES[L] + ". " +
+      "Current plant/crop selection: " + cropLabel + " (" + cropVal + "). " +
+      "If text mentions a plant, crop, vegetable, fruit, flower, indoor/pot plant, herb, or tree, set matchedCropValue so it is selected automatically. " +
+      "Selected symptoms: " + (symNames.length ? symNames.join(", ") : "None selected") + ". " +
+      (typedPending ? "Typed note: " + typedPending + ". " : "") +
+      (hasPhoto ? "Photo is attached: inspect the plant or crop image carefully and return accurate diagnosis and care advice in " + LANG_NAMES[L] + ". " : "");
+
+    var parts = [{ text: promptText }];
+    if (hasPhoto && uploadedPhotoDataUrl.indexOf("data:") === 0) {
+      var semiIdx = uploadedPhotoDataUrl.indexOf(";");
+      var commaIdx = uploadedPhotoDataUrl.indexOf(",");
+      var imgMime = semiIdx > 5 ? uploadedPhotoDataUrl.slice(5, semiIdx) : "image/jpeg";
+      var imgB64 = commaIdx > -1 ? uploadedPhotoDataUrl.slice(commaIdx + 1) : "";
+      if (imgB64) {
+        parts.push({ inlineData: { mimeType: imgMime, data: imgB64 } });
+      }
+    }
+
+    callGeminiStructured(parts, diagSchema)
+      .then(function (aiRes) {
+        if (aiRes.matchedCropValue && getAllCrops().some(function (c) { return c.v === aiRes.matchedCropValue; })) {
+          $("crop").value = aiRes.matchedCropValue;
+          cropVal = aiRes.matchedCropValue;
+          cropLabel = getCropDisplayLabel(cropVal);
+          updateAutoCropBadge(cropVal, true);
+        }
+        if (Array.isArray(aiRes.detectedSymptomKeys)) {
+          aiRes.detectedSymptomKeys.forEach(function (sk) {
+            if (C[sk] && selectedSyms.indexOf(sk) === -1) selectedSyms.push(sk);
+          });
+          renderSymptomChips();
+        }
+        var finalObj = {
+          cropVal: cropVal,
+          cropLabel: aiRes.detectedCrop || cropLabel,
+          sourceText: typedPending,
+          overallSeverity: aiRes.overallSeverity || "medium",
+          summaryNote: aiRes.summaryNote || (hasPhoto && !hasExplicitSyms ? T.photoOnlyNote[L] : ""),
+          selectedSymptomLabels: selectedSyms.map(function (k) { return C[k] ? C[k].l[L] : k; }).concat(customSymptoms),
+          issues: aiRes.issues || [],
+          todayActions: aiRes.todayActions || [],
+          organicOptions: aiRes.organicOptions || [],
+          chemicalOptions: aiRes.chemicalOptions || []
+        };
+        lastDiagnosisData = finalObj;
+        renderDiagnosisCard(finalObj);
+      })
+      .catch(function () {
+        var diagObj = buildPlantDiagnosis({
+          cropVal: $("crop").value || cropVal,
+          symKeys: selectedSyms,
+          sourceText: typedPending,
+          hasPhoto: hasPhoto,
+          hasExplicitSyms: hasExplicitSyms
+        });
+        lastDiagnosisData = diagObj;
+        renderDiagnosisCard(diagObj);
+      });
+  }
+
+  function populateCropSelect() {
+    var sel = $("crop");
+    var prevVal = sel.value || "Paddy";
+    sel.innerHTML = "";
+    getAllCrops().forEach(function (c) {
+      var opt = document.createElement("option");
+      opt.value = c.v;
+      opt.textContent = typeof c.l === "string" ? c.l : (c.l[L] || c.l.en || c.v);
+      if (c.v === prevVal) opt.selected = true;
+      sel.appendChild(opt);
+    });
+    if (!sel.value && sel.options.length) {
+      sel.selectedIndex = 0;
+    }
+    updateAutoCropBadge(sel.value, false);
+  }
+
+  function applyLayoutMode(mode) {
+    layoutMode = mode;
+    ["vs", "vf"].forEach(function (id) {
+      var el = $(id);
+      el.classList.remove("mode-mobile", "mode-laptop");
+      if (mode === "mobile") el.classList.add("mode-mobile");
+      if (mode === "laptop") el.classList.add("mode-laptop");
+    });
+    [].forEach.call($("modeBar").children, function (b) {
+      b.setAttribute("aria-pressed", b.dataset.m === mode ? "true" : "false");
+    });
+  }
+
+  function refreshUI() {
+    document.documentElement.lang = L;
+
+    [].forEach.call($("langs").children, function (b) {
+      b.setAttribute("aria-pressed", b.dataset.l === L ? "true" : "false");
+    });
+
+    $("tag").textContent = T.tag[L];
+    if ($("modeAiLabel")) {
+      $("modeAiLabel").textContent = T.modeAi[L];
+    } else {
+      $("modeAi").textContent = "✦ " + T.modeAi[L];
+    }
+    $("modeMobile").textContent = T.modeMobile[L];
+    $("modeLaptop").textContent = T.modeLaptop[L];
+    $("tabS").textContent = T.tabS[L];
+    $("tabF").textContent = T.tabF[L];
+    syncDisturbanceButtons();
+
+    $("askh").textContent = T.askh[L];
+    $("resh").textContent = T.resh[L];
+    $("txt").placeholder = T.ph[L];
+    $("go").textContent = T.go[L];
+    $("schemeRecTxt").textContent = isSchemeRecording ? T.recStop[L] : T.recStart[L];
+    if ($("schemeSendAudioTxt")) $("schemeSendAudioTxt").textContent = T.sendRecord[L];
+    $("schemeClearAudioBtn").textContent = T.clearAudio[L];
+    if (!isSchemeRecording && !schemeAudioBlob) {
+      $("schemeRecStatus").textContent = T.schemeRecIdle[L];
+    } else if (schemeAudioBlob) {
+      $("schemeRecStatus").textContent = schemeAudioDetectedSignal ? T.schemeRecValid[L] : T.schemeRecIdle[L];
+    }
+    if (lastSpokenSchemeText || schemeAudioTranscript) {
+      updateSpokenDisplay("schemeSpokenBox", schemeAudioTranscript || lastSpokenSchemeText);
+    }
+    $("again").textContent = T.again[L];
+    $("note").textContent = T.note[L];
+    $("note").classList.remove("status-banner", "warn");
+
+    $("fh").textContent = T.fh[L];
+    $("cropL").textContent = T.cropL[L];
+    $("photoL").textContent = T.photoL[L];
+    $("dropT").textContent = T.dropT[L];
+    $("symL").textContent = T.symL[L];
+    $("symtxt").placeholder = T.typeSym[L];
+    $("symgo").textContent = T.go[L];
+    $("analyze").textContent = T.analyze[L];
+    $("fres").textContent = T.fres[L];
+    $("fnote").textContent = T.fnote[L];
+    $("fnote").classList.remove("status-banner", "warn");
+
+    populateCropSelect();
+    renderSymptomChips();
+    renderSchemesChat();
+    renderEmptyDiagnosis();
+  }
+
+  function submitSchemeText(raw) {
+    var clean = (raw || "").trim();
+    if (!clean) return;
+    updateSpokenDisplay("schemeSpokenBox", clean);
+    addBubble(clean, true);
+    processSchemesWithAi({ freeText: clean });
+  }
+
+  $("langs").onclick = function (e) {
+    var btn = e.target.closest("button[data-l]");
+    if (!btn) return;
+    L = btn.dataset.l;
+    aiSchemesResult = null;
+    lastDiagnosisData = null;
+    refreshUI();
+  };
+
+  $("tabs").onclick = function (e) {
+    var btn = e.target.closest("button[data-t]");
+    if (!btn) return;
+    stopOverlappingPlayback(null);
+    var targetTab = btn.dataset.t;
+    [].forEach.call($("tabs").children, function (b) {
+      b.setAttribute("aria-pressed", b.dataset.t === targetTab ? "true" : "false");
+    });
+    if (targetTab === "s") {
+      $("vs").classList.remove("hide");
+      $("vf").classList.add("hide");
+    } else {
+      $("vs").classList.add("hide");
+      $("vf").classList.remove("hide");
+    }
+  };
+
+  $("modeBar").onclick = function (e) {
+    var btn = e.target.closest("button[data-m]");
+    if (!btn) return;
+    applyLayoutMode(btn.dataset.m);
+  };
+
+  $("crop").onchange = function () {
+    updateAutoCropBadge($("crop").value, true);
+  };
+
+  $("schemeQuietBtn").onclick = function () {
+    noDisturbance = !noDisturbance;
+    syncDisturbanceButtons();
+  };
+
+  $("schemeAudioPlayer").onplay = function () {
+    stopOverlappingPlayback($("schemeAudioPlayer"));
+  };
+
+  $("go").onclick = function () {
+    var v = $("txt").value.trim();
+    if (v) {
+      $("txt").value = "";
+      submitSchemeText(v);
+    }
+  };
+
+  $("txt").onkeydown = function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      $("go").onclick();
+    }
+  };
+
+  $("mic").onclick = function () {
+    startSpeechRecognition(function (spoken) {
+      $("txt").value = spoken;
+      submitSchemeText(spoken);
+    }, $("mic"), "schemeSpokenBox");
+  };
+
+  $("schemeRecBtn").onclick = function () {
+    if (isSchemeRecording) {
+      stopSchemeAudioRecording();
+    } else {
+      startSchemeAudioRecording();
+    }
+  };
+
+  $("schemeSendAudioBtn").onclick = function () {
+    sendSchemeAudioNow();
+  };
+
+  $("schemeClearAudioBtn").onclick = function () {
+    clearSchemeAudio();
+  };
+
+  $("again").onclick = function () {
+    step = 0;
+    ans = {};
+    aiSchemesResult = null;
+    clearSchemeAudio();
+    renderSchemesChat();
+  };
+
+  $("photo").onchange = function (e) {
+    var f = e.target.files && e.target.files[0];
+    if (!f) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      var resStr = String(reader.result || "");
+      uploadedPhotoDataUrl = resStr;
+      $("prev").src = resStr;
+      $("prev").classList.remove("hide");
+    };
+    reader.readAsDataURL(f);
+  };
+
+  $("symgo").onclick = function () {
+    var v = $("symtxt").value.trim();
+    if (v) {
+      $("symtxt").value = "";
+      handleSymptomInput(v);
+    }
+  };
+
+  $("symtxt").onkeydown = function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      $("symgo").onclick();
+    }
+  };
+
+  $("symmic").onclick = function () {
+    startSpeechRecognition(function (spoken) {
+      $("symtxt").value = spoken;
+      handleSymptomInput(spoken);
+    }, $("symmic"), "doctorSpokenBox");
+  };
+
+  $("analyze").onclick = function () {
+    runDiagnosis();
+  };
+
+  refreshUI();
+  applyLayoutMode("ai");
+})();
+</script>
+</body>
+</html>
