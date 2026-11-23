@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#25732b">
-<meta name="apple-mobile-web-app-capable" content="yes">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Agrimate: Schemes and Farmer Doctor</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;600;700&family=Noto+Sans+Telugu:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap">
 <style>
 :root {
   --bg: #f4f7f3;
@@ -58,7 +56,7 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Top header with single centered website icon */
+/* Header with centered icon */
 header {
   max-width: 1200px;
   margin: 0 auto;
@@ -126,6 +124,7 @@ header {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .langs {
@@ -185,143 +184,32 @@ header {
   font-weight: 600;
 }
 
+/* Little symbol right beside the AI option next to Farmer Doctor */
+.ai-sym {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(217, 111, 20, 0.16);
+  color: var(--brand2);
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
 @media (prefers-color-scheme: dark) {
   .mode-btn[aria-pressed="true"] {
     color: #b7f0b9;
   }
+  .ai-sym {
+    background: rgba(255, 182, 46, 0.22);
+    color: #ffd37a;
+  }
 }
 
-/* Portable cross-device audio & utility bar */
-.portable-wrap {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4px 20px 8px;
-}
-
-.portable-bar {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 10px 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-}
-
-.audio-dock-group {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.portable-pill {
-  min-height: 44px;
-  padding: 0 14px;
-  border: 1px solid var(--line);
-  background: var(--bg);
-  color: var(--ink);
-  border-radius: 22px;
-  font: inherit;
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  transition: all 0.15s ease;
-}
-
-.portable-pill:hover {
-  border-color: var(--brand);
-  background: var(--soft);
-}
-
-.portable-pill[aria-pressed="true"] {
-  background: var(--brand);
-  border-color: var(--brand);
-  color: #ffffff;
-  font-weight: 600;
-}
-
-.portable-pill.stop-btn {
-  border-color: rgba(179, 38, 30, 0.35);
-  color: var(--danger);
-}
-
-.portable-pill.stop-btn:hover,
-.portable-pill.stop-btn.speaking {
-  background: var(--danger);
-  border-color: var(--danger);
-  color: #ffffff;
-}
-
-.speaking-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--brand);
-  padding: 4px 10px;
-  border-radius: 14px;
-  background: var(--soft);
-}
-
-.speaking-status.active {
-  background: rgba(217, 111, 20, 0.16);
-  color: var(--brand2);
-}
-
-.speaking-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--mute);
-  display: inline-block;
-}
-
-.speaking-status.active .speaking-dot {
-  background: var(--brand2);
-  animation: speakPulse 0.9s infinite;
-}
-
-@keyframes speakPulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.45); opacity: 0.55; }
-}
-
-.portable-meta {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  font-size: 0.85rem;
-  color: var(--mute);
-}
-
-.port-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 10px;
-  border-radius: 12px;
-  background: var(--soft);
-  color: var(--ink);
-  font-weight: 500;
-}
-
-.share-toast {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* Main layouts: Laptop/Desktop default & Mobile responsive */
+/* Main workspace layouts */
 main {
   max-width: 1200px;
   margin: 0 auto;
@@ -340,16 +228,6 @@ main.mode-mobile {
 main.mode-laptop {
   max-width: 1280px;
   grid-template-columns: minmax(360px, 460px) 1fr;
-}
-
-.portable-wrap.mode-mobile,
-.nav-strip.mode-mobile {
-  max-width: 520px;
-}
-
-.portable-wrap.mode-laptop,
-.nav-strip.mode-laptop {
-  max-width: 1280px;
 }
 
 .panel {
@@ -436,7 +314,7 @@ main.mode-laptop {
   border-radius: 12px;
   background: var(--brand2);
   color: #ffffff;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   padding: 0 14px;
@@ -500,9 +378,38 @@ main.mode-laptop {
   border: 1px solid var(--line);
 }
 
-.status-banner.warn {
-  background: var(--warn);
-  border-color: #e0a34b;
+.spoken-box {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.spoken-box strong {
+  color: var(--brand);
+}
+
+.auto-crop-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: var(--soft);
+  border: 1px solid var(--brand);
+  color: var(--brand-dark);
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+@media (prefers-color-scheme: dark) {
+  .auto-crop-pill {
+    color: #b7f0b9;
+  }
 }
 
 label {
@@ -570,10 +477,39 @@ label {
   align-items: center;
 }
 
+.quiet-btn {
+  min-height: 44px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  border-radius: 22px;
+  padding: 0 14px;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.quiet-btn[aria-pressed="true"] {
+  background: var(--soft);
+  border-color: var(--brand);
+  color: var(--brand-dark);
+}
+
+@media (prefers-color-scheme: dark) {
+  .quiet-btn[aria-pressed="true"] {
+    color: #b7f0b9;
+  }
+}
+
 .audio-box audio {
   width: 100%;
   margin-top: 10px;
-  height: 44px;
+  height: 40px;
 }
 
 .cards {
@@ -720,19 +656,15 @@ label {
 }
 
 .mini {
-  min-height: 44px;
+  min-height: 40px;
   border: 1px solid var(--line);
   background: var(--card);
   color: var(--ink);
   border-radius: 20px;
-  padding: 0 14px;
+  padding: 0 12px;
   font: inherit;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
 }
 
 .chg {
@@ -781,12 +713,6 @@ label {
     padding: 6px 14px;
     justify-content: center;
   }
-  .portable-wrap {
-    padding: 4px 14px 6px;
-  }
-  .portable-bar {
-    padding: 10px 12px;
-  }
   main {
     grid-template-columns: 1fr;
     padding: 10px 14px 32px;
@@ -801,60 +727,60 @@ label {
 <header>
   <div class="brand-side">
     <h1>Agri<span>mate</span></h1>
-    <p class="sub" id="tag"></p>
+    <p class="sub" id="tag">AI schemes and plant care in your language</p>
   </div>
 
-  <!-- Strictly one single centered website icon in the middle of the header -->
+  <!-- Centered Agrimate leaf & crop emblem -->
   <div class="center-icon-wrap">
     <svg id="ico" width="60" height="60" viewBox="0 0 128 128" role="img" aria-label="Agrimate icon">
       <defs>
-        <linearGradient id="gTile" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#6fdc5c"/>
-          <stop offset="0.55" stop-color="#23923f"/>
-          <stop offset="1" stop-color="#146b2e"/>
-        </linearGradient>
-        <linearGradient id="gSide" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#0f5a26"/>
-          <stop offset="1" stop-color="#083a18"/>
-        </linearGradient>
-        <linearGradient id="gGloss" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#fff" stop-opacity="0.6"/>
-          <stop offset="1" stop-color="#fff" stop-opacity="0"/>
-        </linearGradient>
-        <radialGradient id="gSun" cx="0.35" cy="0.3" r="0.75">
-          <stop offset="0" stop-color="#fff6ad"/>
-          <stop offset="0.5" stop-color="#ffb62e"/>
-          <stop offset="1" stop-color="#ee6f0a"/>
-        </radialGradient>
-        <linearGradient id="gLeafL" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#d8f87a"/>
-          <stop offset="0.5" stop-color="#6cc82c"/>
-          <stop offset="1" stop-color="#2c8a1b"/>
-        </linearGradient>
-        <linearGradient id="gLeafR" x1="1" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#e6fb94"/>
-          <stop offset="0.5" stop-color="#7fd63a"/>
-          <stop offset="1" stop-color="#34971f"/>
-        </linearGradient>
-        <linearGradient id="gSoil" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#b98036"/>
-          <stop offset="1" stop-color="#5e3511"/>
-        </linearGradient>
+        <lineargradient id="gTile" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#6fdc5c"></stop>
+          <stop offset="0.55" stop-color="#23923f"></stop>
+          <stop offset="1" stop-color="#146b2e"></stop>
+        </lineargradient>
+        <lineargradient id="gSide" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0f5a26"></stop>
+          <stop offset="1" stop-color="#083a18"></stop>
+        </lineargradient>
+        <lineargradient id="gGloss" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fff" stop-opacity="0.6"></stop>
+          <stop offset="1" stop-color="#fff" stop-opacity="0"></stop>
+        </lineargradient>
+        <radialgradient id="gSun" cx="0.35" cy="0.3" r="0.75">
+          <stop offset="0" stop-color="#fff6ad"></stop>
+          <stop offset="0.5" stop-color="#ffb62e"></stop>
+          <stop offset="1" stop-color="#ee6f0a"></stop>
+        </radialgradient>
+        <lineargradient id="gLeafL" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#d8f87a"></stop>
+          <stop offset="0.5" stop-color="#6cc82c"></stop>
+          <stop offset="1" stop-color="#2c8a1b"></stop>
+        </lineargradient>
+        <lineargradient id="gLeafR" x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#e6fb94"></stop>
+          <stop offset="0.5" stop-color="#7fd63a"></stop>
+          <stop offset="1" stop-color="#34971f"></stop>
+        </lineargradient>
+        <lineargradient id="gSoil" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#b98036"></stop>
+          <stop offset="1" stop-color="#5e3511"></stop>
+        </lineargradient>
       </defs>
-      <ellipse cx="64" cy="124" rx="42" ry="3.5" fill="#000" opacity="0.2"/>
-      <rect x="10" y="16" width="108" height="106" rx="26" fill="url(#gSide)"/>
-      <rect x="10" y="10" width="108" height="106" rx="26" fill="url(#gTile)"/>
-      <rect x="13.5" y="13.5" width="101" height="99" rx="23" fill="none" stroke="#fff" stroke-opacity="0.3" stroke-width="2"/>
-      <path d="M18 42C18 24 32 14 52 14H76C96 14 110 24 110 42C80 54 48 54 18 42Z" fill="url(#gGloss)"/>
-      <circle cx="93" cy="30" r="12" fill="url(#gSun)"/>
-      <ellipse cx="88.5" cy="25.5" rx="4.5" ry="3" fill="#fff" opacity="0.65"/>
-      <path d="M26 99C32 85 50 80 64 80C78 80 96 85 102 99C102 103 98 105 94 105H34C30 105 26 103 26 99Z" fill="url(#gSoil)"/>
-      <path d="M34 90C42 84 52 82 62 82" stroke="#e0b070" stroke-opacity="0.6" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <path d="M61 83C61 72 62 62 62 54H67C67 62 68 72 68 83Z" fill="#3fa22a"/>
-      <path d="M63 66C46 68 32 58 30 41C48 39 64 49 63 66Z" fill="url(#gLeafL)"/>
-      <path d="M65 68C80 70 93 62 95 48C79 46 64 54 65 68Z" fill="url(#gLeafR)"/>
-      <path d="M63 66C54 58 44 52 34 46" stroke="#fff" stroke-opacity="0.55" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-      <path d="M65 68C74 62 84 56 90 51" stroke="#fff" stroke-opacity="0.55" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      <ellipse cx="64" cy="124" rx="42" ry="3.5" fill="#000" opacity="0.2"></ellipse>
+      <rect x="10" y="16" width="108" height="106" rx="26" fill="url(#gSide)"></rect>
+      <rect x="10" y="10" width="108" height="106" rx="26" fill="url(#gTile)"></rect>
+      <rect x="13.5" y="13.5" width="101" height="99" rx="23" fill="none" stroke="#fff" stroke-opacity="0.3" stroke-width="2"></rect>
+      <path d="M18 42C18 24 32 14 52 14H76C96 14 110 24 110 42C80 54 48 54 18 42Z" fill="url(#gGloss)"></path>
+      <circle cx="93" cy="30" r="12" fill="url(#gSun)"></circle>
+      <ellipse cx="88.5" cy="25.5" rx="4.5" ry="3" fill="#fff" opacity="0.65"></ellipse>
+      <path d="M26 99C32 85 50 80 64 80C78 80 96 85 102 99C102 103 98 105 94 105H34C30 105 26 103 26 99Z" fill="url(#gSoil)"></path>
+      <path d="M34 90C42 84 52 82 62 82" stroke="#e0b070" stroke-opacity="0.6" stroke-width="2" fill="none" stroke-linecap="round"></path>
+      <path d="M61 83C61 72 62 62 62 54H67C67 62 68 72 68 83Z" fill="#3fa22a"></path>
+      <path d="M63 66C46 68 32 58 30 41C48 39 64 49 63 66Z" fill="url(#gLeafL)"></path>
+      <path d="M65 68C80 70 93 62 95 48C79 46 64 54 65 68Z" fill="url(#gLeafR)"></path>
+      <path d="M63 66C54 58 44 52 34 46" stroke="#fff" stroke-opacity="0.55" stroke-width="1.6" fill="none" stroke-linecap="round"></path>
+      <path d="M65 68C74 62 84 56 90 51" stroke="#fff" stroke-opacity="0.55" stroke-width="1.6" fill="none" stroke-linecap="round"></path>
     </svg>
   </div>
 
@@ -868,116 +794,74 @@ label {
   </div>
 </header>
 
-<div class="nav-strip" id="navStrip">
+<div class="nav-strip">
   <nav class="tabs" id="tabs" role="tablist">
-    <button type="button" role="tab" data-t="s" aria-pressed="true" id="tabS"></button>
-    <button type="button" role="tab" data-t="f" aria-pressed="false" id="tabF"></button>
+    <button type="button" role="tab" data-t="s" aria-pressed="false" id="tabS">Find schemes</button>
+    <button type="button" role="tab" data-t="f" aria-pressed="true" id="tabF">Farmer Doctor</button>
   </nav>
-  <div class="mode-bar" id="modeBar" role="group" aria-label="Device layout mode">
-    <button type="button" class="mode-btn" id="modeAuto" data-m="auto" aria-pressed="true"></button>
-    <button type="button" class="mode-btn" id="modeMobile" data-m="mobile" aria-pressed="false"></button>
-    <button type="button" class="mode-btn" id="modeLaptop" data-m="laptop" aria-pressed="false"></button>
+  <!-- Mode bar beside Farmer Doctor with a clear little symbol on AI -->
+  <div class="mode-bar" id="modeBar" role="group" aria-label="Mode selector">
+    <button type="button" class="mode-btn" id="modeAi" data-m="ai" aria-pressed="true">
+      <span id="modeAiLabel">AI</span>
+      <span class="ai-sym" aria-hidden="true">✦</span>
+    </button>
+    <button type="button" class="mode-btn" id="modeMobile" data-m="mobile" aria-pressed="false">Mobile Mode</button>
+    <button type="button" class="mode-btn" id="modeLaptop" data-m="laptop" aria-pressed="false">Laptop Mode</button>
   </div>
-</div>
-
-<!-- Portable cross-device Audio Dock & Portability Bar -->
-<div class="portable-wrap" id="portableWrap">
-  <div class="portable-bar" role="region" aria-label="Portable Audio Controls">
-    <div class="audio-dock-group">
-      <button type="button" class="portable-pill" id="autoReadBtn" aria-pressed="false">
-        <span>🔊</span><span id="autoReadTxt"></span>
-      </button>
-      <button type="button" class="portable-pill" id="speedBtn" aria-pressed="false">
-        <span>🐢</span><span id="speedTxt"></span>
-      </button>
-      <button type="button" class="portable-pill stop-btn" id="stopAudioBtn">
-        <span>⏹</span><span id="stopAudioTxt"></span>
-      </button>
-      <span class="speaking-status" id="speakingStatus" aria-live="polite">
-        <span class="speaking-dot"></span>
-        <span id="speakingLabel"></span>
-      </span>
-    </div>
-
-    <div class="portable-meta">
-      <span class="port-badge" id="deviceCapabilityBadge"></span>
-      <span class="port-badge" id="portableReadyBadge"></span>
-      <button type="button" class="portable-pill" id="shareAppBtn">
-        <span>🔗</span><span id="shareAppTxt"></span>
-      </button>
-    </div>
-  </div>
-</div>
-
-<div class="share-toast" id="shareToastWrap">
-  <div id="shareToast" class="status-banner hide" role="status" aria-live="polite"></div>
 </div>
 
 <!-- Find Schemes View -->
-<main id="vs">
+<main id="vs" class="hide">
   <section class="panel" aria-live="polite">
-    <h2 id="askh"></h2>
+    <h2 id="askh">Tell us about you</h2>
     <div id="chat"></div>
     <div class="opts" id="opts"></div>
-    <!-- Main typing and mic bar always visible and enabled -->
     <div class="say" id="sayBar">
-      <input id="txt" type="text" autocomplete="off">
+      <input id="txt" type="text" autocomplete="off" placeholder="Type here or tap mic (e.g. “farmer, 2000”)">
       <button type="button" class="mic" id="mic" aria-label="Speak">🎤</button>
-      <button type="button" class="go" id="go"></button>
+      <button type="button" class="go" id="go">Send</button>
     </div>
-    <p class="note" id="note"></p>
+    <p class="note" id="note">AI reads what you say in audio, shows your spoken words, selects matching options, and recommends schemes.</p>
   </section>
 
   <section class="panel">
-    <h2 id="resh"></h2>
-    <div class="cards" id="cards"></div>
-    <button type="button" class="ghost" id="again" style="margin-top:14px;display:none"></button>
+    <h2 id="resh">Schemes for you</h2>
+    <div class="cards" id="cards"><div class="empty">Your matching schemes will appear here.</div></div>
+    <button type="button" class="ghost" id="again" style="margin-top:14px;display:none">Start again</button>
   </section>
 </main>
 
-<!-- Farmer Doctor View -->
-<main id="vf" class="hide">
+<!-- Farmer Doctor View (All audio options removed) -->
+<main id="vf" class="">
   <section class="panel">
-    <h2 id="fh"></h2>
+    <h2 id="fh">Describe the plant or crop problem</h2>
 
-    <label for="crop" id="cropL"></label>
+    <label for="crop" id="cropL">Plant or crop</label>
     <select id="crop"></select>
+    <div id="autoCropBadge" class="auto-crop-pill hide"></div>
 
-    <label id="photoL"></label>
+    <label id="photoL">Photo of the problem</label>
     <label class="drop" for="photo">
-      <span id="dropT"></span>
+      <span id="dropT">Tap to take or upload a photo</span>
       <img id="prev" alt="" class="hide">
     </label>
     <input type="file" id="photo" accept="image/*" capture="environment" class="hide">
 
-    <!-- Multi-select symptom chips + typing & speech input -->
-    <label id="symL"></label>
+    <label id="symL">Select one or more symptoms you see</label>
     <div class="chips" id="chips" role="group" aria-label="Symptoms"></div>
 
     <div class="qin">
-      <input id="symtxt" type="text" autocomplete="off">
-      <button type="button" class="mic" id="symmic" aria-label="Speak">🎤</button>
-      <button type="button" class="go" id="symgo"></button>
+      <input id="symtxt" type="text" autocomplete="off" placeholder="Type symptoms or plant/crop name…">
+      <button type="button" class="go" id="symgo">Send</button>
     </div>
 
-    <!-- Dedicated audio recording & playback box -->
-    <label id="audL"></label>
-    <div class="audio-box" id="audioBox">
-      <div class="audio-controls">
-        <button type="button" class="rec-btn" id="recBtn">⏺ <span id="recTxt"></span></button>
-        <button type="button" class="mini" id="clearRecBtn"></button>
-      </div>
-      <div id="recStatus" class="note" style="margin-top:8px;"></div>
-      <audio id="audioPlayer" controls playsinline preload="metadata" class="hide"></audio>
-    </div>
-
-    <button type="button" class="go" id="analyze" style="margin-top:16px;width:100%"></button>
-    <p class="note" id="fnote"></p>
+    <button type="button" class="go" id="analyze" style="margin-top:16px;width:100%">Check plant / crop</button>
+    <p class="note" id="fnote">AI guidance for all plants, vegetables, fruits, flowers, indoor/pot plants, herbs, trees, and crops from photo, symptoms, or text.</p>
   </section>
 
   <section class="panel" aria-live="polite">
-    <h2 id="fres"></h2>
-    <div id="out"></div>
+    <h2 id="fres">Diagnosis and advice</h2>
+    <div id="out"><div class="empty">Your plant or crop diagnosis will appear here.</div></div>
   </section>
 </main>
 
@@ -985,112 +869,60 @@ label {
 (function () {
   "use strict";
 
+  var GEMINI_API_KEY = "";
+  var GEMINI_MODEL = "gemini-3-flash-preview";
+
   var L = "en";
-  var layoutMode = "auto";
-  var autoReadAloud = false;
-  var slowSpeech = false;
-  var isSpeakingNow = false;
+  var layoutMode = "ai";
+  var noDisturbance = true;
   var step = 0;
   var ans = {};
-  var selectedSyms = []; // Multiple symptoms array in Farmer Doctor mode
-  var diagShown = false;
+  var aiSchemesResult = null;
+  var selectedSyms = [];
+  var customSymptoms = [];
+  var customCropEntry = null;
+  var uploadedPhotoDataUrl = "";
+  var lastDiagnosisData = null;
 
-  // Audio recording state
-  var mediaRecorder = null;
-  var audioChunks = [];
-  var audioBlob = null;
-  var audioUrl = null;
-  var isRecording = false;
-  var audioDetectedSignal = false;
-  var audioCtx = null;
-  var analyser = null;
-  var animFrame = null;
-  var peakLevel = 0;
+  // Find Schemes audio & voice state (kept intact)
+  var schemeMediaRecorder = null;
+  var schemeAudioChunks = [];
+  var schemeAudioBlob = null;
+  var schemeAudioUrl = null;
+  var isSchemeRecording = false;
+  var schemeAudioDetectedSignal = false;
+  var schemeAudioCtx = null;
+  var schemeAnalyser = null;
+  var schemeAnimFrame = null;
+  var schemePeakLevel = 0;
+  var schemeSpeechRec = null;
+  var schemeAudioTranscript = "";
+  var lastSpokenSchemeText = "";
 
   var $ = function (id) { return document.getElementById(id); };
 
-  // Complete translations in English (en), Kannada (kn), Telugu (te), and Hindi (hi)
+  var LANG_NAMES = {
+    en: "English",
+    kn: "Kannada (ಕನ್ನಡ)",
+    te: "Telugu (తెలుగు)",
+    hi: "Hindi (हिंदी)"
+  };
+
   var T = {
     tag: {
-      en: "Schemes and crop help in your language",
-      kn: "ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ ಯೋಜನೆಗಳು ಮತ್ತು ಬೆಳೆ ಸಲಹೆ",
-      te: "మీ భాషలో పథకాలు, పంట సలహా",
-      hi: "अपनी भाषा में योजनाएं और फसल सलाह"
+      en: "AI schemes and plant care in your language",
+      kn: "ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ AI ಯೋಜನೆಗಳು ಮತ್ತು ಗಿಡ-ಬೆಳೆ ಆರೈಕೆ",
+      te: "మీ భాషలో AI పథకాలు, మొక్కల సంరక్షణ",
+      hi: "अपनी भाषा में AI योजनाएं और पौधा देखभाल"
     },
-    modeAuto: { en: "Auto", kn: "ಸ್ವಯಂ", te: "ఆటో", hi: "ऑटो" },
+    modeAi: { en: "AI", kn: "AI", te: "AI", hi: "AI" },
     modeMobile: { en: "Mobile Mode", kn: "ಮೊಬೈಲ್ ಮೋಡ್", te: "మొబైల్ మోడ్", hi: "मोबाइल मोड" },
     modeLaptop: { en: "Laptop Mode", kn: "ಲ್ಯಾಪ್‌ಟಾಪ್ ಮೋಡ್", te: "ల్యాప్‌టాప్ మోడ్", hi: "लैपटॉप मोड" },
-    autoRead: {
-      en: "Auto-Read Aloud",
-      kn: "ಸ್ವಯಂ ಓದು",
-      te: "ఆటో-రీడ్",
-      hi: "ऑटो-रीड"
-    },
-    speedNormal: {
-      en: "Speed: Normal",
-      kn: "ವೇಗ: ಸಾಮಾನ್ಯ",
-      te: "వేగం: సాధారణ",
-      hi: "गति: सामान्य"
-    },
-    speedSlow: {
-      en: "Speed: Slow",
-      kn: "ವೇಗ: ನಿಧಾನ",
-      te: "వేగం: నెమ్మది",
-      hi: "गति: धीमी"
-    },
-    stopAudio: {
-      en: "Stop Audio",
-      kn: "ಆಡಿಯೋ ನಿಲ್ಲಿಸಿ",
-      te: "ఆడియో ఆపండి",
-      hi: "ऑडियो रोकें"
-    },
-    audioIdle: {
-      en: "Audio ready",
-      kn: "ಆಡಿಯೋ ಸಿದ್ಧವಾಗಿದೆ",
-      te: "ఆడియో సిద్ధంగా ఉంది",
-      hi: "ऑडियो तैयार"
-    },
-    audioSpeaking: {
-      en: "Speaking aloud…",
-      kn: "ಗಟ್ಟಿಯಾಗಿ ಓದಲಾಗುತ್ತಿದೆ…",
-      te: "బిగ్గరగా చదువుతోంది…",
-      hi: "आवाज़ में पढ़ा जा रहा है…"
-    },
-    portableReady: {
-      en: "Portable & Responsive",
-      kn: "ಪೋರ್ಟಬಲ್ ಮತ್ತು ಹೊಂದಿಕೊಳ್ಳುವ",
-      te: "పోర్టబుల్ & రెస్పాన్సివ్",
-      hi: "पोर्टेबल और रिस्पॉन्सिव"
-    },
-    capFullAudio: {
-      en: "Voice + Mic + Recorder Ready",
-      kn: "ಧ್ವನಿ + ಮೈಕ್ + ರೆಕಾರ್ಡರ್ ಸಿದ್ಧ",
-      te: "వాయిస్ + మైక్ + రికార్డర్ సిద్ధం",
-      hi: "वॉइस + माइक + रिकॉर्डर तैयार"
-    },
-    capLimitedAudio: {
-      en: "Text + Fallback Audio Ready",
-      kn: "ಪಠ್ಯ + ಪರ್ಯಾಯ ಆಡಿಯೋ ಸಿದ್ಧ",
-      te: "టెక్స్ట్ + ఫాల్‌బ్యాక్ ఆడియో సిద్ధం",
-      hi: "टेक्स्ट + वैकल्पिक ऑडियो तैयार"
-    },
-    shareBtn: {
-      en: "Share / Copy Link",
-      kn: "ಹಂಚಿಕೊಳ್ಳಿ / ಲಿಂಕ್ ನಕಲಿಸಿ",
-      te: "షేర్ / లింక్ కాపీ",
-      hi: "शेयर / लिंक कॉपी"
-    },
-    shareSuccess: {
-      en: "App link ready! Share Agrimate across your phone, tablet, or laptop.",
-      kn: "ಆ್ಯಪ್ ಲಿಂಕ್ ಸಿದ್ಧವಾಗಿದೆ! ನಿಮ್ಮ ಫೋನ್, ಟ್ಯಾಬ್ಲೆಟ್ ಅಥವಾ ಲ್ಯಾಪ್‌ಟಾಪ್‌ನಲ್ಲಿ ಹಂಚಿಕೊಳ್ಳಿ.",
-      te: "యాప్ లింక్ సిద్ధంగా ఉంది! ఫోన్, టాబ్లెట్ లేదా ల్యాప్‌టాప్‌లో షేర్ చేయండి.",
-      hi: "ऐप लिंक तैयार है! अपने फ़ोन, टैबलेट या लैपटॉप पर साझा करें।"
-    },
-    shareFallback: {
-      en: "Portable Agrimate ready on this device. Bookmark or share this page URL anytime.",
-      kn: "ಈ ಸಾಧನದಲ್ಲಿ ಪೋರ್ಟಬಲ್ ಅಗ್ರಿಮೇಟ್ ಸಿದ್ಧವಾಗಿದೆ. ಈ ಪುಟದ ಲಿಂಕ್ ಅನ್ನು ಯಾವಾಗ ಬೇಕಾದರೂ ಹಂಚಿಕೊಳ್ಳಿ.",
-      te: "ఈ పరికరంలో పోర్టబుల్ అగ్రిమేట్ సిద్ధంగా ఉంది. ఎప్పుడైనా ఈ పేజీ లింక్ షేర్ చేయండి.",
-      hi: "इस डिवाइस पर पोर्टेबल एग्रीमेट तैयार है। इस पेज का लिंक कभी भी साझा करें।"
+    noDisturbance: {
+      en: "No Disturbance",
+      kn: "ಅಡೆತಡೆ ರಹಿತ",
+      te: "అంతరాయం లేదు",
+      hi: "बिना रुकावट"
     },
     tabS: { en: "Find schemes", kn: "ಯೋಜನೆಗಳನ್ನು ಹುಡುಕಿ", te: "పథకాలు", hi: "योजनाएं" },
     tabF: { en: "Farmer Doctor", kn: "ರೈತ ವೈದ್ಯ", te: "రైతు డాక్టర్", hi: "किसान डॉक्टर" },
@@ -1098,28 +930,41 @@ label {
     resh: { en: "Schemes for you", kn: "ನಿಮಗೆ ಸೂಕ್ತವಾದ ಯೋಜನೆಗಳು", te: "మీకు సరిపోయే పథకాలు", hi: "आपके लिए योजनाएं" },
     chg: { en: "Change", kn: "ಬದಲಾಯಿಸಿ", te: "మార్చు", hi: "बदलें" },
     typeAns: {
-      en: "Type your answer here…",
-      kn: "ನಿಮ್ಮ ಉತ್ತರವನ್ನು ಇಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ…",
-      te: "మీ జవాబు ఇక్కడ టైప్ చేయండి…",
-      hi: "अपना उत्तर यहाँ लिखें…"
+      en: "Type answer or number (e.g. 2000, 3000)…",
+      kn: "ಉತ್ತರ ಅಥವಾ ಸಂಖ್ಯೆ ಟೈಪ್ ಮಾಡಿ (ಉದಾ: 2000, 3000)…",
+      te: "జవాబు లేదా సంఖ్య రాయండి (ఉదా: 2000, 3000)…",
+      hi: "उत्तर या संख्या लिखें (जैसे: 2000, 3000)…"
     },
     typeSym: {
-      en: "Type symptoms (e.g. spots, yellow, holes)…",
-      kn: "ಲಕ್ಷಣಗಳನ್ನು ಟೈಪ್ ಮಾಡಿ (ಉದಾ: ಕಲೆ, ಹಳದಿ, ರಂಧ್ರ)…",
-      te: "లక్షణాలు టైప్ చేయండి (ఉదా: మచ్చలు, పసుపు, రంధ్రాలు)…",
-      hi: "लक्षण लिखें (जैसे: धब्बे, पीला, छेद)…"
+      en: "Type symptoms or plant/crop name…",
+      kn: "ಲಕ್ಷಣಗಳು ಅಥವಾ ಗಿಡ/ಬೆಳೆಯ ಹೆಸರು ಟೈಪ್ ಮಾಡಿ…",
+      te: "లక్షణాలు లేదా మొక్క/పంట పేరు రాయండి…",
+      hi: "लक्षण या पौधे/फसल का नाम लिखें…"
     },
     ph: {
-      en: "Type here or tap mic, e.g. “I am a farmer”",
-      kn: "ಇಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ ಅಥವಾ ಮೈಕ್ ಒತ್ತಿ, ಉದಾ: “ನಾನು ರೈತ”",
-      te: "ఇక్కడ టైప్ చేయండి లేదా మైక్ నొక్కండి: “నేను రైతును”",
-      hi: "यहाँ लिखें या माइक दबाएं, जैसे: “मैं किसान हूँ”"
+      en: "Type here or tap mic (e.g. “farmer, 2000”)",
+      kn: "ಇಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ ಅಥವಾ ಮೈಕ್ ಒತ್ತಿ (ಉದಾ: “ರೈತ, 2000”)",
+      te: "ఇక్కడ రాయండి లేదా మైక్ నొక్కండి (ఉదా: “రైతు, 2000”)",
+      hi: "यहाँ लिखें या माइक दबाएं (जैसे: “किसान, 2000”)"
     },
     go: { en: "Send", kn: "ಕಳುಹಿಸಿ", te: "పంపు", hi: "भेजें" },
+    sendRecord: { en: "Send Record", kn: "ರೆಕಾರ್ಡ್ ಕಳುಹಿಸಿ", te: "రికార్డ్ పంపండి", hi: "रिकॉर्ड भेजें" },
     listen: { en: "Listen", kn: "ಕೇಳಿ", te: "వినండి", hi: "सुनें" },
     apply: { en: "Apply", kn: "ಅರ್ಜಿ ಸಲ್ಲಿಸಿ", te: "దరఖాస్తు", hi: "आवेदन" },
     again: { en: "Start again", kn: "ಮತ್ತೆ ಪ್ರಾರಂಭಿಸಿ", te: "మళ్ళీ మొదలు", hi: "फिर से शुरू करें" },
     docs: { en: "Documents", kn: "ದಾಖಲೆಗಳು", te: "పత్రాలు", hi: "दस्तावेज़" },
+    spokenLbl: {
+      en: "You said",
+      kn: "ನೀವು ಹೇಳಿದ್ದು",
+      te: "మీరు చెప్పింది",
+      hi: "आपने कहा"
+    },
+    autoCropSelected: {
+      en: "Crop in diagnosis",
+      kn: "ನಿರ್ಣಯದಲ್ಲಿರುವ ಬೆಳೆ",
+      te: "నిర్ధారణలోని పంట",
+      hi: "निदान में फसल"
+    },
     empty: {
       en: "Your matching schemes will appear here.",
       kn: "ನಿಮಗೆ ಹೊಂದುವ ಯೋಜನೆಗಳು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತವೆ.",
@@ -1132,37 +977,51 @@ label {
       te: "సరిపోయేది లేదు. జవాబులు మార్చి చూడండి.",
       hi: "कोई मेल नहीं मिला। उत्तर बदलकर देखें।"
     },
-    nu: {
-      en: "Sorry, could not understand. Please select an option or type clearly.",
-      kn: "ಕ್ಷಮಿಸಿ, ಅರ್ಥವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಆಯ್ಕೆಯನ್ನು ಒತ್ತಿ ಅಥವಾ ಸ್ಪಷ್ಟವಾಗಿ ಟೈಪ್ ಮಾಡಿ.",
-      te: "క్షమించండి, అర్థం కాలేదు. ఒక ఎంపికను నొక్కండి లేదా స్పష్టంగా టైప్ చేయండి.",
-      hi: "क्षमा करें, समझ नहीं आया। कोई विकल्प चुनें या स्पष्ट लिखें।"
-    },
-    nomic: {
-      en: "Voice recognition is not supported or blocked on this device/browser. Please type your input or use audio recording.",
-      kn: "ಈ ಸಾಧನ ಅಥವಾ ಬ್ರೌಸರ್‌ನಲ್ಲಿ ಧ್ವನಿ ಗುರುತಿಸುವಿಕೆ ಲಭ್ಯವಿಲ್ಲ ಅಥವಾ ನಿರ್ಬಂಧಿಸಲಾಗಿದೆ. ದಯವಿಟ್ಟು ಟೈಪ್ ಮಾಡಿ ಅಥವಾ ಆಡಿಯೋ ರೆಕಾರ್ಡ್ ಮಾಡಿ.",
-      te: "ఈ పరికరం/బ్రౌజర్‌లో వాయిస్ గుర్తింపు అందుబాటులో లేదు లేదా నిరోధించబడింది. దయచేసి టైప్ చేయండి లేదా ఆడియో రికార్డ్ చేయండి.",
-      hi: "इस डिवाइस या ब्राउज़र में वॉइस पहचान उपलब्ध या अनुमत नहीं है। कृपया लिखें या ऑडियो रिकॉर्ड करें।"
-    },
-    novoice: {
-      en: "Speech voice for this language is unavailable on this device. Text and audio recording remain active.",
-      kn: "ಈ ಭಾಷೆಯ ಧ್ವನಿ ಈ ಸಾಧನದಲ್ಲಿ ಲಭ್ಯವಿಲ್ಲ. ಪಠ್ಯ ಮತ್ತು ಆಡಿಯೋ ರೆಕಾರ್ಡಿಂಗ್ ಸಕ್ರಿಯವಾಗಿವೆ.",
-      te: "మీ పరికరంలో ఈ భాష వాయిస్ లేదు. టెక్స్ట్ మరియు ఆడియో రికార్డింగ్ పనిచేస్తాయి.",
-      hi: "आपके डिवाइस में इस भाषा की आवाज़ उपलब्ध नहीं है। टेक्स्ट और ऑडियो रिकॉर्डिंग सक्रिय हैं।"
-    },
     note: {
-      en: "Sample scheme information. Always verify eligibility on the official portal.",
-      kn: "ಮಾದರಿ ಯೋಜನೆ ಮಾಹಿತಿ. ಅಧಿಕೃತ ಜಾಲತಾಣದಲ್ಲಿ ವಿವರಗಳನ್ನು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ.",
-      te: "ఇది డెమో డేటా. అధికారిక సైట్‌లో నిర్ధారించుకోండి.",
-      hi: "यह डेमो डेटा है। आधिकारिक साइट पर विवरण जांच लें।"
+      en: "AI reads what you say in audio, shows your spoken words, selects matching options, and recommends schemes.",
+      kn: "ಆಡಿಯೋದಲ್ಲಿ ನೀವು ಹೇಳಿದ್ದನ್ನು AI ಓದಿ, ನಿಮ್ಮ ಮಾತುಗಳನ್ನು ತೋರಿಸಿ, ಹೊಂದುವ ಆಯ್ಕೆಗಳನ್ನು ಆರಿಸಿ ಯೋಜನೆಗಳನ್ನು ಸೂಚಿಸುತ್ತದೆ.",
+      te: "ఆడియోలో మీరు చెప్పింది AI చదివి, మీ మాటలను చూపి, సరిపోయే ఎంపికలను ఎంచుకుని పథకాలను సూచిస్తుంది.",
+      hi: "ऑडियो में आपने जो कहा उसे AI पढ़ता है, आपके शब्द दिखाता है, विकल्प चुनता है और योजनाएं बताता है।"
     },
+    schemeRecIdle: {
+      en: "Speak or record audio (occupation, numbers like 2000 or 3000, or age) and AI will display your words and pick matching schemes.",
+      kn: "ಆಡಿಯೋ ಮಾತನಾಡಿ ಅಥವಾ ರೆಕಾರ್ಡ್ ಮಾಡಿ (ವೃತ್ತಿ, 2000 ಅಥವಾ 3000 ನಂತಹ ಸಂಖ್ಯೆ ಅಥವಾ ವಯಸ್ಸು), AI ನಿಮ್ಮ ಮಾತುಗಳನ್ನು ತೋರಿಸಿ ಯೋಜನೆಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡುತ್ತದೆ.",
+      te: "ఆడియో మాట్లాడండి లేదా రికార్డ్ చేయండి (వృత్తి, 2000 లేదా 3000 వంటి సంఖ్యలు లేదా వయస్సు), AI మీ మాటలను చూపి పథకాలను ఎంచుకుంటుంది.",
+      hi: "ऑडियो बोलें या रिकॉर्ड करें (पेशा, 2000 या 3000 जैसी संख्या या आयु), AI आपके शब्द दिखाकर योजनाएं चुनेगा।"
+    },
+    schemeRecActive: {
+      en: "Listening… Speak clearly (e.g. “farmer, 2000” or “3000”).",
+      kn: "ಕೇಳುತ್ತಿದೆ… ಸ್ಪಷ್ಟವಾಗಿ ಮಾತನಾಡಿ (ಉದಾ: “ರೈತ, 2000” ಅಥವಾ “3000”).",
+      te: "వింటోంది… స్పష్టంగా మాట్లాడండి (ఉదా: “రైతు, 2000” లేదా “3000”).",
+      hi: "सुन रहा है… स्पष्ट बोलें (जैसे: “किसान, 2000” या “3000”)।"
+    },
+    schemeRecValid: {
+      en: "Audio ready! Tap Send Record or view your spoken words below.",
+      kn: "ಆಡಿಯೋ ಸಿದ್ಧವಾಗಿದೆ! ರೆಕಾರ್ಡ್ ಕಳುಹಿಸಿ ಒತ್ತಿ ಅಥವಾ ಕೆಳಗೆ ನಿಮ್ಮ ಮಾತುಗಳನ್ನು ನೋಡಿ.",
+      te: "ఆడియో సిద్ధం! రికార్డ్ పంపండి నొక్కండి లేదా కింద మీ మాటలు చూడండి.",
+      hi: "ऑडियो तैयार! रिकॉर्ड भेजें दबाएं या नीचे अपने शब्द देखें।"
+    },
+    schemeAiThinking: {
+      en: "AI is reading your input, selecting matching options, and preparing schemes…",
+      kn: "ನಿಮ್ಮ ಮಾಹಿತಿಯನ್ನು ಓದಿ, ಹೊಂದುವ ಆಯ್ಕೆಗಳನ್ನು ಆರಿಸಿ AI ಯೋಜನೆಗಳನ್ನು ಸಿದ್ಧಪಡಿಸುತ್ತಿದೆ…",
+      te: "మీ సమాచారాన్ని చదివి, సరిపోయే ఎంపికలను ఎంచుకుని AI పథకాలను సిద్ధం చేస్తోంది…",
+      hi: "AI आपकी बात पढ़कर विकल्प चुन रहा है और योजनाएं तैयार कर रहा है…"
+    },
+    recStart: { en: "Record Audio", kn: "ಆಡಿಯೋ ರೆಕಾರ್ಡ್ ಮಾಡಿ", te: "ఆడియో రికార్డ్ చేయండి", hi: "ऑडियो रिकॉर्ड करें" },
+    recStop: { en: "Stop Recording", kn: "ರೆಕಾರ್ಡಿಂಗ್ ನಿಲ್ಲಿಸಿ", te: "రికార్డింగ్ ఆపండి", hi: "रिकॉर्डिंग रोकें" },
+    clearAudio: { en: "Clear Audio", kn: "ಆಡಿಯೋ ಅಳಿಸಿ", te: "ఆడియో తొలగించండి", hi: "ऑडियो हटाएं" },
     fh: {
-      en: "Describe the crop problem",
-      kn: "ಬೆಳೆ ಸಮಸ್ಯೆಯನ್ನು ವಿವರಿಸಿ",
-      te: "పంట సమస్యను వివరించండి",
-      hi: "फसल की समस्या बताइए"
+      en: "Describe the plant or crop problem",
+      kn: "ಗಿಡ ಅಥವಾ ಬೆಳೆ ಸಮಸ್ಯೆಯನ್ನು ವಿವರಿಸಿ",
+      te: "మొక్క లేదా పంట సమస్యను వివరించండి",
+      hi: "पौधे या फसल की समस्या बताइए"
     },
-    cropL: { en: "Crop", kn: "ಬೆಳೆ", te: "పంట", hi: "फसल" },
+    cropL: {
+      en: "Plant or crop",
+      kn: "ಗಿಡ ಅಥವಾ ಬೆಳೆ",
+      te: "మొక్క లేదా పంట",
+      hi: "पौधा या फसल"
+    },
     photoL: {
       en: "Photo of the problem",
       kn: "ಸಮಸ್ಯೆಯ ಫೋಟೋ",
@@ -1181,68 +1040,17 @@ label {
       te: "మీకు కనిపించే ఒకటి లేదా అంతకంటే ఎక్కువ లక్షణాలను ఎంచుకోండి",
       hi: "आपको दिखने वाले एक या अधिक लक्षण चुनें"
     },
-    audL: {
-      en: "Record audio description",
-      kn: "ಧ್ವನಿ ವಿವರಣೆಯನ್ನು ರೆಕಾರ್ಡ್ ಮಾಡಿ",
-      te: "ఆడియో వివరణ రికార్డ్ చేయండి",
-      hi: "ऑडियो विवरण रिकॉर्ड करें"
-    },
-    recStart: { en: "Record Audio", kn: "ಆಡಿಯೋ ರೆಕಾರ್ಡ್ ಮಾಡಿ", te: "ఆడియో రికార్డ్ చేయండి", hi: "ऑडियो रिकॉर्ड करें" },
-    recStop: { en: "Stop Recording", kn: "ರೆಕಾರ್ಡಿಂಗ್ ನಿಲ್ಲಿಸಿ", te: "రికార్డింగ్ ఆపండి", hi: "रिकॉर्डिंग रोकें" },
-    clearAudio: { en: "Clear Audio", kn: "ಆಡಿಯೋ ಅಳಿಸಿ", te: "ఆడియో తొలగించండి", hi: "ऑडियो हटाएं" },
-    recIdle: {
-      en: "No audio recorded yet. Tap Record Audio or select/type symptoms.",
-      kn: "ಇನ್ನೂ ಯಾವುದೇ ಆಡಿಯೋ ರೆಕಾರ್ಡ್ ಆಗಿಲ್ಲ. ರೆಕಾರ್ಡ್ ಒತ್ತಿ ಅಥವಾ ಲಕ್ಷಣ ಆಯ್ಕೆಮಾಡಿ/ಟೈಪ್ ಮಾಡಿ.",
-      te: "ఇంకా ఆడియో రికార్డ్ కాలేదు. రికార్డ్ నొక్కండి లేదా లక్షణాలు ఎంచుకోండి/టైప్ చేయండి.",
-      hi: "अभी कोई ऑडियो रिकॉर्ड नहीं हुआ है। रिकॉर्ड दबाएं या लक्षण चुनें/लिखें।"
-    },
-    recActive: {
-      en: "Recording audio… Speak clearly near the microphone.",
-      kn: "ಆಡಿಯೋ ರೆಕಾರ್ಡ್ ಆಗುತ್ತಿದೆ… ಮೈಕ್ರೊಫೋನ್ ಹತ್ತಿರ ಸ್ಪಷ್ಟವಾಗಿ ಮಾತನಾಡಿ.",
-      te: "ఆడియో రికార్డ్ అవుతోంది… మైక్రోఫోన్ దగ్గర స్పష్టంగా మాట్లాడండి.",
-      hi: "ऑडियो रिकॉर्ड हो रहा है… माइक्रोफोन के पास स्पष्ट बोलें।"
-    },
-    recDoneValid: {
-      en: "Audio recorded and voice signal detected. Ready to analyze.",
-      kn: "ಆಡಿಯೋ ರೆಕಾರ್ಡ್ ಆಗಿದೆ ಮತ್ತು ಧ್ವನಿ ಸಂಕೇತ ಪತ್ತೆಯಾಗಿದೆ. ವಿಶ್ಲೇಷಿಸಲು ಸಿದ್ಧವಾಗಿದೆ.",
-      te: "ఆడియో రికార్డ్ అయింది మరియు వాయిస్ సిగ్నల్ గుర్తించబడింది. విశ్లేషించడానికి సిద్ధం.",
-      hi: "ऑडियो रिकॉर्ड हो गया और आवाज़ संकेत मिला। विश्लेषण के लिए तैयार।"
-    },
-    recDoneSilent: {
-      en: "Audio file created, but no clear voice signal was detected. Please speak clearly or choose/type symptoms.",
-      kn: "ಆಡಿಯೋ ಫೈಲ್ ರಚನೆಯಾಗಿದೆ, ಆದರೆ ಸ್ಪಷ್ಟ ಧ್ವನಿ ಸಂಕೇತ ಪತ್ತೆಯಾಗಿಲ್ಲ. ದಯವಿಟ್ಟು ಸ್ಪಷ್ಟವಾಗಿ ಮಾತನಾಡಿ ಅಥವಾ ಲಕ್ಷಣ ಆಯ್ಕೆಮಾಡಿ/ಟೈಪ್ ಮಾಡಿ.",
-      te: "ఆడియో ఫైల్ రూపొందింది, కానీ స్పష్టమైన వాయిస్ సిగ్నల్ గుర్తించబడలేదు. దయచేసి స్పష్టంగా మాట్లాడండి లేదా లక్షణాలు ఎంచుకోండి/టైప్ చేయండి.",
-      hi: "ऑडियो फ़ाइल बनी है, लेकिन स्पष्ट आवाज़ संकेत नहीं मिला। कृपया स्पष्ट बोलें या लक्षण चुनें/लिखें।"
-    },
-    recErr: {
-      en: "Microphone access was blocked or unavailable on this device. Please allow microphone permission or select/type symptoms.",
-      kn: "ಈ ಸಾಧನದಲ್ಲಿ ಮೈಕ್ರೊಫೋನ್ ಅನುಮತಿ ನಿರಾಕರಿಸಲಾಗಿದೆ ಅಥವಾ ಲಭ್ಯವಿಲ್ಲ. ದಯವಿಟ್ಟು ಅನುಮತಿ ನೀಡಿ ಅಥವಾ ಲಕ್ಷಣ ಆಯ್ಕೆಮಾಡಿ/ಟೈಪ್ ಮಾಡಿ.",
-      te: "ఈ పరికరంలో మైక్రోఫోన్ అనుమతి నిరాకరించబడింది లేదా అందుబాటులో లేదు. దయచేసి అనుమతి ఇవ్వండి లేదా లక్షణాలు ఎంచుకోండి/టైప్ చేయండి.",
-      hi: "इस डिवाइस पर माइक्रोफ़ोन अनुमति नहीं मिली या उपलब्ध नहीं है। कृपया अनुमति दें या लक्षण चुनें/लिखें।"
-    },
-    noInputAtAll: {
-      en: "No recorded audio input or symptom selected. Please record clear audio, select one or more symptom chips, or type symptoms before checking.",
-      kn: "ಯಾವುದೇ ರೆಕಾರ್ಡ್ ಮಾಡಿದ ಆಡಿಯೋ ಇನ್‌ಪುಟ್ ಅಥವಾ ಲಕ್ಷಣ ಆಯ್ಕೆಯಾಗಿಲ್ಲ. ಪರೀಕ್ಷಿಸುವ ಮೊದಲು ಸ್ಪಷ್ಟ ಆಡಿಯೋ ರೆಕಾರ್ಡ್ ಮಾಡಿ, ಲಕ್ಷಣಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ ಅಥವಾ ಟೈಪ್ ಮಾಡಿ.",
-      te: "రికార్డ్ చేసిన ఆడియో ఇన్‌పుట్ లేదా లక్షణం ఎంచుకోలేదు. తనిఖీ చేసే ముందు స్పష్టమైన ఆడియో రికార్డ్ చేయండి, లక్షణాలు ఎంచుకోండి లేదా టైప్ చేయండి.",
-      hi: "कोई रिकॉर्ड किया गया ऑडियो इनपुट या लक्षण नहीं चुना गया है। जांच से पहले स्पष्ट ऑडियो रिकॉर्ड करें, लक्षण चुनें या लिखें।"
-    },
-    silentAudioNoSym: {
-      en: "Recorded audio input is empty or silent, and no symptoms were selected or typed. No diagnosis was generated from silent audio. Please speak clearly or select symptoms.",
-      kn: "ರೆಕಾರ್ಡ್ ಮಾಡಿದ ಆಡಿಯೋ ಖಾಲಿಯಾಗಿದೆ ಅಥವಾ ಮೌನವಾಗಿದೆ, ಮತ್ತು ಯಾವುದೇ ಲಕ್ಷಣವನ್ನು ಆಯ್ಕೆಮಾಡಿಲ್ಲ ಅಥವಾ ಟೈಪ್ ಮಾಡಿಲ್ಲ. ಮೌನ ಆಡಿಯೋದಿಂದ ಯಾವುದೇ ನಿರ್ಣಯ ನೀಡಿಲ್ಲ. ದಯವಿಟ್ಟು ಸ್ಪಷ್ಟವಾಗಿ ಮಾತನಾಡಿ ಅಥವಾ ಲಕ್ಷಣ ಆಯ್ಕೆಮಾಡಿ.",
-      te: "రికార్డ్ చేసిన ఆడియో ఖాళీగా లేదా నిశ్శబ్దంగా ఉంది మరియు లక్షణాలు ఎంచుకోలేదు లేదా టైప్ చేయలేదు. నిశ్శబ్ద ఆడియో నుండి నిర్ధారణ ఇవ్వలేదు. దయచేసి స్పష్టంగా మాట్లాడండి లేదా లక్షణాలు ఎంచుకోండి.",
-      hi: "रिकॉर्ड किया गया ऑडियो खाली या शांत है, और कोई लक्षण नहीं चुना या लिखा गया है। शांत ऑडियो से कोई निदान नहीं बनाया गया। कृपया स्पष्ट बोलें या लक्षण चुनें।"
-    },
-    audioOnlyNote: {
-      en: "Based on recorded audio input analysis (no specific symptom keyword matched; showing general crop health & leaf inspection guidance):",
-      kn: "ರೆಕಾರ್ಡ್ ಮಾಡಿದ ಆಡಿಯೋ ಇನ್‌ಪುಟ್ ವಿಶ್ಲೇಷಣೆಯ ಆಧಾರದ ಮೇಲೆ (ನಿರ್ದಿಷ್ಟ ಲಕ್ಷಣ ಪದ ಹೊಂದಿಕೆಯಾಗಿಲ್ಲ; ಸಾಮಾನ್ಯ ಬೆಳೆ ಆರೋಗ್ಯ ಮತ್ತು ಎಲೆ ತಪಾಸಣೆ ಮಾರ್ಗದರ್ಶನ):",
-      te: "రికార్డ్ చేసిన ఆడియో ఇన్‌పుట్ విశ్లేషణ ఆధారంగా (నిర్దిష్ట లక్షణ పదం సరిపోలలేదు; సాధారణ పంట ఆరోగ్యం మరియు ఆకు పరిశీలన మార్గదర్శకం):",
-      hi: "रिकॉर्ड किए गए ऑडियो इनपुट विश्लेषण के आधार पर (कोई विशिष्ट लक्षण शब्द नहीं मिला; सामान्य फसल स्वास्थ्य और पत्ती जांच मार्गदर्शन):"
+    photoOnlyNote: {
+      en: "AI evaluated your uploaded photo for visual plant and crop problem guidance.",
+      kn: "ಗಿಡ ಮತ್ತು ಬೆಳೆ ಸಮಸ್ಯೆ ಮಾರ್ಗದರ್ಶನಕ್ಕಾಗಿ ನೀವು ಅಪ್‌ಲೋಡ್ ಮಾಡಿದ ಫೋಟೋವನ್ನು AI ವಿಶ್ಲೇಷಿಸಿದೆ.",
+      te: "మొక్క మరియు పంట సమస్య సూచనల కోసం మీరు అప్‌లోడ్ చేసిన ఫోటోను AI విశ్లేషించింది.",
+      hi: "पौधे और फसल की समस्या के मार्गदर्शन के लिए आपकी अपलोड की गई फोटो का AI विश्लेषण किया गया।"
     },
     analyze: {
-      en: "Check my crop",
-      kn: "ನನ್ನ ಬೆಳೆಯನ್ನು ಪರೀಕ್ಷಿಸಿ",
-      te: "నా పంటను చూడండి",
-      hi: "मेरी फसल जांचें"
+      en: "Check plant / crop",
+      kn: "ಗಿಡ / ಬೆಳೆ ಪರೀಕ್ಷಿಸಿ",
+      te: "మొక్క / పంట చూడండి",
+      hi: "पौधा / फसल जांचें"
     },
     fres: {
       en: "Diagnosis and advice",
@@ -1251,24 +1059,24 @@ label {
       hi: "निदान और सलाह"
     },
     fnote: {
-      en: "Guidance based on your selected symptoms, text/voice input, or recorded audio analysis.",
-      kn: "ನೀವು ಆಯ್ಕೆಮಾಡಿದ ಲಕ್ಷಣಗಳು, ಪಠ್ಯ/ಧ್ವನಿ ಇನ್‌ಪುಟ್ ಅಥವಾ ರೆಕಾರ್ಡ್ ಮಾಡಿದ ಆಡಿಯೋ ವಿಶ್ಲೇಷಣೆಯ ಆಧಾರದ ಮಾರ್ಗದರ್ಶನ.",
-      te: "మీరు ఎంచుకున్న లక్షణాలు, టెక్స్ట్/వాయిస్ లేదా రికార్డ్ చేసిన ఆడియో విశ్లేషణ ఆధారంగా సూచన.",
-      hi: "आपके चुने गए लक्षणों, टेक्स्ट/आवाज़ या रिकॉर्ड किए गए ऑडियो विश्लेषण पर आधारित मार्गदर्शन।"
+      en: "AI guidance for all plants, vegetables, fruits, flowers, indoor/pot plants, herbs, trees, and crops from photo, symptoms, or text.",
+      kn: "ಫೋಟೋ, ಲಕ್ಷಣಗಳು ಅಥವಾ ಪಠ್ಯದಿಂದ ಎಲ್ಲಾ ಗಿಡಗಳು, ತರಕಾರಿಗಳು, ಹಣ್ಣುಗಳು, ಹೂವುಗಳು, ಕುಂಡದ ಗಿಡಗಳು, ಗಿಡಮೂಲಿಕೆಗಳು, ಮರಗಳು ಮತ್ತು ಬೆಳೆಗಳಿಗೆ AI ಮಾರ್ಗದರ್ಶನ.",
+      te: "ఫోటో, లక్షణాలు లేదా టెక్స్ట్ నుండి అన్ని మొక్కలు, కూరగాయలు, పండ్లు, పువ్వులు, కుండీ మొక్కలు, మూలికలు, చెట్లు మరియు పంటలకు AI సూచన.",
+      hi: "फोटो, लक्षणों या टेक्स्ट से सभी पौधों, सब्जियों, फलों, फूलों, गमलों के पौधों, जड़ी-बूटियों, पेड़ों और फसलों के लिए AI मार्गदर्शन।"
     },
     fempty: {
-      en: "Your diagnosis will appear here.",
-      kn: "ನಿಮ್ಮ ಬೆಳೆ ನಿರ್ಣಯ ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತದೆ.",
-      te: "మీ నిర్ధారణ ఇక్కడ కనిపిస్తుంది.",
-      hi: "आपका निदान यहाँ दिखेगा।"
+      en: "Your plant or crop diagnosis will appear here.",
+      kn: "ನಿಮ್ಮ ಗಿಡ ಅಥವಾ ಬೆಳೆ ನಿರ್ಣಯ ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತದೆ.",
+      te: "మీ మొక్క లేదా పంట నిర్ధారణ ఇక్కడ కనిపిస్తుంది.",
+      hi: "आपका पौधा या फसल निदान यहाँ दिखेगा।"
     },
     sevN: { en: "Severity", kn: "ತೀವ್ರತೆ", te: "తీవ్రత", hi: "गंभीरता" },
     overallSev: { en: "Overall severity", kn: "ಒಟ್ಟಾರೆ ತೀವ್ರತೆ", te: "మొత్తం తీవ్రత", hi: "कुल गंभीरता" },
     selectedSymsLbl: {
-      en: "Selected symptoms",
-      kn: "ಆಯ್ಕೆಮಾಡಿದ ಲಕ್ಷಣಗಳು",
-      te: "ఎంచుకున్న లక్షణాలు",
-      hi: "चुने गए लक्षण"
+      en: "Symptoms in diagnosis",
+      kn: "ನಿರ್ಣಯದಲ್ಲಿರುವ ಲಕ್ಷಣಗಳು",
+      te: "నిర్ధారణలోని లక్షణాలు",
+      hi: "निदान में लक्षण"
     },
     sev: {
       low: { en: "Low", kn: "ಕಡಿಮೆ", te: "తక్కువ", hi: "कम" },
@@ -1306,16 +1114,16 @@ label {
       hi: "सुरक्षा पहले"
     },
     safe: {
-      en: "Wear gloves, a mask and full sleeves. Keep chemicals away from children and food. Follow the label exactly. Never mix pesticides yourself. Check the waiting period before harvest.",
-      kn: "ಕೈಗವಸು, ಮಾಸ್ಕ್ ಮತ್ತು ಪೂರ್ಣ ತೋಳಿನ ಬಟ್ಟೆ ಧರಿಸಿ. ಔಷಧಗಳನ್ನು ಮಕ್ಕಳು ಮತ್ತು ಆಹಾರದಿಂದ ದೂರವಿಡಿ. ಲೇಬಲ್ ಸೂಚನೆಗಳನ್ನು ಕಟ್ಟುನಿಟ್ಟಾಗಿ ಪಾಲಿಸಿ. ನೀವೇ ಕೀಟನಾಶಕಗಳನ್ನು ಬೆರೆಸಬೇಡಿ. ಕೊಯ್ಲಿಗೆ ಮುನ್ನ ಕಾಯುವ ಅವಧಿಯನ್ನು ಗಮನಿಸಿ.",
-      te: "చేతి తొడుగులు, మాస్క్, పొడవు చేతుల దుస్తులు ధరించండి. మందులను పిల్లలు, ఆహారానికి దూరంగా ఉంచండి. లేబుల్ సూచనలు పాటించండి. మీరే మందులు కలపకండి. కోతకు ముందు వేచి ఉండే కాలం చూడండి.",
-      hi: "दस्ताने, मास्क और पूरी बाजू के कपड़े पहनें। दवाएं बच्चों और खाने से दूर रखें। लेबल के निर्देश मानें। खुद दवाएं न मिलाएं। कटाई से पहले प्रतीक्षा अवधि देखें।"
+      en: "Wear gloves, a mask and full sleeves. Keep chemicals away from children, pets, and food. Follow the label exactly. Never mix pesticides yourself. Check the waiting period before harvest.",
+      kn: "ಕೈಗವಸು, ಮಾಸ್ಕ್ ಮತ್ತು ಪೂರ್ಣ ತೋಳಿನ ಬಟ್ಟೆ ಧರಿಸಿ. ಔಷಧಗಳನ್ನು ಮಕ್ಕಳು, ಸಾಕುಪ್ರಾಣಿಗಳು ಮತ್ತು ಆಹಾರದಿಂದ ದೂರವಿಡಿ. ಲೇಬಲ್ ಸೂಚನೆಗಳನ್ನು ಕಟ್ಟುನಿಟ್ಟಾಗಿ ಪಾಲಿಸಿ. ನೀವೇ ಕೀಟನಾಶಕಗಳನ್ನು ಬೆರೆಸಬೇಡಿ. ಕೊಯ್ಲಿಗೆ ಮುನ್ನ ಕಾಯುವ ಅವಧಿಯನ್ನು ಗಮನಿಸಿ.",
+      te: "చేతి తొడుగులు, మాస్క్, పొడవు చేతుల దుస్తులు ధరించండి. మందులను పిల్లలు, పెంపుడు జంతువులు, ఆహారానికి దూరంగా ఉంచండి. లేబుల్ సూచనలు పాటించండి. మీరే మందులు కలపకండి. కోతకు ముందు వేచి ఉండే కాలం చూడండి.",
+      hi: "दस्ताने, मास्क और पूरी बाजू के कपड़े पहनें। दवाएं बच्चों, पालतू जानवरों और खाने से दूर रखें। लेबल के निर्देश मानें। खुद दवाएं न मिलाएं। कटाई से पहले प्रतीक्षा अवधि देखें।"
     },
     disc: {
-      en: "Guidance only, not a final diagnosis. Confirm with your agriculture officer or Krishi Vigyan Kendra before spraying.",
-      kn: "ಇದು ಮಾರ್ಗದರ್ಶನ ಮಾತ್ರ, ಅಂತಿಮ ನಿರ್ಣಯವಲ್ಲ. ಸಿಂಪರಣೆಗೆ ಮೊದಲು ಕೃಷಿ ಅಧಿಕಾರಿ ಅಥವಾ ಕೃಷಿ ವಿಜ್ಞಾನ ಕೇಂದ್ರವನ್ನು ಸಂಪರ್ಕಿಸಿ.",
-      te: "ఇది సూచన మాత్రమే. పిచికారీ ముందు వ్యవసాయ అధికారిని లేదా కృషి విజ్ఞాన కేంద్రాన్ని సంప్రదించండి.",
-      hi: "यह केवल सुझाव है, अंतिम निदान नहीं। छिड़काव से पहले कृषि अधिकारी या कृषि विज्ञान केंद्र से पुष्टि करें।"
+      en: "Guidance only, not a final diagnosis. Confirm with your agriculture officer, nursery specialist, or Krishi Vigyan Kendra before spraying.",
+      kn: "ಇದು ಮಾರ್ಗದರ್ಶನ ಮಾತ್ರ, ಅಂತಿಮ ನಿರ್ಣಯವಲ್ಲ. ಸಿಂಪರಣೆಗೆ ಮೊದಲು ಕೃಷಿ ಅಧಿಕಾರಿ, ನರ್ಸರಿ ತಜ್ಞರು ಅಥವಾ ಕೃಷಿ ವಿಜ್ಞಾನ ಕೇಂದ್ರವನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+      te: "ఇది సూచన మాత్రమే. పిచికారీ ముందు వ్యవసాయ అధికారి, నర్సరీ నిపుణులు లేదా కృషి విజ్ఞాన కేంద్రాన్ని సంప్రదించండి.",
+      hi: "यह केवल सुझाव है, अंतिम निदान नहीं। छिड़काव से पहले कृषि अधिकारी, नर्सरी विशेषज्ञ या कृषि विज्ञान केंद्र से पुष्टि करें।"
     },
     band: {
       en: "Check the colour band on the label:",
@@ -1324,47 +1132,73 @@ label {
       hi: "लेबल पर रंग पट्टी देखें:"
     },
     price: {
-      en: "Approximate price: verify at local agro store",
-      kn: "ಅಂದಾಜು ಬೆಲೆ: ಸ್ಥಳೀಯ ಕೃಷಿ ಮಳಿಗೆಯಲ್ಲಿ ಪರಿಶೀಲಿಸಿ",
-      te: "సుమారు ధర: స్థానిక అగ్రో దుకాణంలో చూడండి",
-      hi: "अनुमानित कीमत: स्थानीय कृषि केंद्र पर जांचें"
+      en: "Approximate price: verify at local agro or nursery store",
+      kn: "ಅಂದಾಜು ಬೆಲೆ: ಸ್ಥಳೀಯ ಕೃಷಿ ಅಥವಾ ನರ್ಸರಿ ಮಳಿಗೆಯಲ್ಲಿ ಪರಿಶೀಲಿಸಿ",
+      te: "సుమారు ధర: స్థానిక అగ్రో లేదా నర్సరీ దుకాణంలో చూడండి",
+      hi: "अनुमानित कीमत: स्थानीय कृषि या नर्सरी केंद्र पर जांचें"
     },
     shopT: {
-      en: "Authorized Agro Input Center",
-      kn: "ಅಧಿಕೃತ ಕೃಷಿ ಪರಿಕರ ಕೇಂದ್ರ",
-      te: "అధీకృత అగ్రో కేంద్రం",
-      hi: "अधिकृत कृषि केंद्र"
+      en: "Authorized Agro & Plant Care Center",
+      kn: "ಅಧಿಕೃತ ಕೃಷಿ ಮತ್ತು ಗಿಡ ಆರೈಕೆ ಕೇಂದ್ರ",
+      te: "అధీకృత అగ్రో & మొక్కల సంరక్షణ కేంద్రం",
+      hi: "अधिकृत कृषि एवं पौधा देखभाल केंद्र"
     },
     adr: {
-      en: "Village, Taluk / Mandal, District",
-      kn: "ಗ್ರಾಮ, ತಾಲೂಕು, ಜಿಲ್ಲೆ",
-      te: "గ్రామం, మండలం, జిల్లా",
-      hi: "गांव, तालुका / मंडल, जिला"
+      en: "Village / Ward, Taluk / Mandal, District",
+      kn: "ಗ್ರಾಮ / ವಾರ್ಡ್, ತಾಲೂಕು, ಜಿಲ್ಲೆ",
+      te: "గ్రామం / వార్డు, మండలం, జిల్లా",
+      hi: "गांव / वार्ड, तालुका / मंडल, जिला"
     },
     near: {
-      en: "Find shops near me",
-      kn: "ನನ್ನ ಹತ್ತಿರದ ಮಳಿಗೆಗಳನ್ನು ಹುಡುಕಿ",
-      te: "నా దగ్గర షాపులు",
-      hi: "मेरे पास की दुकानें"
+      en: "Find shops & nurseries near me",
+      kn: "ನನ್ನ ಹತ್ತಿರದ ಮಳಿಗೆಗಳು ಮತ್ತು ನರ್ಸರಿಗಳನ್ನು ಹುಡುಕಿ",
+      te: "నా దగ్గర షాపులు, నర్సరీలు",
+      hi: "मेरे पास की दुकानें और नर्सरी"
     },
     chk: {
-      en: "Analysing crop inputs…",
-      kn: "ಬೆಳೆ ವಿವರಗಳನ್ನು ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ…",
-      te: "పరిశీలిస్తోంది…",
-      hi: "जांच हो रही है…"
+      en: "AI is analyzing your plant or crop details and preparing advice…",
+      kn: "ನಿಮ್ಮ ಗಿಡ ಅಥವಾ ಬೆಳೆ ವಿವರಗಳನ್ನು ವಿಶ್ಲೇಷಿಸಿ AI ಸಲಹೆ ಸಿದ್ಧಪಡಿಸುತ್ತಿದೆ…",
+      te: "మీ మొక్క లేదా పంట వివరాలను విశ్లేషించి AI సలహా సిద్ధం చేస్తోంది…",
+      hi: "AI आपके पौधे या फसल के विवरण का विश्लेषण करके सलाह तैयार कर रहा है…"
     }
   };
 
-  var CROPS = [
+  var BASE_CROPS = [
     { v: "Paddy", l: { en: "Paddy (Rice)", kn: "ಭತ್ತ", te: "వరి", hi: "धान" } },
     { v: "Cotton", l: { en: "Cotton", kn: "ಹತ್ತಿ", te: "పత్తి", hi: "कपास" } },
-    { v: "Chilli", l: { en: "Chilli", kn: "ಮೆಣಸಿನಕಾಯಿ", te: "మిర్చి", hi: "मिर्च" } },
+    { v: "Chilli", l: { en: "Chilli (Vegetable)", kn: "ಮೆಣಸಿನಕಾಯಿ", te: "మిర్చి", hi: "मिर्च" } },
     { v: "Groundnut", l: { en: "Groundnut", kn: "ಶೇಂಗಾ (ನೆಲಗಡಲೆ)", te: "వేరుశనగ", hi: "मूंगफली" } },
-    { v: "Maize", l: { en: "Maize", kn: "ಮೆಕ್ಕೆಜೋಳ", te: "మొక్కజొన్న", hi: "मक्का" } },
-    { v: "Tomato", l: { en: "Tomato", kn: "ಟೊಮೇಟೊ", te: "టమాటా", hi: "टमाटर" } },
+    { v: "Maize", l: { en: "Maize (Corn)", kn: "ಮೆಕ್ಕೆಜೋಳ", te: "మొక్కజొన్న", hi: "मक्का" } },
+    { v: "Tomato", l: { en: "Tomato (Vegetable)", kn: "ಟೊಮೇಟೊ", te: "టమాటా", hi: "टमाटर" } },
     { v: "Sugarcane", l: { en: "Sugarcane", kn: "ಕಬ್ಬು", te: "చెరకు", hi: "गन्ना" } },
-    { v: "Banana", l: { en: "Banana", kn: "ಬಾಳೆ", te: "అరటి", hi: "केला" } }
+    { v: "Banana", l: { en: "Banana (Fruit)", kn: "ಬಾಳೆ", te: "అరటి", hi: "केला" } },
+    { v: "Brinjal", l: { en: "Brinjal / Eggplant (Vegetable)", kn: "ಬದನೆಕಾಯಿ", te: "వంకాయ", hi: "बैंगन" } },
+    { v: "Okra", l: { en: "Okra / Lady's Finger (Vegetable)", kn: "ಬೆಂಡೆಕಾಯಿ", te: "బెండకాయ", hi: "भिंडी" } },
+    { v: "Potato", l: { en: "Potato (Vegetable)", kn: "ಆಲೂಗಡ್ಡೆ", te: "బంగాళాదుంప", hi: "आलू" } },
+    { v: "Onion", l: { en: "Onion (Vegetable)", kn: "ಈರುಳ್ಳಿ", te: "ఉల్లిపాయ", hi: "प्याज" } },
+    { v: "Mango", l: { en: "Mango (Fruit Tree)", kn: "ಮಾವಿನ ಮರ", te: "మామిడి చెట్టు", hi: "आम का पेड़" } },
+    { v: "Papaya", l: { en: "Papaya (Fruit)", kn: "ಪಪ್ಪಾಯಿ", te: "బొప్పాయి", hi: "पपीता" } },
+    { v: "Guava", l: { en: "Guava (Fruit Tree)", kn: "ಸೀಬೆ / ಪೇರಳೆ", te: "జామ చెట్టు", hi: "अमरूद" } },
+    { v: "Rose", l: { en: "Rose (Flower)", kn: "ಗುಲಾಬಿ", te: "గులాబీ", hi: "गुलाब" } },
+    { v: "Marigold", l: { en: "Marigold (Flower)", kn: "ಚೆಂಡು ಹೂವು", te: "బంతి పువ్వు", hi: "गेंदा" } },
+    { v: "Hibiscus", l: { en: "Hibiscus / Shoeblack (Flower)", kn: "ದಾಸವಾಳ", te: "మందార", hi: "गुड़हल" } },
+    { v: "Jasmine", l: { en: "Jasmine (Flower)", kn: "ಮಲ್ಲಿಗೆ", te: "మల్లె", hi: "चमेली" } },
+    { v: "MoneyPlant", l: { en: "Money Plant (Indoor / Pot)", kn: "ಮನಿ ಪ್ಲಾಂಟ್", te: "మనీ ప్లాంట్", hi: "मनी प्लांट" } },
+    { v: "Tulsi", l: { en: "Tulsi / Holy Basil (Herb)", kn: "ತುಳಸಿ", te: "తులసి", hi: "तुलसी" } },
+    { v: "Neem", l: { en: "Neem (Tree)", kn: "ಬೇವಿನ ಮರ", te: "వేప చెట్టు", hi: "नीम" } },
+    { v: "Coconut", l: { en: "Coconut (Tree)", kn: "ತೆಂಗಿನ ಮರ", te: "కొబ్బరి చెట్టు", hi: "नारियल" } }
   ];
+
+  function getAllCrops() {
+    var list = BASE_CROPS.slice();
+    if (customCropEntry && customCropEntry.v) {
+      var exists = list.some(function (c) { return c.v.toLowerCase() === customCropEntry.v.toLowerCase(); });
+      if (!exists) {
+        list.unshift(customCropEntry);
+      }
+    }
+    return list;
+  }
 
   var Q = [
     {
@@ -1412,164 +1246,163 @@ label {
     }
   ];
 
-  var S = [
+  var SCHEME_CATALOG = [
     {
       occ: ["farmer"],
-      n: { en: "PM-KISAN", kn: "ಪಿಎಂ-ಕಿಸಾನ್", te: "పీఎం-కిసాన్", hi: "पीएम-किसान" },
-      b: {
-        en: "₹6,000 a year to farmer families, paid in three instalments.",
-        kn: "ರೈತ ಕುಟುಂಬಗಳಿಗೆ ವಾರ್ಷಿಕ ₹6,000, ಮೂರು ಕಂತುಗಳಲ್ಲಿ ನೀಡಲಾಗುತ್ತದೆ.",
-        te: "రైతు కుటుంబాలకు ఏటా ₹6,000, మూడు విడతల్లో.",
-        hi: "किसान परिवारों को सालाना ₹6,000, तीन किस्तों में।"
+      name: { en: "PM-KISAN", kn: "ಪಿಎಂ-ಕಿಸಾನ್", te: "పీఎం-కిసాన్", hi: "पीएम-किसान" },
+      benefit: {
+        en: "₹6,000 a year to eligible farmer families, paid in three instalments.",
+        kn: "ಅರ್ಹ ರೈತ ಕುಟುಂಬಗಳಿಗೆ ವಾರ್ಷಿಕ ₹6,000, ಮೂರು ಕಂತುಗಳಲ್ಲಿ ನೀಡಲಾಗುತ್ತದೆ.",
+        te: "అర్హత గల రైతు కుటుంబాలకు ఏటా ₹6,000, మూడు విడతల్లో.",
+        hi: "पात्र किसान परिवारों को सालाना ₹6,000, तीन किस्तों में।"
       },
-      d: {
+      documents: {
         en: "Aadhaar, land records, bank passbook",
         kn: "ಆಧಾರ್, ಭೂ ದಾಖಲೆಗಳು, ಬ್ಯಾಂಕ್ ಪಾಸ್‌ಬುಕ್",
         te: "Aadhaar, land records, bank passbook",
         hi: "आधार, भूमि रिकॉर्ड, बैंक पासबुक"
       },
-      u: "https://pmkisan.gov.in"
+      url: "https://pmkisan.gov.in"
     },
     {
       occ: ["farmer"],
-      n: { en: "PM Fasal Bima", kn: "ಪಿಎಂ ಫಸಲ್ ಬೀಮಾ", te: "పీఎం ఫసల్ బీమా", hi: "पीएम फसल बीमा" },
-      b: {
-        en: "Insurance cover for crop loss due to natural calamities.",
+      name: { en: "PM Fasal Bima Yojana", kn: "ಪಿಎಂ ಫಸಲ್ ಬೀಮಾ ಯೋಜನೆ", te: "పీఎం ఫసల్ బీమా", hi: "पीएम फसल बीमा" },
+      benefit: {
+        en: "Insurance cover for crop loss due to natural calamities and unseasonal weather.",
         kn: "ಪ್ರಕೃತಿ ವಿಕೋಪಗಳಿಂದ ಉಂಟಾಗುವ ಬೆಳೆ ನಷ್ಟಕ್ಕೆ ವಿಮಾ ರಕ್ಷಣೆ.",
-        te: "పంట నష్టానికి బీమా.",
-        hi: "फसल नुकसान पर बीमा।"
+        te: "ప్రకృతి వైపరీత్యాల వల్ల పంట నష్టానికి బీమా.",
+        hi: "प्राकृतिक आपदाओं से फसल नुकसान पर बीमा सुरक्षा।"
       },
-      d: {
+      documents: {
         en: "Aadhaar, land records, sowing details",
         kn: "ಆಧಾರ್, ಭೂ ದಾಖಲೆಗಳು, ಬಿತ್ತನೆ ವಿವರಗಳು",
         te: "Aadhaar, land records, sowing details",
         hi: "आधार, भूमि रिकॉर्ड, बुवाई विवरण"
       },
-      u: "https://pmfby.gov.in"
+      url: "https://pmfby.gov.in"
     },
     {
       inc: ["low"],
-      n: { en: "Ayushman Bharat (PM-JAY)", kn: "ಆಯುಷ್ಮಾನ್ ಭಾರತ್ (ಪಿಎಂ-ಜೆಎವೈ)", te: "ఆయుష్మాన్ భారత్", hi: "आयुष्मान भारत" },
-      b: {
-        en: "Health cover up to ₹5 lakh a year for eligible families.",
-        kn: "ಅರ್ಹ ಕುಟುಂಬಗಳಿಗೆ ವಾರ್ಷಿಕ ₹5 ಲಕ್ಷದವರೆಗೆ ಆರೋಗ್ಯ ರಕ್ಷಣೆ.",
+      name: { en: "Ayushman Bharat (PM-JAY)", kn: "ಆಯುಷ್ಮಾನ್ ಭಾರತ್ (ಪಿಎಂ-ಜೆಎವೈ)", te: "ఆయుష్మాన్ భారత్", hi: "आयुष्मान भारत" },
+      benefit: {
+        en: "Health cover up to ₹5 lakh a year for eligible low-income families.",
+        kn: "ಅರ್ಹ ಕಡಿಮೆ ಆದಾಯದ ಕುಟುಂಬಗಳಿಗೆ ವಾರ್ಷಿಕ ₹5 ಲಕ್ಷದವರೆಗೆ ಆರೋಗ್ಯ ರಕ್ಷಣೆ.",
         te: "అర్హత గల కుటుంబాలకు ఏటా ₹5 లక్షల వరకు ఆరోగ్య బీమా.",
         hi: "पात्र परिवारों को सालाना ₹5 लाख तक स्वास्थ्य बीमा।"
       },
-      d: {
+      documents: {
         en: "Aadhaar, ration card",
         kn: "ಆಧಾರ್, ಪಡಿತರ ಚೀಟಿ",
         te: "Aadhaar, ration card",
         hi: "आधार, राशन कार्ड"
       },
-      u: "https://pmjay.gov.in"
+      url: "https://pmjay.gov.in"
     },
     {
       occ: ["woman"],
       inc: ["low"],
-      n: { en: "PM Ujjwala Yojana", kn: "ಪಿಎಂ ಉಜ್ವಲ ಯೋಜನೆ", te: "ఉజ్వల యోజన", hi: "उज्ज्वला योजना" },
-      b: {
-        en: "Free LPG connection for women from low-income homes.",
-        kn: "ಕಡಿಮೆ ಆದಾಯದ ಮನೆಗಳ ಮಹಿಳೆಯರಿಗೆ ಉಚಿತ ಎಲ್‌ಪಿಜಿ ಸಂಪರ್ಕ.",
-        te: "పేద కుటుంబాల మహిళలకు ఉచిత ఎల్‌పీజీ కనెక్షన్.",
-        hi: "गरीब परिवारों की महिलाओं को मुफ्त एलपीजी कनेक्शन।"
+      name: { en: "PM Ujjwala Yojana", kn: "ಪಿಎಂ ಉಜ್ವಲ ಯೋಜನೆ", te: "ఉజ్వల యోజన", hi: "उज्ज्वला योजना" },
+      benefit: {
+        en: "Clean cooking LPG support for women from eligible low-income households.",
+        kn: "ಅರ್ಹ ಕಡಿಮೆ ಆದಾಯದ ಮನೆಗಳ ಮಹಿಳೆಯರಿಗೆ ಎಲ್‌ಪಿಜಿ ಸೌಲಭ್ಯ.",
+        te: "పేద కుటుంబాల మహిళలకు ఎల్‌పీజీ కనెక్షన్ సదుపాయం.",
+        hi: "पात्र परिवारों की महिलाओं को एलपीजी कनेक्शन सहायता।"
       },
-      d: {
+      documents: {
         en: "Aadhaar, ration card, bank passbook",
         kn: "ಆಧಾರ್, ಪಡಿತರ ಚೀಟಿ, ಬ್ಯಾಂಕ್ ಪಾಸ್‌ಬುಕ್",
         te: "Aadhaar, ration card, bank passbook",
         hi: "आधार, राशन कार्ड, बैंक पासबुक"
       },
-      u: "https://pmuy.gov.in"
+      url: "https://pmuy.gov.in"
     },
     {
       occ: ["woman"],
-      n: { en: "Sukanya Samriddhi", kn: "ಸುಕನ್ಯಾ ಸಮೃದ್ಧಿ ಯೋಜನೆ", te: "సుకన్య సమృద్ధి", hi: "सुकन्या समृद्धि" },
-      b: {
-        en: "Savings account for a girl child, with attractive interest.",
-        kn: "ಹೆಣ್ಣು ಮಗುವಿನ ಭವಿಷ್ಯಕ್ಕಾಗಿ ಉತ್ತಮ ಬಡ್ಡಿಯ ಉಳಿತಾಯ ಖಾತೆ.",
-        te: "ఆడపిల్ల పేరుతో అధిక వడ్డీతో పొదుపు ఖాతా.",
-        hi: "बेटी के नाम पर ऊँचे ब्याज वाला बचत खाता।"
+      name: { en: "Sukanya Samriddhi Yojana", kn: "ಸುಕನ್ಯಾ ಸಮೃದ್ಧಿ ಯೋಜನೆ", te: "సుకన్య సమృద్ధి", hi: "सुकन्या समृद्धि" },
+      benefit: {
+        en: "Long-term savings scheme for girl children with attractive interest.",
+        kn: "ಹೆಣ್ಣು ಮಗುವಿನ ಭವಿಷ್ಯಕ್ಕಾಗಿ ಉತ್ತಮ ಬಡ್ಡಿಯ ಉಳಿತಾಯ ಯೋಜನೆ.",
+        te: "ఆడపిల్ల పేరుతో అధిక వడ్డీతో పొదుపు పథకం.",
+        hi: "बेटी के भविष्य के लिए बचत योजना।"
       },
-      d: {
+      documents: {
         en: "Girl birth certificate, parent ID",
         kn: "ಮಗುವಿನ ಜನನ ಪ್ರಮಾಣಪತ್ರ, ಪೋಷಕರ ಗುರುತಿನ ಚೀಟಿ",
         te: "Girl birth certificate, parent ID",
         hi: "बच्ची का जन्म प्रमाण पत्र, अभिभावक पहचान पत्र"
       },
-      u: "https://www.indiapost.gov.in"
+      url: "https://www.indiapost.gov.in"
     },
     {
       occ: ["biz"],
-      n: { en: "Mudra Yojana", kn: "ಮುದ್ರಾ ಯೋಜನೆ", te: "ముద్ర యోజన", hi: "मुद्रा योजना" },
-      b: {
-        en: "Collateral-free loans for small businesses and micro enterprises.",
-        kn: "ಸಣ್ಣ ಉದ್ಯಮಗಳಿಗೆ ಯಾವುದೇ ಭದ್ರತೆ ಇಲ್ಲದೆ ಸಾಲ ಸೌಲಭ್ಯ.",
+      name: { en: "Mudra Yojana", kn: "ಮುದ್ರಾ ಯೋಜನೆ", te: "ముద్ర యోజన", hi: "मुद्रा योजना" },
+      benefit: {
+        en: "Collateral-free credit support for small businesses and rural micro-enterprises.",
+        kn: "ಸಣ್ಣ ಉದ್ಯಮಗಳು ಮತ್ತು ಗ್ರಾಮೀಣ ಉದ್ಯಮಗಳಿಗೆ ಸಾಲ ಸೌಲಭ್ಯ.",
         te: "చిన్న వ్యాపారాలకు పూచీకత్తు లేని రుణాలు.",
-        hi: "छोटे व्यवसायों के लिए बिना गारंटी ऋण।"
+        hi: "छोटे व्यवसायों के लिए ऋण सहायता।"
       },
-      d: {
+      documents: {
         en: "Aadhaar, PAN, business proof",
         kn: "ಆಧಾರ್, ಪ್ಯಾನ್, ಉದ್ಯಮ ದೃಢೀಕರಣ",
         te: "Aadhaar, PAN, business proof",
         hi: "आधार, पैन, व्यवसाय प्रमाण"
       },
-      u: "https://www.mudra.org.in"
+      url: "https://www.mudra.org.in"
     },
     {
       occ: ["student"],
-      n: { en: "National Scholarship Portal", kn: "ರಾಷ್ಟ್ರೀಯ ವಿದ್ಯಾರ್ಥಿವೇತನ ಪೋರ್ಟಲ್", te: "నేషనల్ స్కాలర్‌షిప్", hi: "नेशनल स्कॉलरशिप" },
-      b: {
-        en: "Scholarships for eligible school and college students.",
+      name: { en: "National Scholarship Portal", kn: "ರಾಷ್ಟ್ರೀಯ ವಿದ್ಯಾರ್ಥಿವೇತನ ಪೋರ್ಟಲ್", te: "నేషనల్ స్కాలర్‌షిప్", hi: "नेशनल स्कॉलरशिप" },
+      benefit: {
+        en: "Scholarship assistance for eligible school and college students.",
         kn: "ಅರ್ಹ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ವಿದ್ಯಾರ್ಥಿವೇತನ ಸೌಲಭ್ಯ.",
-        te: "విద్యార్థులకు ఉపకార వేతనాలు.",
-        hi: "छात्रों के लिए छात्रवृत्ति।"
+        te: "అర్హత గల విద్యార్థులకు ఉపకార వేతనాలు.",
+        hi: "पात्र छात्रों के लिए छात्रवृत्ति सहायता।"
       },
-      d: {
+      documents: {
         en: "Aadhaar, marks memo, income certificate",
         kn: "ಆಧಾರ್, ಅಂಕಪಟ್ಟಿ, ಆದಾಯ ಪ್ರಮಾಣಪತ್ರ",
         te: "Aadhaar, marks memo, income certificate",
         hi: "आधार, अंकपत्र, आय प्रमाण पत्र"
       },
-      u: "https://scholarships.gov.in"
+      url: "https://scholarships.gov.in"
     },
     {
       inc: ["low"],
       age: ["senior"],
-      n: { en: "Old-age pension (NSAP)", kn: "ವೃದ್ಧಾಪ್ಯ ವೇತನ (ಎನ್‌ಎಸ್‌ಎಪಿ)", te: "వృద్ధాప్య పింఛను", hi: "वृद्धावस्था पेंशन" },
-      b: {
-        en: "Monthly pension support for senior citizens from low-income families.",
+      name: { en: "Old-age Pension (NSAP)", kn: "ವೃದ್ಧಾಪ್ಯ ವೇತನ (ಎನ್‌ಎಸ್‌ಎಪಿ)", te: "వృద్ధాప్య పింఛను", hi: "वृद्धावस्था पेंशन" },
+      benefit: {
+        en: "Monthly pension assistance for senior citizens from low-income families.",
         kn: "ಕಡಿಮೆ ಆದಾಯದ ಕುಟುಂಬಗಳ ಹಿರಿಯ ನಾಗರಿಕರಿಗೆ ಮಾಸಿಕ ಪಿಂಚಣಿ.",
         te: "పేద వృద్ధులకు నెలవారీ పింఛను.",
         hi: "गरीब बुजुर्गों को मासिक पेंशन।"
       },
-      d: {
+      documents: {
         en: "Aadhaar, age proof, income proof",
         kn: "ಆಧಾರ್, ವಯಸ್ಸಿನ ಪುರಾವೆ, ಆದಾಯ ಪ್ರಮಾಣಪತ್ರ",
         te: "Aadhaar, age proof, income proof",
         hi: "आधार, आयु प्रमाण, आय प्रमाण"
       },
-      u: "https://nsap.nic.in"
+      url: "https://nsap.nic.in"
     }
   ];
 
-  // Crop symptoms & localized advice in en, kn, te, hi
   var C = {
     spots: {
-      l: { en: "Brown spots on leaves", kn: "ಎಲೆಗಳ ಮೇಲೆ ಕಂದು ಕಲೆಗಳು", te: "ఆకులపై గోధుమ మచ్చలు", hi: "पत्तियों पर भूरे धब्बे" },
-      n: { en: "Leaf spot (fungal)", kn: "ಎಲೆ ಕಲೆ ರೋಗ (ಶಿಲೀಂಧ್ರ)", te: "ఆకు మచ్చ తెగులు", hi: "पत्ती धब्बा रोग" },
+      l: { en: "Spots or patches on leaves", kn: "ಎಲೆಗಳ ಮೇಲೆ ಕಲೆಗಳು", te: "ఆకులపై మచ్చలు", hi: "पत्तियों पर धब्बे" },
+      n: { en: "Leaf spot / fungal or care stress", kn: "ಎಲೆ ಕಲೆ / ಶಿಲೀಂಧ್ರ ಅಥವಾ ಆರೈಕೆ ಒತ್ತಡ", te: "ఆకు మచ్చ / శిలీంధ్ర లేదా సంరక్షణ సమస్య", hi: "पत्ती धब्बा / फफूंद या देखभाल तनाव" },
       sv: "medium",
       t: {
-        en: ["Remove and destroy badly spotted leaves.", "Avoid overhead watering; water near the base."],
-        kn: ["ಹೆಚ್ಚು ಕಲೆಗಳಿರುವ ಎಲೆಗಳನ್ನು ತೆಗೆದು ನಾಶಪಡಿಸಿ.", "ಮೇಲಿನಿಂದ ನೀರು ಹಾಯಿಸುವುದನ್ನು ತಪ್ಪಿಸಿ; ಬುಡಕ್ಕೆ ನೀರು ನೀಡಿ."],
-        te: ["తీవ్రంగా మచ్చలున్న ఆకులను తొలగించండి.", "పైనుంచి నీరు పోయకుండా మొదలుకు నీరు ఇవ్వండి."],
-        hi: ["अधिक धब्बे वाली पत्तियों को हटाकर नष्ट करें।", "ऊपर से सिंचाई न करें; जड़ के पास पानी दें।"]
+        en: ["Remove heavily spotted leaves cleanly and dispose away from healthy plants.", "Water at the base rather than wetting foliage late in the day."],
+        kn: ["ಹೆಚ್ಚು ಕಲೆಗಳಿರುವ ಎಲೆಗಳನ್ನು ತೆಗೆದು ಆರೋಗ್ಯವಂತ ಗಿಡಗಳಿಂದ ದೂರ ವಿಲೇವಾರಿ ಮಾಡಿ.", "ಸಂಜೆ ವೇಳೆ ಎಲೆ ನೆನೆಯುವಂತೆ ಮಾಡದೆ ಗಿಡದ ಬುಡಕ್ಕೆ ನೀರು ನೀಡಿ."],
+        te: ["తీవ్రంగా మచ్చలున్న ఆకులను తొలగించి ఇతర మొక్కలకు దూరంగా వేయండి.", "ఆకులపై నీరు పడకుండా మొదలు వద్ద నీరు ఇవ్వండి."],
+        hi: ["अधिक धब्बे वाली पत्तियों को हटाकर स्वस्थ पौधों से दूर रखें।", "पत्तियों को भिगोने के बजाय जड़ के पास पानी दें।"]
       },
       o: {
-        en: ["Spray neem oil solution in the cool evening.", "Maintain spacing for good air circulation."],
-        kn: ["ಸಂಜೆ ವೇಳೆ ಬೇವಿನ ಎಣ್ಣೆ ದ್ರಾವಣ ಸಿಂಪಡಿಸಿ.", "ಗಾಳಿಯಾಡಲು ಸಾಕಷ್ಟು ಅಂತರ ಇರಿಸಿ."],
-        te: ["సాయంత్రం వేళ వేప నూనె ద్రావణం పిచికారీ చేయండి.", "గాలి ప్రసరణ కోసం మొక్కల మధ్య దూరం ఉంచండి."],
-        hi: ["शाम के समय नीम तेल का घोल छिड़कें।", "हवा के लिए पौधों के बीच दूरी रखें।"]
+        en: ["Spray diluted neem oil solution in the cool morning or evening.", "Improve airflow and spacing around pots or rows."],
+        kn: ["ಬೆಳಿಗ್ಗೆ ಅಥವಾ ಸಂಜೆ ಬೇವಿನ ಎಣ್ಣೆ ದ್ರಾವಣ ಸಿಂಪಡಿಸಿ.", "ಕುಂಡ ಅಥವಾ ಸಾಲಿನ ಗಿಡಗಳ ನಡುವೆ ಗಾಳಿಯಾಡಲು ಅವಕಾಶ ನೀಡಿ."],
+        te: ["ఉదయం లేదా సాయంత్రం వేప నూనె ద్రావణం పిచికారీ చేయండి.", "మొక్కల మధ్య గాలి ప్రసరణ ఉండేలా చూడండి."],
+        hi: ["सुबह या शाम नीम तेल का घोल छिड़कें।", "पौधों के बीच हवा आने-जाने की जगह रखें।"]
       },
       c: {
         en: ["Mancozeb", "Copper oxychloride"],
@@ -1579,38 +1412,38 @@ label {
       }
     },
     yellow: {
-      l: { en: "Yellow leaves", kn: "ಎಲೆಗಳು ಹಳದಿಯಾಗುವುದು", te: "ఆకులు పసుపు", hi: "पीली पत्तियां" },
-      n: { en: "Nutrient shortage or waterlogging", kn: "ಪೋಷಕಾಂಶ ಕೊರತೆ ಅಥವಾ ನೀರು ನಿಲ್ಲುವುದು", te: "పోషక లోపం లేదా నీరు నిలవడం", hi: "पोषक कमी या जलभराव" },
+      l: { en: "Yellowing leaves", kn: "ಎಲೆಗಳು ಹಳದಿಯಾಗುವುದು", te: "ఆకులు పసుపు రంగులోకి మారడం", hi: "पत्तियों का पीला पड़ना" },
+      n: { en: "Watering, drainage, light, or nutrient balance", kn: "ನೀರು, ಬಸಿದು ಹೋಗುವಿಕೆ, ಬೆಳಕು ಅಥವಾ ಪೋಷಕಾಂಶ ಕೊರತೆ", te: "నీరు, డ్రైనేజీ, వెలుతురు లేదా పోషకాల సమస్య", hi: "पानी, जल निकासी, रोशनी या पोषक संतुलन" },
       sv: "low",
       t: {
-        en: ["Drain standing water from the field.", "Test soil health at a nearby soil testing center."],
-        kn: ["ಹೊಲದಲ್ಲಿ ನಿಂತ ಹೆಚ್ಚುವರಿ ನೀರನ್ನು ಬಸಿದು ಬಿಡಿ.", "ಹತ್ತಿರದ ಮಣ್ಣು ಪರೀಕ್ಷಾ ಕೇಂದ್ರದಲ್ಲಿ ಮಣ್ಣನ್ನು ಪರೀಕ್ಷಿಸಿ."],
-        te: ["పొలంలో నిలిచిన నీటిని బయటకు పంపండి.", "సమీప మట్టి పరీక్ష కేంద్రంలో మట్టిని తనిఖీ చేయండి."],
-        hi: ["खेत से अतिरिक्त पानी निकाल दें।", "पास की मृदा परीक्षण प्रयोगशाला में मिट्टी जांच कराएं।"]
+        en: ["Check soil moisture and pot/field drainage before watering again.", "Ensure appropriate sunlight or bright indirect light for the plant type."],
+        kn: ["ಮತ್ತೆ ನೀರು ಹಾಕುವ ಮೊದಲು ಮಣ್ಣಿನ ತೇವಾಂಶ ಮತ್ತು ಕುಂಡ/ಹೊಲದ ನೀರು ಬಸಿಯುವಿಕೆಯನ್ನು ಪರಿಶೀಲಿಸಿ.", "ಗಿಡದ ಪ್ರಕಾರಕ್ಕೆ ತಕ್ಕ ಸೂರ್ಯನ ಬೆಳಕು ಅಥವಾ ಪ್ರಕಾಶಮಾನವಾದ ಬೆಳಕು ನೀಡಿ."],
+        te: ["మళ్లీ నీరు పోసే ముందు మట్టి తేమ, డ్రైనేజీ రంధ్రాలను తనిఖీ చేయండి.", "మొక్క రకానికి తగిన ఎండ లేదా వెలుతురు అందేలా చూడండి."],
+        hi: ["दोबारा पानी देने से पहले मिट्टी की नमी और जल निकासी जांचें।", "पौधे के अनुसार उचित धूप या रोशनी दें।"]
       },
       o: {
-        en: ["Apply well-decomposed compost or farmyard manure.", "Use mulch to retain soil moisture evenly."],
-        kn: ["ಚೆನ್ನಾಗಿ ಕೊಳೆತ ಕೊಟ್ಟಿಗೆ ಗೊಬ್ಬರ ಅಥವಾ ಕಾಂಪೋಸ್ಟ್ ಬಳಸಿ.", "ಮಣ್ಣಿನ ತೇವಾಂಶ ಉಳಿಸಲು ಮಲ್ಚಿಂಗ್ ಮಾಡಿ."],
-        te: ["బాగా చిలికిన కంపోస్ట్ లేదా పశువుల ఎరువు వేయండి.", "నేలలో తేమ నిలవడానికి మల్చింగ్ చేయండి."],
-        hi: ["अच्छी तरह सड़ी गोबर की खाद या कम्पोस्ट डालें।", "नमी बनाए रखने के लिए पलवार (मल्च) का उपयोग करें।"]
+        en: ["Add well-rotted compost or organic vermicompost/leaf mold.", "Top-dress with mulch while keeping stems slightly clear."],
+        kn: ["ಚೆನ್ನಾಗಿ ಕೊಳೆತ ಕಾಂಪೋಸ್ಟ್, ಎರೆಹುಳು ಗೊಬ್ಬರ ಅಥವಾ ಎಲೆ ಗೊಬ್ಬರ ಸೇರಿಸಿ.", "ಕಾಂಡಕ್ಕೆ ನೇರವಾಗಿ ತಾಗದಂತೆ ಸಾವಯವ ಮಲ್ಚ್ ಹಾಕಿ."],
+        te: ["బాగా చిలికిన కంపోస్ట్ లేదా వర్మీకంపోస్ట్ కలపండి.", "కాండం మొదలుకు తగలకుండా మల్చింగ్ చేయండి."],
+        hi: ["अच्छी तरह सड़ी कम्पोस्ट या वर्मीकम्पोस्ट डालें।", "तने से सटाए बिना जैविक मल्च डालें।"]
       },
       c: { en: [], kn: [], te: [], hi: [] }
     },
     holes: {
-      l: { en: "Holes in leaves", kn: "ಎಲೆಗಳಲ್ಲಿ ರಂಧ್ರಗಳು", te: "ఆకులకు రంధ్రాలు", hi: "पत्तियों में छेद" },
-      n: { en: "Leaf-eating caterpillars", kn: "ಎಲೆ ತಿನ್ನುವ ಕಂಬಳಿ ಹುಳುಗಳು", te: "ఆకు తినే పురుగులు", hi: "पत्ती खाने वाले कीट" },
+      l: { en: "Holes or chewed edges", kn: "ರಂಧ್ರಗಳು ಅಥವಾ ಕಚ್ಚಿದ ಅಂಚುಗಳು", te: "రంధ్రాలు లేదా కొరికిన అంచులు", hi: "छेद या कटे किनारे" },
+      n: { en: "Caterpillars, beetles, snails, or garden pests", kn: "ಕಂಬಳಿ ಹುಳುಗಳು, ಜೀರುಂಡೆಗಳು, ಬಸವನ ಹುಳು ಅಥವಾ ಕೀಟಗಳು", te: "పురుగులు, నత్తలు లేదా కీటకాలు", hi: "सुंडियां, भृंग, घोंघे या कीट" },
       sv: "medium",
       t: {
-        en: ["Inspect underside of leaves in morning/evening.", "Hand-pick visible larvae and egg masses."],
-        kn: ["ಬೆಳಿಗ್ಗೆ ಅಥವಾ ಸಂಜೆ ಎಲೆಗಳ ಹಿಂಭಾಗವನ್ನು ಪರೀಕ್ಷಿಸಿ.", "ಕಾಣಿಸುವ ಹುಳುಗಳು ಮತ್ತು ಮೊಟ್ಟೆಗಳನ್ನು ಕೈಯಿಂದ ತೆಗೆಯಿರಿ."],
-        te: ["ఉదయం లేదా సాయంత్రం ఆకుల కింది భాగం చూడండి.", "కనిపించే పురుగులను చేతితో ఏరివేయండి."],
-        hi: ["सुबह या शाम पत्तियों की निचली सतह जांचें।", "दिखने वाली सुंडियों को हाथ से हटाएं।"]
+        en: ["Inspect leaves and undersides early morning or dusk and remove pests manually.", "Check pot saucers and damp corners for slugs or snails."],
+        kn: ["ಬೆಳಿಗ್ಗೆ ಅಥವಾ ಸಂಜೆ ಎಲೆಗಳ ಹಿಂಭಾಗವನ್ನು ನೋಡಿ ಕೀಟಗಳನ್ನು ತೆಗೆಯಿರಿ.", "ಕುಂಡದ ತಳಭಾಗ ಮತ್ತು ತೇವವಾದ ಮೂಲೆಗಳಲ್ಲಿ ಹುಳುಗಳನ್ನು ಪರೀಕ್ಷಿಸಿ."],
+        te: ["ఉదయం లేదా సాయంత్రం ఆకుల కింద చూసి పురుగులను తొలగించండి.", "కుండీల కింద తేమ ప్రాంతాల్లో పురుగులు ఉన్నాయా చూడండి."],
+        hi: ["सुबह या शाम पत्तियों के नीचे देखकर कीट हटाएं।", "गमलों के नीचे और नमी वाली जगह जांचें।"]
       },
       o: {
-        en: ["Spray neem seed kernel extract (NSKE).", "Install pheromone or light traps in the field."],
-        kn: ["ಬೇವಿನ ಬೀಜದ ಕಷಾಯ (NSKE) ಸಿಂಪಡಿಸಿ.", "ಹೊಲದಲ್ಲಿ ಫೆರೋಮೋನ್ ಅಥವಾ ಬೆಳಕಿನ ಬಲೆಗಳನ್ನು ಅಳವಡಿಸಿ."],
-        te: ["వేప గింజల కషాయం (NSKE) పిచికారీ చేయండి.", "పొలంలో ఎర / ట్రాప్‌లు ఏర్పాటు చేయండి."],
-        hi: ["नीम बीज अर्क (NSKE) का छिड़काव करें।", "खेत में फेरोमोन या प्रकाश ट्रैप लगाएं।"]
+        en: ["Spray neem seed kernel extract (NSKE) or mild neem soap spray.", "Use physical barriers or traps where appropriate."],
+        kn: ["ಬೇವಿನ ಬೀಜದ ಕಷಾಯ (NSKE) ಅಥವಾ ಸೌಮ್ಯ ಬೇವಿನ ದ್ರಾವಣ ಸಿಂಪಡಿಸಿ.", "ಅಗತ್ಯವಿರುವಲ್ಲಿ ರಕ್ಷಣಾ ತಡೆ ಅಥವಾ ಬಲೆಗಳನ್ನು ಬಳಸಿ."],
+        te: ["వేప గింజల కషాయం (NSKE) లేదా తేలికపాటి వేప ద్రావణం పిచికారీ చేయండి.", "అవసరమైతే ట్రాప్‌లు లేదా రక్షణ కవచాలు వాడండి."],
+        hi: ["नीम बीज अर्क (NSKE) या हल्का नीम घोल छिड़कें।", "जरूरत के अनुसार ट्रैप या सुरक्षा उपाय करें।"]
       },
       c: {
         en: ["Emamectin benzoate"],
@@ -1620,20 +1453,20 @@ label {
       }
     },
     white: {
-      l: { en: "White powder", kn: "ಬಿಳಿ ಪುಡಿ ಕಾಣಿಸುವುದು", te: "తెల్లని పొడి", hi: "सफेद पाउडर" },
-      n: { en: "Powdery mildew", kn: "ಬೂದಿ ರೋಗ (Powdery mildew)", te: "బూడిద తెగులు", hi: "चूर्णिल आसिता रोग" },
+      l: { en: "White powder or mealy coating", kn: "ಬಿಳಿ ಪುಡಿ ಅಥವಾ ಹಿಟ್ಟಿನಂತಹ ಪದರ", te: "తెల్లని పొడి లేదా పిండి లాంటి పొర", hi: "सफेद पाउडर या परत" },
+      n: { en: "Powdery mildew or sap-sucking pests", kn: "ಬೂದಿ ರೋಗ ಅಥವಾ ರಸ ಹೀರುವ ಕೀಟಗಳು", te: "బూడిద తెగులు లేదా రసం పీల్చే పురుగులు", hi: "चूर्णिल फफूंद या रस चूसने वाले कीट" },
       sv: "medium",
       t: {
-        en: ["Prune heavily coated leaves safely.", "Improve sunlight and spacing between plants."],
-        kn: ["ಹೆಚ್ಚು ಬಿಳಿ ಪುಡಿ ಇರುವ ಎಲೆಗಳನ್ನು ಸುರಕ್ಷಿತವಾಗಿ ತೆಗೆಯಿರಿ.", "ಗಿಡಗಳಿಗೆ ಸೂರ್ಯನ ಬೆಳಕು ಮತ್ತು ಗಾಳಿ ಸರಿಯಾಗಿ ಬೀಳುವಂತೆ ನೋಡಿ."],
-        te: ["ఎక్కువగా తెల్లని పొడి ఉన్న ఆకులను తొలగించండి.", "మొక్కలకు గాలి, వెలుతురు అందేలా చూడండి."],
-        hi: ["अधिक प्रभावित पत्तियों को हटाएं।", "पौधों के बीच हवा और धूप आने दें।"]
+        en: ["Trim heavily coated shoots and avoid overcrowding plants.", "Wipe or rinse affected spots gently when safe for the plant."],
+        kn: ["ಹೆಚ್ಚು ಬಿಳಿ ಪದರ ಇರುವ ಚಿಗುರುಗಳನ್ನು ಕತ್ತರಿಸಿ, ಗಿಡಗಳನ್ನು ದಟ್ಟವಾಗಿ ಇಡಬೇಡಿ.", "ಗಿಡಕ್ಕೆ ಸುರಕ್ಷಿತವಾಗಿದ್ದರೆ ಸೋಂಕಿತ ಭಾಗವನ್ನು ಮೃದುವಾಗಿ ಸ್ವಚ್ಛಗೊಳಿಸಿ."],
+        te: ["ఎక్కువగా తెల్లని పొర ఉన్న భాగాలను కత్తిరించండి, మొక్కలు దగ్గరగా లేకుండా చూడండి.", "మొక్కకు సురక్షితమైతే ఆ భాగాన్ని సున్నితంగా తుడవండి."],
+        hi: ["अधिक प्रभावित हिस्सों को छांटें और पौधों को बहुत पास न रखें।", "पौधे के अनुकूल हो तो प्रभावित हिस्से को हल्के से साफ करें।"]
       },
       o: {
-        en: ["Spray diluted sour buttermilk or neem oil.", "Avoid excess nitrogen fertilizer."],
-        kn: ["ಹುಳಿ ಮಜ್ಜಿಗೆ ಅಥವಾ ಬೇವಿನ ಎಣ್ಣೆ ದ್ರಾವಣ ಸಿಂಪಡಿಸಿ.", "ಸಾರಜನಕ ಗೊಬ್ಬರವನ್ನು ಅತಿಯಾಗಿ ಬಳಸಬೇಡಿ."],
+        en: ["Spray diluted sour buttermilk or neem oil solution.", "Avoid excessive nitrogenous fertilizer."],
+        kn: ["ಹುಳಿ ಮಜ್ಜಿಗೆ ಅಥವಾ ಬೇವಿನ ಎಣ್ಣೆ ದ್ರಾವಣ ಸಿಂಪಡಿಸಿ.", "ಸಾರಜನಕ ಗೊಬ್ಬರವನ್ನು ಅತಿಯಾಗಿ ಹಾಕಬೇಡಿ."],
         te: ["పుల్లటి మజ్జిగ లేదా వేప నూనె ద్రావణం పిచికారీ చేయండి.", "నత్రజని ఎరువు ఎక్కువగా వేయవద్దు."],
-        hi: ["खट्टी छाछ या नीम तेल का घोल छिड़कें।", "नाइट्रोजन खाद अधिक न डालें।"]
+        hi: ["खट्टी छाछ या नीम तेल का घोल छिड़कें।", "नाइट्रोजन खाद अधिक न दें।"]
       },
       c: {
         en: ["Wettable sulphur"],
@@ -1643,20 +1476,20 @@ label {
       }
     },
     wilt: {
-      l: { en: "Plant wilting", kn: "ಗಿಡ ಬಾಡುವುದು", te: "మొక్క వాడిపోవడం", hi: "पौधा मुरझाना" },
-      n: { en: "Wilt or root rot", kn: "ಸೊರಗು ರೋಗ ಅಥವಾ ಬೇರು ಕೊಳೆತ", te: "వడలు తెగులు / వేరు కుళ్ళు", hi: "उकठा या जड़ सड़न" },
+      l: { en: "Wilting, drooping, or root stress", kn: "ಗಿಡ ಬಾಡುವುದು ಅಥವಾ ಬೇರು ಸಮಸ್ಯೆ", te: "మొక్క వాడిపోవడం లేదా వేరు సమస్య", hi: "मुरझाना या जड़ की समस्या" },
+      n: { en: "Root rot, wilt, or dehydration/heat stress", kn: "ಬೇರು ಕೊಳೆತ, ಸೊರಗು ಅಥವಾ ನೀರು/ಶಾಖದ ಒತ್ತಡ", te: "వేరు కుళ్ళు, వడలు తెగులు లేదా నీరు/ఎండ సమస్య", hi: "जड़ सड़न, उकठा या पानी/गर्मी का तनाव" },
       sv: "high",
       t: {
-        en: ["Uproot severely wilted plants away from healthy ones.", "Improve soil drainage immediately."],
-        kn: ["ತೀವ್ರವಾಗಿ ಬಾಡಿದ ಗಿಡಗಳನ್ನು ಆರೋಗ್ಯವಂತ ಗಿಡಗಳಿಂದ ದೂರ ಕಿತ್ತು ನಾಶಪಡಿಸಿ.", "ತಕ್ಷಣ ಮಣ್ಣಿನಲ್ಲಿ ನೀರು ಬಸಿದು ಹೋಗುವ ವ್ಯವಸ್ಥೆ ಮಾಡಿ."],
-        te: ["బాగా వాడిన మొక్కలను తొలగించండి.", "వెంటనే నీరు నిలవకుండా డ్రైనేజీ సరిచేయండి."],
-        hi: ["अधिक मुरझाए पौधों को उखाड़कर अलग करें।", "तुरंत जल निकासी सुधारें।"]
+        en: ["Check whether soil is waterlogged or bone-dry and adjust watering immediately.", "Isolate severely wilted plants so problems do not spread."],
+        kn: ["ಮಣ್ಣು ಹೆಚ್ಚು ಒದ್ದೆಯಾಗಿದೆಯೇ ಅಥವಾ ಒಣಗಿದೆಯೇ ಎಂದು ನೋಡಿ ತಕ್ಷಣ ನೀರು ಹಾಯಿಸುವುದನ್ನು ಸರಿಪಡಿಸಿ.", "ತೀವ್ರವಾಗಿ ಬಾಡಿದ ಗಿಡವನ್ನು ಇತರ ಗಿಡಗಳಿಂದ ಪ್ರತ್ಯೇಕಿಸಿ."],
+        te: ["మట్టి ఎక్కువ తడిగా ఉందా లేదా పొడిగా ఉందా చూసి వెంటనే నీటిని సరిచేయండి.", "తీవ్రంగా వాడిన మొక్కను మిగతా వాటికి దూరంగా ఉంచండి."],
+        hi: ["मिट्टी में अधिक नमी है या सूखी है, जांचकर तुरंत पानी संतुलित करें।", "अधिक मुरझाए पौधे को बाकी पौधों से अलग रखें।"]
       },
       o: {
-        en: ["Apply Trichoderma bio-agent with organic manure.", "Practice crop rotation in the next season."],
-        kn: ["ಸಾವಯವ ಗೊಬ್ಬರದೊಂದಿಗೆ ಟ್ರೈಕೋಡರ್ಮಾ (Trichoderma) ಬಳಸಿ.", "ಮುಂದಿನ ಋತುವಿನಲ್ಲಿ ಬೆಳೆ ಬದಲಾವಣೆ (Crop rotation) ಮಾಡಿ."],
-        te: ["సేంద్రియ ఎరువుతో ట్రైకోడెర్మా వాడండి.", "తదుపరి పంటలో పంట మార్పిడి చేయండి."],
-        hi: ["जैविक खाद के साथ ट्राइकोडर्मा मिलाएं।", "अगले मौसम में फसल चक्र अपनाएं।"]
+        en: ["Use Trichoderma bio-inoculant with compost and ensure free drainage.", "Provide temporary shade during peak afternoon heat."],
+        kn: ["ಕಾಂಪೋಸ್ಟ್ ಜೊತೆ ಟ್ರೈಕೋಡರ್ಮಾ (Trichoderma) ಬಳಸಿ ಮತ್ತು ನೀರು ಸರಾಗವಾಗಿ ಬಸಿಯುವಂತೆ ಮಾಡಿ.", "ಮಧ್ಯಾಹ್ನದ ತೀವ್ರ ಬಿಸಿಲಿನಲ್ಲಿ ತಾತ್ಕಾಲಿಕ ನೆರಳು ನೀಡಿ."],
+        te: ["కంపోస్ట్‌తో ట్రైకోడెర్మా వాడండి, నీరు నిలవకుండా డ్రైనేజీ చూడండి.", "మధ్యాహ్నం తీవ్రమైన ఎండలో తాత్కాలిక నీడ ఇవ్వండి."],
+        hi: ["कम्पोस्ट के साथ ट्राइकोडर्मा मिलाएं और जल निकासी सुधारें।", "दोपहर की तेज धूप में अस्थायी छाया दें।"]
       },
       c: {
         en: ["Copper oxychloride"],
@@ -1670,123 +1503,397 @@ label {
   var LC = { en: "en-IN", kn: "kn-IN", te: "te-IN", hi: "hi-IN" };
   var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-  function updateSpeakingIndicator(speaking) {
-    isSpeakingNow = !!speaking;
-    var ind = $("speakingStatus");
-    var lbl = $("speakingLabel");
-    var stopBtn = $("stopAudioBtn");
-    if (!ind || !lbl || !stopBtn) return;
-
-    if (isSpeakingNow) {
-      ind.classList.add("active");
-      lbl.textContent = T.audioSpeaking[L];
-      stopBtn.classList.add("speaking");
-    } else {
-      ind.classList.remove("active");
-      lbl.textContent = T.audioIdle[L];
-      stopBtn.classList.remove("speaking");
-    }
+  function escapeHtml(str) {
+    return String(str || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
   }
 
-  function stopSpeaking() {
+  function stopOverlappingPlayback(exceptAudioEl) {
     try {
       if (window.speechSynthesis) {
         speechSynthesis.cancel();
       }
     } catch (e) {}
-    updateSpeakingIndicator(false);
+    var players = document.querySelectorAll("audio");
+    for (var i = 0; i < players.length; i++) {
+      if (players[i] !== exceptAudioEl) {
+        try { players[i].pause(); } catch (e) {}
+      }
+    }
   }
 
-  function setStatusMsg(txt, isWarn) {
+  function setCleanStatus(txt) {
     var activeMain = $("vf").classList.contains("hide") ? $("note") : $("fnote");
     activeMain.textContent = txt;
-    if (isWarn) {
-      activeMain.classList.add("status-banner", "warn");
-    } else {
-      activeMain.classList.remove("status-banner", "warn");
+    activeMain.classList.remove("status-banner", "warn");
+  }
+
+  function getCropDisplayLabel(cropVal) {
+    var all = getAllCrops();
+    var item = all.find(function (c) { return c.v === cropVal; });
+    if (item) {
+      return typeof item.l === "string" ? item.l : (item.l[L] || item.l.en || item.v);
     }
+    return cropVal || "Paddy (Rice)";
   }
 
-  function showShareToast(msg) {
-    var el = $("shareToast");
-    if (!el) return;
-    el.textContent = msg;
-    el.classList.remove("hide");
-    clearTimeout(showShareToast._timer);
-    showShareToast._timer = setTimeout(function () {
-      el.classList.add("hide");
-    }, 4500);
+  function updateAutoCropBadge(cropVal, fromUserInput) {
+    var badge = $("autoCropBadge");
+    if (!badge) return;
+    var activeVal = cropVal || $("crop").value || "Paddy";
+    var label = getCropDisplayLabel(activeVal);
+    var prefix = fromUserInput ? T.autoCropSelected[L] : T.cropL[L];
+    badge.textContent = "🌱 " + prefix + ": " + label;
+    badge.classList.remove("hide");
   }
 
-  function speak(text, isAutoTrigger) {
-    if (!text) return;
-    if (isAutoTrigger && !autoReadAloud) return;
-
-    if (!window.speechSynthesis) {
-      updateSpeakingIndicator(false);
-      if (!isAutoTrigger) {
-        setStatusMsg(T.novoice[L], true);
-      }
+  function updateSpokenDisplay(boxId, text) {
+    var box = $(boxId);
+    if (!box) return;
+    var clean = (text || "").trim();
+    if (!clean) {
+      box.textContent = "";
+      box.classList.add("hide");
       return;
     }
+    box.innerHTML = "🎤 <strong>" + T.spokenLbl[L] + ":</strong> “" + escapeHtml(clean) + "”";
+    box.classList.remove("hide");
+  }
 
+  function speak(text) {
+    stopOverlappingPlayback(null);
+    if (!window.speechSynthesis) return;
     try {
-      speechSynthesis.cancel();
       var targetLang = LC[L];
       var utter = new SpeechSynthesisUtterance(text);
       utter.lang = targetLang;
-      utter.rate = slowSpeech ? 0.78 : 1.0;
-
       var voices = speechSynthesis.getVoices() || [];
       var prefix = targetLang.slice(0, 2).toLowerCase();
-      var matchedVoice = null;
       for (var i = 0; i < voices.length; i++) {
         var vLang = (voices[i].lang || "").replace("_", "-").toLowerCase();
         if (vLang === targetLang.toLowerCase() || vLang.indexOf(prefix) === 0) {
-          matchedVoice = voices[i];
+          utter.voice = voices[i];
           break;
         }
       }
-
-      if (matchedVoice) {
-        utter.voice = matchedVoice;
-      } else if (voices.length > 0 && !isAutoTrigger) {
-        setStatusMsg(T.novoice[L], true);
-      }
-
-      utter.onstart = function () {
-        updateSpeakingIndicator(true);
-      };
-      utter.onend = function () {
-        updateSpeakingIndicator(false);
-      };
-      utter.onerror = function () {
-        updateSpeakingIndicator(false);
-        if (!isAutoTrigger) {
-          setStatusMsg(T.novoice[L], true);
-        }
-      };
-
-      updateSpeakingIndicator(true);
       speechSynthesis.speak(utter);
-    } catch (err) {
-      updateSpeakingIndicator(false);
-      if (!isAutoTrigger) {
-        setStatusMsg(T.novoice[L], true);
-      }
-    }
+    } catch (err) {}
   }
 
   if (window.speechSynthesis && typeof speechSynthesis.onvoiceschanged !== "undefined") {
     speechSynthesis.onvoiceschanged = function () {};
   }
 
-  function matchSchemes() {
-    return S.filter(function (s) {
-      return (!s.occ || (ans.occ && s.occ.indexOf(ans.occ) > -1)) &&
-             (!s.inc || (ans.inc && s.inc.indexOf(ans.inc) > -1)) &&
-             (!s.age || (ans.age && s.age.indexOf(ans.age) > -1));
+  function getAudioConstraints() {
+    if (noDisturbance) {
+      return {
+        echoCancellation: true,
+        noiseSuppression: true,
+        autoGainControl: true
+      };
+    }
+    return {
+      echoCancellation: false,
+      noiseSuppression: false,
+      autoGainControl: false
+    };
+  }
+
+  function syncDisturbanceButtons() {
+    var btn = $("schemeQuietBtn");
+    if (btn) {
+      btn.setAttribute("aria-pressed", noDisturbance ? "true" : "false");
+    }
+    if ($("schemeQuietTxt")) $("schemeQuietTxt").textContent = T.noDisturbance[L];
+  }
+
+  function blobToBase64(blob) {
+    return new Promise(function (resolve, reject) {
+      var reader = new FileReader();
+      reader.onloadend = function () {
+        var res = String(reader.result || "");
+        var commaIdx = res.indexOf(",");
+        resolve(commaIdx > -1 ? res.slice(commaIdx + 1) : res);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
     });
+  }
+
+  function callGeminiStructured(parts, responseSchema) {
+    if (!GEMINI_API_KEY) {
+      return Promise.reject(new Error("no_key"));
+    }
+    var endpoint = "https://generativelanguage.googleapis.com/v1beta/models/" + GEMINI_MODEL + ":generateContent?key=" + encodeURIComponent(GEMINI_API_KEY);
+    return fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [{ role: "user", parts: parts }],
+        generationConfig: {
+          responseMimeType: "application/json",
+          responseSchema: responseSchema,
+          temperature: 0.25
+        }
+      })
+    }).then(function (resp) {
+      if (!resp.ok) throw new Error("API " + resp.status);
+      return resp.json();
+    }).then(function (data) {
+      var text = data && data.candidates && data.candidates[0] && data.candidates[0].content &&
+                 data.candidates[0].content.parts && data.candidates[0].content.parts[0] &&
+                 data.candidates[0].content.parts[0].text;
+      if (!text) throw new Error("Empty response");
+      return JSON.parse(text);
+    });
+  }
+
+  function parseAmountInRupees(rawText) {
+    var v = (rawText || "").toLowerCase().replace(/,/g, " ").trim();
+    if (!v) return NaN;
+
+    var wordMap = [
+      [/\b(half)\b|ಅರ್ಧ|అర|आधा|साढ़े/g, 0.5],
+      [/\b(one|a)\b|ಒಂದು|ఒకటి|ఒక|एक/g, 1],
+      [/\b(two|couple)\b|ಎರಡು|రెండు|दो/g, 2],
+      [/\b(three)\b|ಮೂರು|మూడు|तीन/g, 3],
+      [/\b(four)\b|ನಾಲ್ಕು|నాలుగు|चार/g, 4],
+      [/\b(five)\b|ಐದು|ఐదు|पांच|पाँच/g, 5],
+      [/\b(six)\b|ಆರು|ఆరు|छह/g, 6],
+      [/\b(seven)\b|ಏಳು|ఏడు|सात/g, 7],
+      [/\b(eight)\b|ಎಂಟು|ఎనిమిది|आठ/g, 8],
+      [/\b(nine)\b|ಒಂಬತ್ತು|తొమ్మిది|नौ/g, 9],
+      [/\b(ten)\b|ಹತ್ತು|పది|दस/g, 10],
+      [/\b(fifteen)\b|ಹದಿನೈದು|పదిహేను|पंद्रह/g, 15],
+      [/\b(twenty)\b|ಇಪ್ಪತ್ತು|ఇరవై|बीस/g, 20],
+      [/\b(twenty\s*five)\b|ಇಪ್ಪತ್ತೈದು|ఇరవై\s*ఐదు|पच्चीस/g, 25],
+      [/\b(thirty)\b|ಮೂವತ್ತು|ముప్పై|तीस/g, 30],
+      [/\b(forty)\b|ನಲವತ್ತು|నలభై|चालीस/g, 40],
+      [/\b(fifty)\b|ಐವತ್ತು|యాభై|पचास/g, 50],
+      [/\b(sixty)\b|ಅರವತ್ತು|అరవై|साठ/g, 60],
+      [/\b(seventy)\b|ಎಪ್ಪತ್ತು|డెబ్బై|सत्तर/g, 70],
+      [/\b(eighty)\b|ಎಂಬತ್ತು|ఎనభై|अस्सी/g, 80],
+      [/\b(ninety)\b|ತೊಂಬತ್ತು|తొంభై|नब्बे/g, 90],
+      [/\b(hundred)\b|ನೂರು|వంద|सौ/g, 100]
+    ];
+
+    var hasCrore = /crore|ಕೋಟಿ|కోటి|కోట్లు|करोड़/i.test(v);
+    var hasLakh = /lakh|lac|ಲಕ್ಷ|లక్ష|लाख/i.test(v);
+    var hasThousand = /thousand|k\b|ಸಾವಿರ|వేల|వేలు|हजार|हज़ार/i.test(v);
+
+    var cleanedForMoney = v.replace(/\b\d{1,3}\s*(year|years|yr|yrs|old|ವರ್ಷ|ವಯಸ್ಸು|ఏళ్ల|సంవత్సరాల|వయస్సు|साल|वर्ष|उम्र)\b/gi, " ");
+    var numMatch = cleanedForMoney.match(/(\d+(?:\.\d+)?)/);
+    var baseNum = numMatch ? parseFloat(numMatch[1]) : NaN;
+
+    if (isNaN(baseNum)) {
+      for (var i = 0; i < wordMap.length; i++) {
+        if (wordMap[i][0].test(cleanedForMoney)) {
+          baseNum = wordMap[i][1];
+          break;
+        }
+      }
+    }
+
+    if (isNaN(baseNum)) return NaN;
+    if (hasCrore) return baseNum * 10000000;
+    if (hasLakh) return baseNum * 100000;
+    if (hasThousand) return baseNum * 1000;
+    return baseNum;
+  }
+
+  function inferProfileFromText(rawText) {
+    var v = (rawText || "").toLowerCase().trim();
+    var out = {};
+
+    if (/\b(student|stud|college|school|scholar|vidyarthi|pupil|learner)\b|ವಿದ್ಯಾರ್ಥಿ|ಓದು|విద్యార్థి|చదువు|छात्र|विद्यार्थी|पढ़ाई/i.test(v)) out.occ = "student";
+    else if (/\b(farmer|kisan|rythu|raitha|agricult|crop|paddy|cotton)\b|ರೈತ|ಬೆಳೆ|ರೈತು|పంట|వ్యవసాయ|किसान|खेती|फसल/i.test(v)) out.occ = "farmer";
+    else if (/\b(woman|women|girl|daughter|mother|lady|family|mahile|mahila)\b|ಮಹಿಳೆ|ಕುಟುಂಬ|ಮಗಳು|మహిళ|కుటుంబ|ఆడపిల్ల|महिला|परिवार|बेटी/i.test(v)) out.occ = "woman";
+    else if (/\b(business|shop|trade|enterprise|loan|mudra|vyapara|merchant)\b|ವ್ಯಾಪಾರ|ಅಂಗಡಿ|ಉದ್ಯಮ|వ్యాపార|అంగడి|व्यवसाय|व्यापार|दुकान/i.test(v)) out.occ = "biz";
+    else if (/\b(other|itara|anya)\b|ಇತರೆ|ఇతర|अन्य/i.test(v)) out.occ = "other";
+
+    var amount = parseAmountInRupees(v);
+    if (!isNaN(amount)) {
+      out.exactAmount = amount;
+      out.inc = amount < 300000 ? "low" : "high";
+    } else if (/below|less|poor|under|bpl|kadime|ಕಡಿಮೆ|ಬಡ|తక్కువ|పేద|कम|गरीब/i.test(v)) {
+      out.inc = "low";
+    } else if (/above|more|rich|hechchu|ಹೆಚ್ಚು|ఎక్కువ|అధిక|अधिक|ज्यादा/i.test(v)) {
+      out.inc = "high";
+    }
+
+    var ageMatch = v.match(/\b(\d{1,3})\s*(year|years|yr|yrs|old|ವರ್ಷ|ವಯಸ್ಸು|ఏళ్ల|సంవత్సరాల|వయస్సు|साल|वर्ष|उम्र)\b/i) ||
+                   v.match(/\b(age|ವಯಸ್ಸು|వయస్సు|उम्र)\s*(?:is|:|-)?\s*(\d{1,3})\b/i);
+    if (ageMatch) {
+      var parsedAge = parseInt(ageMatch[1] && !isNaN(parseInt(ageMatch[1], 10)) ? ageMatch[1] : ageMatch[2], 10);
+      if (!isNaN(parsedAge) && parsedAge > 0 && parsedAge < 120) {
+        out.age = parsedAge < 18 ? "u18" : (parsedAge < 60 ? "adult" : "senior");
+      }
+    } else if (/senior|old\s*age|elder|pension|retired|vridha|ಹಿರಿಯ|ವೃದ್ಧ|వృద్ధ|పెన్షన్|बुजुर्ग|पेंशन/i.test(v)) {
+      out.age = "senior";
+    } else if (/child|minor|kid|under\s*18|below\s*18|magu|ಮಗು|పిల్ల|बच्च/i.test(v)) {
+      out.age = "u18";
+    } else if (/adult|young|middle|18\s*to\s*59|वयस्क|పెద్ద|ವಯಸ್ಕ/i.test(v)) {
+      out.age = "adult";
+    }
+
+    return out;
+  }
+
+  function advanceStepFromAnswers() {
+    var nextStep = 0;
+    while (nextStep < Q.length && ans[Q[nextStep].k]) {
+      nextStep++;
+    }
+    step = nextStep;
+  }
+
+  function buildSchemeRecommendations(options) {
+    var opts = options || {};
+    var inferred = opts.freeText ? inferProfileFromText(opts.freeText) : {};
+    var occ = opts.occ || inferred.occ || ans.occ;
+    var inc = opts.inc || inferred.inc || ans.inc;
+    var age = opts.age || inferred.age || ans.age;
+
+    var matches = SCHEME_CATALOG.filter(function (item) {
+      var occOk = !item.occ || !occ || item.occ.indexOf(occ) > -1;
+      var incOk = !item.inc || !inc || item.inc.indexOf(inc) > -1;
+      var ageOk = !item.age || !age || item.age.indexOf(age) > -1;
+      return occOk && incOk && ageOk;
+    });
+
+    if (!matches.length) {
+      matches = SCHEME_CATALOG.filter(function (item) {
+        return (!occ || !item.occ || item.occ.indexOf(occ) > -1);
+      });
+    }
+    if (!matches.length) {
+      matches = SCHEME_CATALOG.slice(0, 3);
+    }
+
+    return matches.map(function (sc) {
+      return {
+        name: sc.name[L],
+        benefit: sc.benefit[L],
+        documents: sc.documents[L],
+        url: sc.url
+      };
+    });
+  }
+
+  function extractCustomSymptomsFromText(rawText) {
+    var clean = (rawText || "").trim();
+    if (!clean) return [];
+
+    var chunks = clean.split(/,|;|\band\b|\bwith\b|\bplus\b|\bಮತ್ತು\b|\bಹಾಗೂ\b|\bమరియు\b|\bऔर\b|\bव\b/i);
+    var found = [];
+
+    var stopWords = /^(i|my|the|a|an|in|on|at|for|of|to|is|are|has|have|see|saw|hear|heard|crop|plant|leaf|leaves|problem|issue|disease|paddy|rice|cotton|chilli|chili|groundnut|maize|corn|tomato|sugarcane|banana|brinjal|okra|potato|onion|mango|papaya|guava|rose|marigold|hibiscus|jasmine|money\s*plant|tulsi|neem|coconut)$/i;
+
+    chunks.forEach(function (part) {
+      var p = part
+        .replace(/^(my|our|the|this|that)\s+(crop|plant|field|tree|pot)?\s*(has|have|is|are|shows|showing|getting)?\s*/i, "")
+        .replace(/\b(crop|plant|field|tree)\b/gi, "")
+        .trim();
+      if (!p || p.length < 3 || p.length > 70) return;
+      if (stopWords.test(p)) return;
+
+      var lowerP = p.toLowerCase();
+      var matchesPreset = Object.keys(C).some(function (k) {
+        return C[k].l[L].toLowerCase() === lowerP || C[k].l.en.toLowerCase() === lowerP;
+      });
+      if (!matchesPreset && found.indexOf(p) === -1) {
+        found.push(p);
+      }
+    });
+
+    return found.slice(0, 4);
+  }
+
+  function buildPlantDiagnosis(opts) {
+    var cropVal = opts.cropVal || $("crop").value || "Paddy";
+    var cropLabel = getCropDisplayLabel(cropVal);
+    var symKeys = opts.symKeys && opts.symKeys.length ? opts.symKeys.slice() : ["spots"];
+    var textCustomSyms = extractCustomSymptomsFromText(opts.sourceText || "");
+    var mergedCustomSyms = customSymptoms.slice();
+    textCustomSyms.forEach(function (cs) {
+      if (mergedCustomSyms.indexOf(cs) === -1) {
+        mergedCustomSyms.push(cs);
+      }
+    });
+
+    var rank = { low: 1, medium: 2, high: 3 };
+    var overallSev = "medium";
+
+    var allToday = [];
+    var allOrganic = [];
+    var allChem = [];
+    var issues = [];
+
+    symKeys.forEach(function (k) {
+      var info = C[k] || C.spots;
+      if (rank[info.sv] > rank[overallSev]) overallSev = info.sv;
+      (info.t[L] || []).forEach(function (x) {
+        var line = cropLabel + ": " + x;
+        if (allToday.indexOf(line) === -1) allToday.push(line);
+      });
+      (info.o[L] || []).forEach(function (x) {
+        var line = cropLabel + ": " + x;
+        if (allOrganic.indexOf(line) === -1) allOrganic.push(line);
+      });
+      (info.c[L] || []).forEach(function (x) {
+        if (allChem.indexOf(x) === -1) allChem.push(x);
+      });
+      issues.push({
+        title: cropLabel + " — " + info.n[L],
+        symptomDetail: cropLabel + " • " + info.l[L],
+        severity: info.sv
+      });
+    });
+
+    mergedCustomSyms.forEach(function (csText) {
+      var isHighRisk = /rot|blight|wilt|borer|virus|curl|rust|blast|dying|die|ooze|oozing/i.test(csText);
+      var itemSev = isHighRisk ? "high" : "medium";
+      if (rank[itemSev] > rank[overallSev]) overallSev = itemSev;
+
+      issues.push({
+        title: cropLabel + " — " + csText,
+        symptomDetail: cropLabel + " (" + csText + ")",
+        severity: itemSev
+      });
+
+      var todayLine = cropLabel + " (" + csText + "): " + (C.spots.t[L][0] || "Inspect affected plant parts carefully.");
+      var orgLine = cropLabel + " (" + csText + "): " + (C.spots.o[L][0] || "Apply mild neem/organic care solution.");
+      if (allToday.indexOf(todayLine) === -1) allToday.unshift(todayLine);
+      if (allOrganic.indexOf(orgLine) === -1) allOrganic.unshift(orgLine);
+    });
+
+    var notes = [];
+    if (opts.hasPhoto && !opts.hasExplicitSyms) {
+      notes.push(T.photoOnlyNote[L]);
+    }
+
+    var allSymptomLabels = symKeys.map(function (k) { return C[k] ? C[k].l[L] : k; });
+    mergedCustomSyms.forEach(function (cs) {
+      if (allSymptomLabels.indexOf(cs) === -1) {
+        allSymptomLabels.push(cs);
+      }
+    });
+
+    return {
+      cropVal: cropVal,
+      cropLabel: cropLabel,
+      sourceText: opts.sourceText || "",
+      overallSeverity: overallSev,
+      summaryNote: notes.join(" • "),
+      selectedSymptomLabels: allSymptomLabels,
+      issues: issues,
+      todayActions: allToday,
+      organicOptions: allOrganic,
+      chemicalOptions: allChem
+    };
   }
 
   function addBubble(text, isUser) {
@@ -1799,85 +1906,133 @@ label {
 
   function goBackToStep(idx) {
     step = idx;
+    aiSchemesResult = null;
     for (var j = idx; j < Q.length; j++) {
       delete ans[Q[j].k];
     }
-    renderSchemesChat(false);
+    renderSchemesChat();
   }
 
-  // Parsing user text/speech in English, Kannada, Telugu, Hindi
-  function parseAnswer(key, rawVal) {
-    var v = rawVal.toLowerCase().trim();
-    var numMatch = v.match(/[\d.]+/);
-    var num = numMatch ? parseFloat(numMatch[0]) : NaN;
-
-    if (key === "occ") {
-      var occRules = [
-        ["farmer", /farm|kisan|rythu|raitha|ರೈತ|ಬೆಳೆ|ರೈತು|किसान|खेती/i],
-        ["student", /student|stud|vidyarthi|ವಿದ್ಯಾರ್ಥಿ|ಓದು|విద్యార్థి|छात्र|विद्यार्थी/i],
-        ["woman", /wom|girl|family|mahile|ಮಹಿಳೆ|ಕುಟುಂಬ|ಮಗಳು|మహిళ|కుటుంబ|महिला|परिवार|बेटी/i],
-        ["biz", /business|shop|trade|vyapara|ವ್ಯಾಪಾರ|ಅಂಗಡಿ|ಉದ್ಯಮ|వ్యాపార|అంగడి|व्यवसाय|व्यापार|दुकान/i],
-        ["other", /other|itara|ಇತರೆ|ఇతర|अन्य/i]
-      ];
-      for (var i = 0; i < occRules.length; i++) {
-        if (occRules[i][1].test(v)) return occRules[i][0];
-      }
-      return null;
-    }
-
-    if (key === "inc") {
-      if (/low|below|less|poor|under|kadime|ಕಡಿಮೆ|తక్కువ|పేద|कम|गरीब/i.test(v)) return "low";
-      if (/high|above|more|hechchu|ಹೆಚ್ಚು|ఎక్కువ|అధిక|अधिक|ज्यादा/i.test(v)) return "high";
-      if (!isNaN(num)) {
-        var rupees = num >= 1000 ? num : num * 100000;
-        return rupees < 300000 ? "low" : "high";
-      }
-      return null;
-    }
-
-    if (key === "age") {
-      if (!isNaN(num)) {
-        if (/under|below|olage|ಕಡಿಮೆ/i.test(v) && num <= 18) return "u18";
-        return num < 18 ? "u18" : (num < 60 ? "adult" : "senior");
-      }
-      if (/senior|old|elder|vridha|ಹಿರಿಯ|ವೃದ್ಧ|వృద్ధ|बुजुर्ग/i.test(v)) return "senior";
-      if (/child|minor|kid|magu|ಮಗು|పిల్ల|बच्च/i.test(v)) return "u18";
-      if (/adult|18|59|वयस्क|పెద్ద/i.test(v)) return "adult";
-      return null;
-    }
-
-    return null;
-  }
-
-  function startSpeechRecognition(onTextCallback, micBtn) {
-    if (!SR) {
-      setStatusMsg(T.nomic[L], true);
-      return;
-    }
-    stopSpeaking();
+  function startSpeechRecognition(onTextCallback, micBtn, spokenBoxId) {
+    stopOverlappingPlayback(null);
+    if (!SR) return;
     try {
       var rec = new SR();
       rec.lang = LC[L];
-      rec.interimResults = false;
+      rec.interimResults = true;
       rec.maxAlternatives = 1;
       if (micBtn) micBtn.classList.add("on");
 
       rec.onresult = function (e) {
-        var transcript = e.results && e.results[0] && e.results[0][0] ? e.results[0][0].transcript : "";
-        if (transcript) onTextCallback(transcript);
+        var transcript = "";
+        for (var i = 0; i < e.results.length; i++) {
+          if (e.results[i][0] && e.results[i][0].transcript) {
+            transcript += (transcript ? " " : "") + e.results[i][0].transcript.trim();
+          }
+        }
+        if (transcript && spokenBoxId) {
+          updateSpokenDisplay(spokenBoxId, transcript);
+        }
+        var lastResult = e.results[e.results.length - 1];
+        if (lastResult && lastResult.isFinal && transcript) {
+          onTextCallback(transcript);
+        }
       };
       rec.onend = function () {
         if (micBtn) micBtn.classList.remove("on");
       };
       rec.onerror = function () {
         if (micBtn) micBtn.classList.remove("on");
-        setStatusMsg(T.nomic[L], true);
       };
       rec.start();
     } catch (err) {
       if (micBtn) micBtn.classList.remove("on");
-      setStatusMsg(T.nomic[L], true);
     }
+  }
+
+  function processSchemesWithAi(options) {
+    var opts = options || {};
+    var combinedText = (opts.freeText || schemeAudioTranscript || "").trim();
+    if (combinedText) {
+      lastSpokenSchemeText = combinedText;
+      updateSpokenDisplay("schemeSpokenBox", combinedText);
+    }
+
+    var inferred = combinedText ? inferProfileFromText(combinedText) : {};
+    if (inferred.occ) ans.occ = inferred.occ;
+    if (inferred.inc) ans.inc = inferred.inc;
+    if (inferred.age) ans.age = inferred.age;
+
+    if (!ans.occ && !ans.inc && !ans.age) {
+      ans.occ = "other";
+      ans.inc = "low";
+      ans.age = "adult";
+    }
+
+    advanceStepFromAnswers();
+    renderSchemesChat();
+    aiSchemesResult = buildSchemeRecommendations({
+      freeText: combinedText,
+      isAudio: !!opts.isAudio,
+      audioPeak: opts.audioPeak || 0
+    });
+    renderSchemeCards();
+
+    var schemeResponseSchema = {
+      type: "OBJECT",
+      properties: {
+        detectedOccupation: { type: "STRING", enum: ["farmer", "student", "woman", "biz", "other", ""] },
+        detectedIncome: { type: "STRING", enum: ["low", "high", ""] },
+        detectedAge: { type: "STRING", enum: ["u18", "adult", "senior", ""] },
+        schemes: {
+          type: "ARRAY",
+          items: {
+            type: "OBJECT",
+            properties: {
+              name: { type: "STRING" },
+              benefit: { type: "STRING" },
+              documents: { type: "STRING" },
+              url: { type: "STRING" }
+            },
+            required: ["name", "benefit", "documents", "url"]
+          }
+        }
+      },
+      required: ["schemes"]
+    };
+
+    var promptText =
+      "You are Agrimate AI for government and agricultural schemes. " +
+      "Respond STRICTLY in " + LANG_NAMES[L] + ". " +
+      "Selected options: occupation=" + (ans.occ || "unspecified") + ", income=" + (ans.inc || "unspecified") + ", age=" + (ans.age || "unspecified") + ". " +
+      (combinedText ? "User said/typed: " + combinedText + ". " : "") +
+      "If audio is provided, listen carefully for occupation (such as student, farmer, woman/family, small business, other in any language), spoken or typed yearly family income/amounts (such as 2000, 3000, below/above 3 lakh), or age group (under 18, 18-59, 60 or above), set detectedOccupation/detectedIncome/detectedAge accurately without forcing student to farmer, and return matching schemes in " + LANG_NAMES[L] + ".";
+
+    var prepareParts = opts.audioBlob
+      ? blobToBase64(opts.audioBlob).then(function (b64) {
+          return [
+            { text: promptText },
+            { inlineData: { mimeType: opts.audioBlob.type || "audio/webm", data: b64 } }
+          ];
+        })
+      : Promise.resolve([{ text: promptText }]);
+
+    prepareParts
+      .then(function (parts) { return callGeminiStructured(parts, schemeResponseSchema); })
+      .then(function (res) {
+        if (res.detectedOccupation) ans.occ = res.detectedOccupation;
+        if (res.detectedIncome) ans.inc = res.detectedIncome;
+        if (res.detectedAge) ans.age = res.detectedAge;
+        advanceStepFromAnswers();
+        renderSchemesChat();
+        aiSchemesResult = (res && Array.isArray(res.schemes) && res.schemes.length)
+          ? res.schemes
+          : buildSchemeRecommendations({ freeText: combinedText });
+        renderSchemeCards();
+      })
+      .catch(function () {
+        // Local results already displayed immediately above
+      });
   }
 
   function buildQuestionInput(q) {
@@ -1893,14 +2048,26 @@ label {
     function submitAns(val) {
       var clean = (val || "").trim();
       if (!clean) return;
-      var parsed = parseAnswer(q.k, clean);
-      if (parsed) {
-        ans[q.k] = parsed;
-        step++;
-        renderSchemesChat(true);
-      } else {
-        setStatusMsg(T.nu[L], true);
+      addBubble(clean, true);
+      updateSpokenDisplay("schemeSpokenBox", clean);
+      var matched = null;
+      var lower = clean.toLowerCase();
+      for (var i = 0; i < q.o.length; i++) {
+        if (q.o[i][1][L].toLowerCase().indexOf(lower) > -1 || lower.indexOf(q.o[i][1][L].toLowerCase()) > -1) {
+          matched = q.o[i][0];
+          break;
+        }
       }
+      var inf = inferProfileFromText(clean);
+      if (inf.occ) ans.occ = inf.occ;
+      if (inf.inc) ans.inc = inf.inc;
+      if (inf.age) ans.age = inf.age;
+      if (matched) {
+        ans[q.k] = matched;
+      }
+      advanceStepFromAnswers();
+      renderSchemesChat();
+      processSchemesWithAi({ freeText: clean });
     }
 
     goBtn.onclick = function () { submitAns(inp.value); };
@@ -1914,12 +2081,12 @@ label {
       startSpeechRecognition(function (spoken) {
         inp.value = spoken;
         submitAns(spoken);
-      }, micBtn);
+      }, micBtn, "schemeSpokenBox");
     };
     $("opts").appendChild(wrap);
   }
 
-  function renderSchemesChat(shouldAutoSpeak) {
+  function renderSchemesChat() {
     $("chat").innerHTML = "";
     $("opts").innerHTML = "";
 
@@ -1934,7 +2101,7 @@ label {
             break;
           }
         }
-        var userBub = addBubble(chosenOpt ? chosenOpt[1][L] : "", true);
+        var userBub = addBubble(chosenOpt ? chosenOpt[1][L] : (ans[qItem.k] || ""), true);
         var chgBtn = document.createElement("button");
         chgBtn.type = "button";
         chgBtn.className = "mini chg";
@@ -1953,9 +2120,9 @@ label {
       spBtn.type = "button";
       spBtn.className = "mini chg";
       spBtn.textContent = "🔊 " + T.listen[L];
-      var qSpokenText = curQ.q[L] + ". " + curQ.o.map(function (o) { return o[1][L]; }).join(", ");
       spBtn.onclick = function () {
-        speak(qSpokenText, false);
+        var optLabels = curQ.o.map(function (o) { return o[1][L]; }).join(", ");
+        speak(curQ.q[L] + ". " + optLabels);
       };
       qBub.appendChild(spBtn);
 
@@ -1965,28 +2132,28 @@ label {
         b.textContent = opt[1][L];
         b.onclick = function () {
           ans[curQ.k] = opt[0];
-          step++;
-          renderSchemesChat(true);
+          advanceStepFromAnswers();
+          renderSchemesChat();
+          if (step === Q.length) {
+            processSchemesWithAi({});
+          }
         };
         $("opts").appendChild(b);
       });
 
       buildQuestionInput(curQ);
-
-      if (shouldAutoSpeak && autoReadAloud) {
-        speak(qSpokenText, true);
-      }
     }
 
-    renderSchemeCards(shouldAutoSpeak);
+    renderSchemeCards();
   }
 
-  function renderSchemeCards(shouldAutoSpeak) {
+  function renderSchemeCards() {
     var container = $("cards");
     container.innerHTML = "";
-    $("again").style.display = step > 0 ? "block" : "none";
+    var hasAnyState = step > 0 || (aiSchemesResult && aiSchemesResult.length > 0);
+    $("again").style.display = hasAnyState ? "block" : "none";
 
-    if (step < Q.length) {
+    if (!aiSchemesResult) {
       var emp = document.createElement("div");
       emp.className = "empty";
       emp.textContent = T.empty[L];
@@ -1994,50 +2161,217 @@ label {
       return;
     }
 
-    var matched = matchSchemes();
-    if (!matched.length) {
+    if (!aiSchemesResult.length) {
       var noRes = document.createElement("div");
       noRes.className = "empty";
       noRes.textContent = T.none[L];
       container.appendChild(noRes);
-      if (shouldAutoSpeak && autoReadAloud) {
-        speak(T.none[L], true);
-      }
       return;
     }
 
-    matched.forEach(function (sc) {
+    aiSchemesResult.forEach(function (sc) {
       var card = document.createElement("div");
       card.className = "sc";
       card.innerHTML =
         '<h3></h3><p></p><div class="docs"></div>' +
         '<div class="row"><button type="button" class="listen"></button><a class="apply" target="_blank" rel="noopener noreferrer"></a></div>';
-      card.querySelector("h3").textContent = sc.n[L];
-      card.querySelector("p").textContent = sc.b[L];
-      card.querySelector(".docs").textContent = T.docs[L] + ": " + sc.d[L];
+      card.querySelector("h3").textContent = sc.name || "";
+      card.querySelector("p").textContent = sc.benefit || "";
+      card.querySelector(".docs").textContent = T.docs[L] + ": " + (sc.documents || "");
 
       var listenBtn = card.querySelector(".listen");
       listenBtn.textContent = "🔊 " + T.listen[L];
       listenBtn.onclick = function () {
-        speak(sc.n[L] + ". " + sc.b[L], false);
+        speak((sc.name || "") + ". " + (sc.benefit || ""));
       };
 
       var applyLink = card.querySelector(".apply");
       applyLink.textContent = T.apply[L];
-      applyLink.href = sc.u;
+      applyLink.href = sc.url || "https://www.myscheme.gov.in";
 
       container.appendChild(card);
     });
+  }
 
-    if (shouldAutoSpeak && autoReadAloud) {
-      var summarySpeech = matched.map(function (sc) {
-        return sc.n[L] + ". " + sc.b[L];
-      }).join(" ");
-      speak(summarySpeech, true);
+  function stopSchemeAudioAnalyser() {
+    if (schemeAnimFrame) {
+      cancelAnimationFrame(schemeAnimFrame);
+      schemeAnimFrame = null;
+    }
+    if (schemeAudioCtx) {
+      try { schemeAudioCtx.close(); } catch (e) {}
+      schemeAudioCtx = null;
+      schemeAnalyser = null;
     }
   }
 
-  // Multi-symptom chips toggle
+  function finalizeSchemeAudioBlob() {
+    if (schemeAudioChunks.length) {
+      schemeAudioBlob = new Blob(schemeAudioChunks, { type: (schemeMediaRecorder && schemeMediaRecorder.mimeType) || "audio/webm" });
+      if (schemeAudioUrl) URL.revokeObjectURL(schemeAudioUrl);
+      schemeAudioUrl = URL.createObjectURL(schemeAudioBlob);
+      var player = $("schemeAudioPlayer");
+      if (player) {
+        player.src = schemeAudioUrl;
+        player.classList.remove("hide");
+      }
+    }
+    schemeAudioDetectedSignal = true;
+    if ($("schemeRecStatus")) $("schemeRecStatus").textContent = T.schemeRecValid[L];
+    if (schemeAudioTranscript) {
+      lastSpokenSchemeText = schemeAudioTranscript;
+      updateSpokenDisplay("schemeSpokenBox", schemeAudioTranscript);
+    }
+  }
+
+  function startSchemeAudioRecording() {
+    var player = $("schemeAudioPlayer");
+    stopOverlappingPlayback(player || null);
+    schemeAudioChunks = [];
+    schemePeakLevel = 0;
+    schemeAudioDetectedSignal = true;
+    schemeAudioTranscript = "";
+    isSchemeRecording = true;
+    if ($("schemeRecBtn")) $("schemeRecBtn").classList.add("on");
+    if ($("schemeRecTxt")) $("schemeRecTxt").textContent = T.recStop[L];
+    if ($("schemeRecStatus")) $("schemeRecStatus").textContent = T.schemeRecActive[L];
+
+    if (SR) {
+      try {
+        schemeSpeechRec = new SR();
+        schemeSpeechRec.lang = LC[L];
+        schemeSpeechRec.continuous = true;
+        schemeSpeechRec.interimResults = true;
+        schemeSpeechRec.onresult = function (ev) {
+          var fullText = "";
+          for (var r = 0; r < ev.results.length; r++) {
+            if (ev.results[r][0] && ev.results[r][0].transcript) {
+              fullText += (fullText ? " " : "") + ev.results[r][0].transcript.trim();
+            }
+          }
+          if (fullText) {
+            schemeAudioTranscript = fullText;
+            lastSpokenSchemeText = fullText;
+            updateSpokenDisplay("schemeSpokenBox", fullText);
+          }
+        };
+        schemeSpeechRec.onerror = function () {};
+        schemeSpeechRec.start();
+      } catch (e) {}
+    }
+
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia && typeof MediaRecorder !== "undefined") {
+      navigator.mediaDevices.getUserMedia({ audio: getAudioConstraints() }).then(function (stream) {
+        if (!isSchemeRecording) {
+          stream.getTracks().forEach(function (trk) { trk.stop(); });
+          return;
+        }
+        try {
+          var AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (AudioContextClass) {
+            schemeAudioCtx = new AudioContextClass();
+            if (schemeAudioCtx.state === "suspended") schemeAudioCtx.resume();
+            var src = schemeAudioCtx.createMediaStreamSource(stream);
+            schemeAnalyser = schemeAudioCtx.createAnalyser();
+            schemeAnalyser.fftSize = 256;
+            src.connect(schemeAnalyser);
+            var dataArr = new Uint8Array(schemeAnalyser.frequencyBinCount);
+            var monitor = function () {
+              if (!isSchemeRecording || !schemeAnalyser) return;
+              schemeAnalyser.getByteTimeDomainData(dataArr);
+              var maxDev = 0;
+              for (var i = 0; i < dataArr.length; i++) {
+                var dev = Math.abs(dataArr[i] - 128);
+                if (dev > maxDev) maxDev = dev;
+              }
+              if (maxDev > schemePeakLevel) schemePeakLevel = maxDev;
+              schemeAnimFrame = requestAnimationFrame(monitor);
+            };
+            schemeAnimFrame = requestAnimationFrame(monitor);
+          }
+        } catch (e) {}
+
+        try {
+          schemeMediaRecorder = new MediaRecorder(stream);
+          schemeMediaRecorder.ondataavailable = function (ev) {
+            if (ev.data && ev.data.size > 0) schemeAudioChunks.push(ev.data);
+          };
+          schemeMediaRecorder.onstop = function () {
+            stopSchemeAudioAnalyser();
+            stream.getTracks().forEach(function (trk) { trk.stop(); });
+            finalizeSchemeAudioBlob();
+          };
+          schemeMediaRecorder.start();
+        } catch (e) {
+          stream.getTracks().forEach(function (trk) { trk.stop(); });
+        }
+      }).catch(function () {});
+    }
+  }
+
+  function stopSchemeAudioRecording() {
+    isSchemeRecording = false;
+    if ($("schemeRecBtn")) $("schemeRecBtn").classList.remove("on");
+    if ($("schemeRecTxt")) $("schemeRecTxt").textContent = T.recStart[L];
+    if (schemeSpeechRec) {
+      try { schemeSpeechRec.stop(); } catch (e) {}
+      schemeSpeechRec = null;
+    }
+    if (schemeMediaRecorder && schemeMediaRecorder.state !== "inactive") {
+      try {
+        schemeMediaRecorder.stop();
+        return;
+      } catch (e) {}
+    }
+    stopSchemeAudioAnalyser();
+    finalizeSchemeAudioBlob();
+  }
+
+  function clearSchemeAudio() {
+    stopSchemeAudioRecording();
+    stopSchemeAudioAnalyser();
+    schemeAudioChunks = [];
+    schemeAudioBlob = null;
+    schemeAudioDetectedSignal = false;
+    schemePeakLevel = 0;
+    schemeAudioTranscript = "";
+    lastSpokenSchemeText = "";
+    if (schemeAudioUrl) {
+      URL.revokeObjectURL(schemeAudioUrl);
+      schemeAudioUrl = null;
+    }
+    var player = $("schemeAudioPlayer");
+    if (player) {
+      player.removeAttribute("src");
+      player.classList.add("hide");
+    }
+    updateSpokenDisplay("schemeSpokenBox", "");
+    if ($("schemeRecStatus")) $("schemeRecStatus").textContent = T.schemeRecIdle[L];
+  }
+
+  function sendSchemeAudioNow() {
+    var player = $("schemeAudioPlayer");
+    stopOverlappingPlayback(player || null);
+    if (isSchemeRecording) {
+      stopSchemeAudioRecording();
+      setTimeout(function () { sendSchemeAudioNow(); }, 250);
+      return;
+    }
+    var spokenText = (schemeAudioTranscript || lastSpokenSchemeText || "").trim();
+    if (spokenText) {
+      updateSpokenDisplay("schemeSpokenBox", spokenText);
+      addBubble("🎤 “" + spokenText + "”", true);
+    } else {
+      addBubble("🎤 [" + T.sendRecord[L] + "]", true);
+    }
+    processSchemesWithAi({
+      freeText: spokenText,
+      audioBlob: schemeAudioBlob,
+      isAudio: true,
+      audioPeak: schemePeakLevel
+    });
+  }
+
   function renderSymptomChips() {
     var chipsWrap = $("chips");
     chipsWrap.innerHTML = "";
@@ -2060,597 +2394,73 @@ label {
     });
   }
 
-  var SYM_PATTERNS = {
-    spots: /spot|brown|blast|kale|ಕಲೆ|ಕಂದು|మచ్చ|గోధుమ|धब्बे|धब्बा|भूरे/i,
-    yellow: /yellow|haladi|ಹಳದಿ|పసుపు|पीली|पीला/i,
-    holes: /hole|eaten|worm|caterpillar|randhra|ರಂಧ್ರ|ಹುಳು|రంధ్ర|పురుగు|छेद|कीट|सुंडी/i,
-    white: /white|powder|mildew|bili|ಬಿಳಿ|ಬೂದಿ|తెల్ల|బూడిద|सफेद|पाउडर|चूर्ण/i,
-    wilt: /wilt|dry|droop|badu|ಬಾಡ|ಸೊರಗು|వాడ|मुरझा|सूख/i
-  };
+  function matchPlantOrCropKey(text) {
+    var v = (text || "").toLowerCase().replace(/[-_]/g, " ").trim();
+    if (!v) return "";
 
-  function handleSymptomInput(rawText) {
-    var clean = (rawText || "").trim();
-    if (!clean) return;
-    var addedAny = false;
-    Object.keys(SYM_PATTERNS).forEach(function (key) {
-      if (SYM_PATTERNS[key].test(clean) && selectedSyms.indexOf(key) === -1) {
-        selectedSyms.push(key);
-        addedAny = true;
-      }
-    });
-    if (addedAny) {
-      renderSymptomChips();
-      setStatusMsg(T.selectedSymsLbl[L] + ": " + selectedSyms.map(function (k) { return C[k].l[L]; }).join(", "), false);
-    } else {
-      setStatusMsg(T.nu[L], true);
-    }
-  }
-
-  // Audio recording via MediaRecorder + Web Audio API voice signal detection
-  function stopAudioAnalyser() {
-    if (animFrame) {
-      cancelAnimationFrame(animFrame);
-      animFrame = null;
-    }
-    if (audioCtx) {
-      try { audioCtx.close(); } catch (e) {}
-      audioCtx = null;
-      analyser = null;
-    }
-  }
-
-  function startAudioRecording() {
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || typeof MediaRecorder === "undefined") {
-      setStatusMsg(T.recErr[L], true);
-      return;
-    }
-
-    stopSpeaking();
-
-    navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
-      audioChunks = [];
-      peakLevel = 0;
-      audioDetectedSignal = false;
-
-      try {
-        var AudioContextClass = window.AudioContext || window.webkitAudioContext;
-        if (AudioContextClass) {
-          audioCtx = new AudioContextClass();
-          var src = audioCtx.createMediaStreamSource(stream);
-          analyser = audioCtx.createAnalyser();
-          analyser.fftSize = 256;
-          src.connect(analyser);
-          var dataArr = new Uint8Array(analyser.frequencyBinCount);
-
-          var monitorLevel = function () {
-            if (!isRecording || !analyser) return;
-            analyser.getByteTimeDomainData(dataArr);
-            var maxDev = 0;
-            for (var i = 0; i < dataArr.length; i++) {
-              var dev = Math.abs(dataArr[i] - 128);
-              if (dev > maxDev) maxDev = dev;
-            }
-            if (maxDev > peakLevel) peakLevel = maxDev;
-            if (maxDev > 5) audioDetectedSignal = true;
-            animFrame = requestAnimationFrame(monitorLevel);
-          };
-          animFrame = requestAnimationFrame(monitorLevel);
-        }
-      } catch (e) {
-        audioDetectedSignal = true;
-      }
-
-      mediaRecorder = new MediaRecorder(stream);
-      mediaRecorder.ondataavailable = function (ev) {
-        if (ev.data && ev.data.size > 0) {
-          audioChunks.push(ev.data);
-        }
-      };
-
-      mediaRecorder.onstop = function () {
-        isRecording = false;
-        $("recBtn").classList.remove("on");
-        $("recTxt").textContent = T.recStart[L];
-        stopAudioAnalyser();
-
-        stream.getTracks().forEach(function (trk) { trk.stop(); });
-
-        if (!audioChunks.length) {
-          audioBlob = null;
-          $("audioPlayer").classList.add("hide");
-          $("recStatus").textContent = T.recDoneSilent[L];
-          return;
-        }
-
-        audioBlob = new Blob(audioChunks, { type: mediaRecorder.mimeType || "audio/webm" });
-        if (audioUrl) URL.revokeObjectURL(audioUrl);
-        audioUrl = URL.createObjectURL(audioBlob);
-        var player = $("audioPlayer");
-        player.src = audioUrl;
-        player.classList.remove("hide");
-
-        var hasValidAudio = audioBlob.size > 500 && (audioDetectedSignal || peakLevel > 4 || !(window.AudioContext || window.webkitAudioContext));
-        audioDetectedSignal = hasValidAudio;
-        $("recStatus").textContent = hasValidAudio ? T.recDoneValid[L] : T.recDoneSilent[L];
-      };
-
-      isRecording = true;
-      $("recBtn").classList.add("on");
-      $("recTxt").textContent = T.recStop[L];
-      $("recStatus").textContent = T.recActive[L];
-      mediaRecorder.start();
-    }).catch(function () {
-      isRecording = false;
-      $("recBtn").classList.remove("on");
-      $("recTxt").textContent = T.recStart[L];
-      $("recStatus").textContent = T.recErr[L];
-      setStatusMsg(T.recErr[L], true);
-    });
-  }
-
-  function stopAudioRecording() {
-    if (mediaRecorder && isRecording) {
-      try {
-        mediaRecorder.stop();
-      } catch (e) {
-        isRecording = false;
-        $("recBtn").classList.remove("on");
-        $("recTxt").textContent = T.recStart[L];
+    var all = getAllCrops();
+    for (var i = 0; i < all.length; i++) {
+      var item = all[i];
+      if (!item) continue;
+      if (v.indexOf(item.v.toLowerCase()) > -1) return item.v;
+      var langs = ["en", "kn", "te", "hi"];
+      for (var j = 0; j < langs.length; j++) {
+        var lbl = (typeof item.l === "string" ? item.l : (item.l[langs[j]] || "")).toLowerCase().trim();
+        if (lbl && v.indexOf(lbl) > -1) return item.v;
       }
     }
-  }
 
-  function clearAudioRecording() {
-    stopAudioRecording();
-    stopAudioAnalyser();
-    audioChunks = [];
-    audioBlob = null;
-    audioDetectedSignal = false;
-    peakLevel = 0;
-    if (audioUrl) {
-      URL.revokeObjectURL(audioUrl);
-      audioUrl = null;
-    }
-    var player = $("audioPlayer");
-    player.removeAttribute("src");
-    player.classList.add("hide");
-    $("recStatus").textContent = T.recIdle[L];
-  }
-
-  function renderEmptyDiagnosis() {
-    if (diagShown) return;
-    $("out").innerHTML = '<div class="empty">' + T.fempty[L] + "</div>";
-  }
-
-  function computeHighestSeverity(keys) {
-    var rank = { low: 1, medium: 2, high: 3 };
-    var best = "low";
-    keys.forEach(function (k) {
-      var sv = C[k] ? C[k].sv : "low";
-      if (rank[sv] > rank[best]) best = sv;
-    });
-    return best;
-  }
-
-  // Diagnosis generator supporting multiple symptoms + strict audio input check
-  function runDiagnosis(shouldAutoSpeak) {
-    var typedPending = $("symtxt").value.trim();
-    if (typedPending) {
-      $("symtxt").value = "";
-      handleSymptomInput(typedPending);
-    }
-
-    var hasAudioFile = !!(audioBlob && audioBlob.size > 500);
-    var hasValidAudio = hasAudioFile && audioDetectedSignal;
-    var hasSymptoms = selectedSyms.length > 0;
-
-    // Crucial audio behavior: never fabricate diagnosis from empty or silent audio
-    if (!hasSymptoms && !hasValidAudio) {
-      diagShown = false;
-      var emptyReason = hasAudioFile ? T.silentAudioNoSym[L] : T.noInputAtAll[L];
-      $("out").innerHTML =
-        '<div class="empty" style="border-color:var(--danger);color:var(--ink);">' +
-        emptyReason +
-        "</div>";
-      setStatusMsg(emptyReason, true);
-      return;
-    }
-
-    var cropVal = $("crop").value;
-    var cropObj = CROPS.find(function (c) { return c.v === cropVal; });
-    var cropLabel = cropObj ? cropObj.l[L] : cropVal;
-
-    var activeKeys = hasSymptoms ? selectedSyms.slice() : ["spots", "yellow"];
-    var isAudioOnlyFallback = !hasSymptoms && hasValidAudio;
-
-    var overallSev = computeHighestSeverity(activeKeys);
-    var allToday = [];
-    var allOrganic = [];
-    var allChem = [];
-    var symptomCardsHtml = "";
-
-    activeKeys.forEach(function (k) {
-      var item = C[k];
-      if (!item) return;
-      item.t[L].forEach(function (x) { if (allToday.indexOf(x) === -1) allToday.push(x); });
-      item.o[L].forEach(function (x) { if (allOrganic.indexOf(x) === -1) allOrganic.push(x); });
-      item.c[L].forEach(function (x) { if (allChem.indexOf(x) === -1) allChem.push(x); });
-
-      symptomCardsHtml +=
-        '<div class="diag-card">' +
-        '<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">' +
-        '<strong style="color:var(--brand);font-size:1.02rem;">' + item.n[L] + "</strong>" +
-        '<span class="badge sev-' + item.sv + '">' + T.sevN[L] + ": " + T.sev[item.sv][L] + "</span>" +
-        "</div>" +
-        '<div class="docs" style="margin-top:4px;">' + item.l[L] + "</div>" +
-        "</div>";
-    });
-
-    var li = function (arr) {
-      return arr.map(function (x) { return "<li>" + x + "</li>"; }).join("");
+    var plantPatterns = {
+      Paddy: /\b(paddy|rice|bhatta|nellu|dhan|chawal)\b|ಭತ್ತ|వరి|धान/i,
+      Cotton: /\b(cotton|hatti|paruthi|kapas|rui)\b|ಹತ್ತಿ|పత్తి|कपास/i,
+      Chilli: /\b(chilli|chili|chillies|menasu|menasinakayi|mirchi|mirapakaya|mirch)\b|ಮೆಣಸಿನ|మిర్చి|मिर्च/i,
+      Groundnut: /\b(groundnut|peanut|shenga|kadalekay|verusenaga|moongphali|mungfali)\b|ಶೇಂಗಾ|వేరుశనగ|मूंगफली/i,
+      Maize: /\b(maize|corn|mekkejola|mokkajonna|makka|bhutta)\b|ಮೆಕ್ಕೆಜೋಳ|మొక్కజొన్న|मक्का/i,
+      Tomato: /\b(tomato|tamata|tamatar)\b|ಟೊಮೇಟೊ|టమాటా|टमाटर/i,
+      Sugarcane: /\b(sugarcane|sugar\s*cane|kabbu|cheruku|ganna)\b|ಕಬ್ಬು|చెరకు|गन्ना/i,
+      Banana: /\b(banana|bale|vazhai|arati|kela)\b|ಬಾಳೆ|అరటి|केला/i,
+      Brinjal: /\b(brinjal|eggplant|aubergine|badane|badanekayi|vankaya|baingan|bhata)\b|ಬದನೆ|వంకాయ|बैंगन/i,
+      Okra: /\b(okra|lady\s*finger|ladies\s*finger|bende|bendekayi|bendakaya|bhindi)\b|ಬೆಂಡೆ|బెండ|भिंडी/i,
+      Potato: /\b(potato|aalugadde|alugadde|bangaladumpa|aloo)\b|ಆಲೂ|బంగాళా|आलू/i,
+      Onion: /\b(onion|eerulli|ulligadda|pyaaz|pyaz)\b|ಈರುಳ್ಳಿ|ఉల్లి|प्याज/i,
+      Mango: /\b(mango|mavu|mavinakayi|mamidi|aam)\b|ಮಾವು|మామిడి|आम/i,
+      Papaya: /\b(papaya|parangi|boppayi|papita)\b|ಪರಂಗಿ|ಪಪ್ಪಾಯಿ|బొప్పాయి|पपीता/i,
+      Guava: /\b(guava|sebe|perale|jama|amrud|amrood)\b|ಸೀಬೆ|ಪೇರಳೆ|జామ|अमरूद/i,
+      Rose: /\b(rose|gulabi|gulab)\b|ಗುಲಾಬಿ|గులాబీ|गुलाब/i,
+      Marigold: /\b(marigold|chendu|chendu\s*hoovu|banti|genda)\b|ಚೆಂಡು|బంతి|गेंदा/i,
+      Hibiscus: /\b(hibiscus|shoeblack|shoe\s*flower|dasavala|daswala|mandara|gudhal|gurhal)\b|ದಾಸವಾಳ|మందార|गुड़हल/i,
+      Jasmine: /\b(jasmine|mallige|malle|chameli)\b|ಮಲ್ಲಿಗೆ|మల్లె|चमेली/i,
+      MoneyPlant: /\b(money\s*plant|moneyplant|pothos|indoor\s*plant|pot\s*plant|indoor|pot)\b|ಮನಿ|ಒಳಾಂಗಣ|మనీ|ఇండోర్|मनी|इनडोर/i,
+      Tulsi: /\b(tulsi|tulasi|basil|holy\s*basil)\b|ತುಳಸಿ|తులసి|तुलसी/i,
+      Neem: /\b(neem|bevu|bevinamara|vepa|nim)\b|ಬೇವು|వేప|नीम/i,
+      Coconut: /\b(coconut|tengu|tenginakayi|kobbari|nariyal|narial)\b|ತೆಂಗು|కొబ్బరి|नारियल/i
     };
 
-    var chemHtml = allChem.length
-      ? "<ul>" +
-        li(allChem.map(function (x) { return "<b>" + x + "</b> – " + T.price[L]; })) +
-        "</ul>" +
-        '<div class="band"><span>' + T.band[L] + "</span>" +
-        '<span style="background:#b3261e;color:#fff">Red</span>' +
-        '<span style="background:#f2c200;color:#1b1b1b">Yellow</span>' +
-        '<span style="background:#1565c0;color:#fff">Blue</span>' +
-        '<span style="background:#25732b;color:#fff">Green</span></div>'
-      : "<p>—</p>";
-
-    var shopsHtml = "";
-    for (var sIdx = 1; sIdx <= 2; sIdx++) {
-      shopsHtml +=
-        '<div class="sc" style="margin-bottom:8px;">' +
-        "<h3>" + T.shopT[L] + " #" + sIdx + "</h3>" +
-        '<p class="docs">' + T.adr[L] + "</p>" +
-        "</div>";
-    }
-
-    var introNote = isAudioOnlyFallback
-      ? '<div class="demo" style="background:var(--warn);">' + T.audioOnlyNote[L] + "</div>"
-      : '<div class="demo">' + T.fnote[L] + "</div>";
-
-    var selectedBadgeLine = hasSymptoms
-      ? "<p><strong>" + T.selectedSymsLbl[L] + ":</strong> " +
-        selectedSyms.map(function (k) { return C[k].l[L]; }).join(" • ") + "</p>"
-      : "";
-
-    $("out").innerHTML =
-      introNote +
-      '<h3 style="margin:0 0 6px;color:var(--brand);">' + cropLabel + "</h3>" +
-      "<p>" + T.overallSev[L] + ': <span class="badge sev-' + overallSev + '">' + T.sev[overallSev][L] + "</span></p>" +
-      selectedBadgeLine +
-      symptomCardsHtml +
-      '<div class="sec"><h4>' + T.hToday[L] + "</h4><ul>" + li(allToday) + "</ul></div>" +
-      '<div class="sec"><h4>' + T.hOrg[L] + "</h4><ul>" + li(allOrganic) + "</ul></div>" +
-      '<div class="sec"><h4>' + T.hChem[L] + "</h4>" + chemHtml + "</div>" +
-      '<div class="sec"><h4>' + T.hBuy[L] + "</h4>" + shopsHtml +
-      '<a class="ghost" style="display:flex;align-items:center;text-decoration:none;margin-top:6px;" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/agro+input+dealer+near+me">📍 ' + T.near[L] + "</a></div>" +
-      '<div class="safe"><b>' + T.hSafe[L] + '</b><p style="margin:6px 0;">' + T.safe[L] + '</p><p style="margin:0;font-size:0.9rem;">' + T.disc[L] + "</p></div>" +
-      '<div class="row" style="margin-top:12px;"><button type="button" class="listen" id="fl"></button></div>';
-
-    diagShown = true;
-    var names = activeKeys.map(function (k) { return C[k].n[L]; }).join(", ");
-    var spokenDiag = cropLabel + ". " + names + ". " + T.sev[overallSev][L] + ". " + T.safe[L];
-
-    var speakBtn = $("fl");
-    speakBtn.textContent = "🔊 " + T.listen[L];
-    speakBtn.onclick = function () {
-      speak(spokenDiag, false);
-    };
-
-    if (shouldAutoSpeak && autoReadAloud) {
-      speak(spokenDiag, true);
-    }
-  }
-
-  function populateCropSelect() {
-    var sel = $("crop");
-    var prevVal = sel.value || "Paddy";
-    sel.innerHTML = "";
-    CROPS.forEach(function (c) {
-      var opt = document.createElement("option");
-      opt.value = c.v;
-      opt.textContent = c.l[L];
-      if (c.v === prevVal) opt.selected = true;
-      sel.appendChild(opt);
-    });
-  }
-
-  function applyLayoutMode(mode) {
-    layoutMode = mode;
-    ["vs", "vf", "portableWrap", "navStrip"].forEach(function (id) {
-      var el = $(id);
-      if (!el) return;
-      el.classList.remove("mode-mobile", "mode-laptop");
-      if (mode === "mobile") el.classList.add("mode-mobile");
-      if (mode === "laptop") el.classList.add("mode-laptop");
-    });
-    [].forEach.call($("modeBar").children, function (b) {
-      b.setAttribute("aria-pressed", b.dataset.m === mode ? "true" : "false");
-    });
-  }
-
-  function updatePortableBadges() {
-    var hasSpeech = !!window.speechSynthesis;
-    var hasRec = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && typeof MediaRecorder !== "undefined");
-    $("deviceCapabilityBadge").textContent = (hasSpeech || hasRec) ? T.capFullAudio[L] : T.capLimitedAudio[L];
-    $("portableReadyBadge").textContent = "📱💻 " + T.portableReady[L];
-  }
-
-  // Master UI refresher enforcing strict single-language rendering for L
-  function refreshUI() {
-    document.documentElement.lang = L;
-
-    [].forEach.call($("langs").children, function (b) {
-      b.setAttribute("aria-pressed", b.dataset.l === L ? "true" : "false");
-    });
-
-    $("tag").textContent = T.tag[L];
-    $("modeAuto").textContent = T.modeAuto[L];
-    $("modeMobile").textContent = T.modeMobile[L];
-    $("modeLaptop").textContent = T.modeLaptop[L];
-
-    $("autoReadBtn").setAttribute("aria-pressed", autoReadAloud ? "true" : "false");
-    $("autoReadTxt").textContent = T.autoRead[L];
-    $("speedBtn").setAttribute("aria-pressed", slowSpeech ? "true" : "false");
-    $("speedTxt").textContent = slowSpeech ? T.speedSlow[L] : T.speedNormal[L];
-    $("stopAudioTxt").textContent = T.stopAudio[L];
-    $("speakingLabel").textContent = isSpeakingNow ? T.audioSpeaking[L] : T.audioIdle[L];
-    $("shareAppTxt").textContent = T.shareBtn[L];
-    updatePortableBadges();
-
-    $("tabS").textContent = T.tabS[L];
-    $("tabF").textContent = T.tabF[L];
-
-    $("askh").textContent = T.askh[L];
-    $("resh").textContent = T.resh[L];
-    $("txt").placeholder = T.ph[L];
-    $("go").textContent = T.go[L];
-    $("again").textContent = T.again[L];
-    $("note").textContent = T.note[L];
-    $("note").classList.remove("status-banner", "warn");
-
-    $("fh").textContent = T.fh[L];
-    $("cropL").textContent = T.cropL[L];
-    $("photoL").textContent = T.photoL[L];
-    $("dropT").textContent = T.dropT[L];
-    $("symL").textContent = T.symL[L];
-    $("symtxt").placeholder = T.typeSym[L];
-    $("symgo").textContent = T.go[L];
-    $("audL").textContent = T.audL[L];
-    $("recTxt").textContent = isRecording ? T.recStop[L] : T.recStart[L];
-    $("clearRecBtn").textContent = T.clearAudio[L];
-    if (!isRecording && !audioBlob) {
-      $("recStatus").textContent = T.recIdle[L];
-    } else if (audioBlob) {
-      $("recStatus").textContent = audioDetectedSignal ? T.recDoneValid[L] : T.recDoneSilent[L];
-    }
-    $("analyze").textContent = T.analyze[L];
-    $("fres").textContent = T.fres[L];
-    $("fnote").textContent = T.fnote[L];
-    $("fnote").classList.remove("status-banner", "warn");
-
-    populateCropSelect();
-    renderSymptomChips();
-    renderSchemesChat(false);
-
-    if (diagShown) {
-      runDiagnosis(false);
-    } else {
-      renderEmptyDiagnosis();
-    }
-  }
-
-  function submitSchemeText(raw) {
-    var clean = (raw || "").trim();
-    if (!clean) return;
-    addBubble(clean, true);
-    var parsedOcc = parseAnswer("occ", clean);
-    if (parsedOcc) {
-      ans.occ = parsedOcc;
-      step = Math.max(step, 1);
-      renderSchemesChat(true);
-      return;
-    }
-    var parsedInc = parseAnswer("inc", clean);
-    if (parsedInc) {
-      ans.inc = parsedInc;
-      renderSchemeCards(true);
-      return;
-    }
-    var parsedAge = parseAnswer("age", clean);
-    if (parsedAge) {
-      ans.age = parsedAge;
-      renderSchemeCards(true);
-      return;
-    }
-    setStatusMsg(T.nu[L], true);
-  }
-
-  // Event listeners
-  $("langs").onclick = function (e) {
-    var btn = e.target.closest("button[data-l]");
-    if (!btn) return;
-    stopSpeaking();
-    L = btn.dataset.l;
-    refreshUI();
-  };
-
-  $("tabs").onclick = function (e) {
-    var btn = e.target.closest("button[data-t]");
-    if (!btn) return;
-    var targetTab = btn.dataset.t;
-    [].forEach.call($("tabs").children, function (b) {
-      b.setAttribute("aria-pressed", b.dataset.t === targetTab ? "true" : "false");
-    });
-    if (targetTab === "s") {
-      $("vs").classList.remove("hide");
-      $("vf").classList.add("hide");
-    } else {
-      $("vs").classList.add("hide");
-      $("vf").classList.remove("hide");
-    }
-  };
-
-  $("modeBar").onclick = function (e) {
-    var btn = e.target.closest("button[data-m]");
-    if (!btn) return;
-    applyLayoutMode(btn.dataset.m);
-  };
-
-  $("autoReadBtn").onclick = function () {
-    autoReadAloud = !autoReadAloud;
-    $("autoReadBtn").setAttribute("aria-pressed", autoReadAloud ? "true" : "false");
-    if (autoReadAloud) {
-      if (!$("vs").classList.contains("hide") && step < Q.length) {
-        var curQ = Q[step];
-        speak(curQ.q[L] + ". " + curQ.o.map(function (o) { return o[1][L]; }).join(", "), true);
-      } else if (!$("vf").classList.contains("hide") && diagShown) {
-        runDiagnosis(true);
+    var foundKey = "";
+    Object.keys(plantPatterns).forEach(function (k) {
+      if (!foundKey && plantPatterns[k].test(v)) {
+        foundKey = k;
       }
-    } else {
-      stopSpeaking();
-    }
-  };
+    });
+    if (foundKey) return foundKey;
 
-  $("speedBtn").onclick = function () {
-    slowSpeech = !slowSpeech;
-    $("speedBtn").setAttribute("aria-pressed", slowSpeech ? "true" : "false");
-    $("speedTxt").textContent = slowSpeech ? T.speedSlow[L] : T.speedNormal[L];
-  };
-
-  $("stopAudioBtn").onclick = function () {
-    stopSpeaking();
-    var player = $("audioPlayer");
-    if (player && !player.paused) {
-      try { player.pause(); } catch (e) {}
-    }
-  };
-
-  $("shareAppBtn").onclick = function () {
-    var url = window.location.href || "";
-    if (navigator.share && url.indexOf("http") === 0) {
-      navigator.share({
-        title: "Agrimate",
-        text: T.tag[L],
-        url: url
-      }).then(function () {
-        showShareToast(T.shareSuccess[L]);
-      }).catch(function () {
-        showShareToast(T.shareFallback[L]);
-      });
-      return;
+    var customSpecMatch = cleanTextForCrop(text);
+    if (customSpecMatch) {
+      var safeVal = customSpecMatch.replace(/[^a-zA-Z0-9\u0900-\u097F\u0C80-\u0CFF\u0C00-\u0C7F\s]/g, "").trim();
+      if (safeVal) {
+        customCropEntry = {
+          v: safeVal,
+          l: { en: safeVal, kn: safeVal, te: safeVal, hi: safeVal }
+        };
+        populateCropSelect();
+        return safeVal;
+      }
     }
 
-    if (url) {
-      try {
-        var helper = document.createElement("textarea");
-        helper.value = url;
-        helper.style.position = "fixed";
-        helper.style.opacity = "0";
-        document.body.appendChild(helper);
-        helper.select();
-        document.execCommand("copy");
-        document.body.removeChild(helper);
-        showShareToast(T.shareSuccess[L]);
-        return;
-      } catch (e) {}
-    }
-    showShareToast(T.shareFallback[L]);
-  };
+    return "";
+  }
 
-  $("go").onclick = function () {
-    var v = $("txt").value.trim();
-    if (v) {
-      $("txt").value = "";
-      submitSchemeText(v);
-    }
-  };
-
-  $("txt").onkeydown = function (e) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      $("go").onclick();
-    }
-  };
-
-  $("mic").onclick = function () {
-    startSpeechRecognition(function (spoken) {
-      $("txt").value = spoken;
-      submitSchemeText(spoken);
-    }, $("mic"));
-  };
-
-  $("again").onclick = function () {
-    stopSpeaking();
-    step = 0;
-    ans = {};
-    renderSchemesChat(false);
-  };
-
-  $("photo").onchange = function (e) {
-    var f = e.target.files && e.target.files[0];
-    if (!f) return;
-    var reader = new FileReader();
-    reader.onload = function () {
-      $("prev").src = reader.result;
-      $("prev").classList.remove("hide");
-    };
-    reader.readAsDataURL(f);
-  };
-
-  $("symgo").onclick = function () {
-    var v = $("symtxt").value.trim();
-    if (v) {
-      $("symtxt").value = "";
-      handleSymptomInput(v);
-    }
-  };
-
-  $("symtxt").onkeydown = function (e) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      $("symgo").onclick();
-    }
-  };
-
-  $("symmic").onclick = function () {
-    startSpeechRecognition(function (spoken) {
-      $("symtxt").value = spoken;
-      handleSymptomInput(spoken);
-    }, $("symmic"));
-  };
-
-  $("recBtn").onclick = function () {
-    if (isRecording) {
-      stopAudioRecording();
-    } else {
-      startAudioRecording();
-    }
-  };
-
-  $("clearRecBtn").onclick = function () {
-    clearAudioRecording();
-  };
-
-  $("analyze").onclick = function () {
-    stopSpeaking();
-    var loadingHtml = '<div class="empty">' + T.chk[L] + "</div>";
-    $("out").innerHTML = loadingHtml;
-    setTimeout(function () {
-      runDiagnosis(true);
-    }, 350);
-  };
-
-  // Initialize application
-  refreshUI();
-  applyLayoutMode("auto");
-})();
-</script>
-</body>
-</html>
+  function cleanTextForCrop(raw) {
+    var s = (raw || "").trim();
+    if (!s) return "";
+    var explicitMatch = s.match(/\b([a-zA-Z\u0900-\u097F\u0C80-\u0CFF\u0C00-\u0C7F]+(?
